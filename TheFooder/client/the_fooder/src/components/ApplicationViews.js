@@ -3,7 +3,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
 import RecipeList from "./recipe/RecipeList";
-
+import Hello from "./Hello";
+import UserProfile from "./userProfile/UserProfile";
 
 
 export default function ApplicationViews({ isLoggedIn }) {
@@ -19,10 +20,10 @@ export default function ApplicationViews({ isLoggedIn }) {
           <Route path="register" element={<Register />} />
           <Route path="recipe" element={<RecipeList />} />
  
-          {/* <Route
+          <Route
             path="userProfile/:firebaseUserId"
-            element={<UserProfileRecipesList />}
-          /> */}
+            element={<UserProfile />}
+          />
           <Route path="*" element={<p>Whoops, nothing here...</p>} />
         </Route>
       </Routes>
