@@ -1,0 +1,109 @@
+.recipePageHeader {
+    text-align: center;
+    letter-spacing: .2rem;
+}
+
+.recipeContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-right: 0px;
+}
+.addRecipeContainer {
+    display: flex;
+    flex-direction: row;
+    color: gray;
+    margin-top: 1.5em;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-right: 0px;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    text-align: center;
+}
+
+ #editButton {
+    color: black;
+    background-color: aliceblue;
+    padding: 0.25rem 1rem;
+    border: 0ch;
+    font-size: small;
+}
+
+#createButton {
+    background-color: aliceblue;
+    color: black;
+    margin-top: 1em;
+    padding: 0.25rem 1rem;
+    border: 0ch;
+    font-size: large;
+}
+
+.deleteButton {
+    background-color: #db534b;
+    color: white;
+    padding: 0.25rem 1rem;
+    border: 0ch;
+    font-size: small;
+}
+.saveButton {
+    display: flex;
+    justify-content: center;
+    background-color: #db534b;
+    color: white;
+    padding: 0.25rem 1rem;
+    margin: 1em;
+    border: 0ch;
+    font-size: small;
+}
+.editButton {
+    display: flex;
+    justify-content: center;
+    background-color: #db534b;
+    color: white;
+    padding: 0.25rem 1rem;
+    margin: 1em;
+    border: 0ch;
+    font-size: small;
+}
+
+.recipeName {
+    text-align: center;
+    letter-spacing: .1rem;
+    font-weight: 300;
+}
+
+.recipeNameContainer {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+#recipe-cardBody {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.quillLogo {
+    height: 6.15rem;
+}
+
+.logoCircle {
+    height: 7.5rem;
+    width: 7.5rem;
+    display: inline-block;
+    border: 1px #db534b solid;
+    border-radius: 50%;
+    padding: 10px;
+    background-color: #db534b;
+}
+
+.logoContainer {
+    display: flex;
+    justify-content: center;
+}
