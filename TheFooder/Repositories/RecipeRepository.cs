@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Azure;
+using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using TheFooder.Models;
 using TheFooder.Utils;
@@ -30,14 +31,13 @@ namespace TheFooder.Repositories
                             Id = reader.GetInt32(reader.GetOrdinal("Id")),
                             Name = reader.GetString(reader.GetOrdinal("name")),
                             Instructions = reader.GetString(reader.GetOrdinal("instructions")),
-                            DateCreated = DbUtils.GetDateTime(reader, "createdDateTime"),
+                            CreatedDateTime = DbUtils.GetDateTime(reader, "createdDateTime"),
                             ImageUrl = reader.GetString(reader.GetOrdinal("imageUrl")),
                             VideoUrl = reader.GetString(reader.GetOrdinal("videoUrl")),
                         });
                     }
 
                     reader.Close();
-
                     return recipes;
                 }
             }
@@ -50,12 +50,19 @@ namespace TheFooder.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        INSERT INTO Recipe (name, instructions, createdDateTime, ImageUrl, videourl)
+                        INSERT INTO Recipe (name, userProfileId, instructions, createdDateTime, imageUrl, videoUrl)
                         OUTPUT INSERTED.ID
-                        VALUES (@Name, @Email, @DateCreated, @Email, @ImageUrl)";
+                        VALUES (@name, @instructions, @userProfileId, @createdDateTime, @imageUrl, @videoUrl)";
                     
-                    cmd.Parameters.AddWithValue("@Name", recipe.Name);
+                  
                     recipe.Id = (int)cmd.ExecuteScalar();
+                    DbUtils.AddParameter(cmd, "@name", recipe.Name);
+                    DbUtils.AddParameter(cmd, "@userProfileId", recipe.UserProfileId);
+                    DbUtils.AddParameter(cmd, "@instructions", recipe.Instructions);
+                    DbUtils.AddParameter(cmd, "@createdDateTime", recipe.CreatedDateTime);
+                    DbUtils.AddParameter(cmd, "@imageUrl", recipe.ImageUrl);
+                    DbUtils.AddParameter(cmd, "@videoUrl", recipe.VideoUrl);
+        
                 }
             }
         }
@@ -71,7 +78,7 @@ namespace TheFooder.Repositories
                         UPDATE Recipe
                            SET Name = @Name,
                                Email = @Email,
-                               DateCreated = @DateCreated,
+                               CreatedDateTime = @createdDateTime,
                                ImageUrl = @ImageUrl
                          WHERE Id = @Id";
 

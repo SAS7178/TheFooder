@@ -13,7 +13,7 @@ namespace TheFooder.Models
 
         public string Instructions { get; set; }
 
-        public DateTime DateCreated { get; set; }
+        public DateTime CreatedDateTime { get; set; }
 
         public string ImageUrl { get; set; }
 
