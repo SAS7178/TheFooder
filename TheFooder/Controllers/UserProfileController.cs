@@ -23,6 +23,17 @@ namespace TheFooder.Controllers
             return CreatedAtAction("Get", new { id = userProfile.Id }, userProfile);
         }
 
+        [HttpGet("DoesUserExist/{firebaseUserId}")]
+        public IActionResult DoesUserExist(string firebaseUserId)
+        {
+            var userProfile = _userProfileRepository.GetByFirebaseUserId(firebaseUserId);
+            if (userProfile == null)
+            {
+                return NotFound();
+            }
+            return Ok();
+        }
+
         [HttpGet("{firebaseUserId}")]
         public IActionResult GetByFirebaseUserId(string firebaseUserId)
         {
