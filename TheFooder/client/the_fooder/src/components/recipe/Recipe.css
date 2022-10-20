@@ -3,12 +3,16 @@
     letter-spacing: .2rem;
     margin-bottom: 3em;
 }
+.recipeImg{
+    display: flex;
+    justify-content: center;
+}
 
 .recipeContainer {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-between;
+    justify-content: center;
     margin-right: 0px;
 }
 .addRecipeContainer {
@@ -71,7 +75,7 @@
 .editButton {
     display: flex;
     justify-content: center;
-    background-color: #583fc7;
+    background-color: yellowgreen;
     color: white;
     padding: 0.25rem 1rem;
     border-radius: 15% 15% 15% 15% ;
@@ -80,11 +84,31 @@
     border: 0ch;
     font-size: small;
 }
-
+.videoButton {
+    display: flex;
+    justify-content: center;
+    background-color: darkblue;
+    color: white;
+    padding: 0.25rem 1rem;
+    border-radius: 15% 15% 15% 15% ;
+    height: 2.5em;
+    margin: 1em;
+    border: 0ch;
+    font-size: small;
+}
+.recipeVideo {
+    margin: 1em;
+    border-radius: 10%;
+}
+.recipeImage {
+    margin: 1em;
+    border-radius: 10%;
+}
 .recipeName {
     text-align: center;
-    letter-spacing: .1rem;
-    font-weight: 300;
+    letter-spacing: .6rem;
+    font-weight: 600;
+    margin: 1em;
 }
 
 .recipeNameContainer {
@@ -101,10 +125,11 @@
 }
 
 .quillLogo {
-    height: 6.15rem;
+    height: 13rem;
+    width: 22em;
 }
 
-.logoCircle {
+/* .logoCircle {
     height: 7.5rem;
     width: 7.5rem;
     display: inline-block;
@@ -112,10 +137,14 @@
     border-radius: 50%;
     padding: 10px;
     background-color: #583fc7;
-}
+} */
 
 .logoContainer {
     display: flex;
     justify-content: center;
     opacity: 90%;
+}
+.card
+{
+    margin: 2em;
 }

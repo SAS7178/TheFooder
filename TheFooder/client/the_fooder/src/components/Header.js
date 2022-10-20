@@ -10,15 +10,17 @@ import {
   NavLink,
 } from "reactstrap";
 import { logout } from "../modules/authManager";
+import { getUserProfileDetails } from "../modules/userProfileManager";
 import "./Header.css";
 
 export default function Header({ isLoggedIn }) {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
+  // const userProfileId = getUserProfileDetails()
   return (
     <div>
-      <Navbar className="navbar navbar-dark bg-dark" expand="md">
+      <Navbar className="navbar" expand="md">
         <NavbarBrand tag={RRNavLink} to="/">
           <img className="headerLogo" src={process.env.PUBLIC_URL + "/fooderIcon.png"} />
           &nbsp; TheFooder
@@ -33,7 +35,7 @@ export default function Header({ isLoggedIn }) {
                   <NavLink tag={RRNavLink} to="/">HOME</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={RRNavLink} to="/recipes">MY SAVED</NavLink>
+                  <NavLink tag={RRNavLink} to='/userProfile'>MY SAVED LIST</NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink onClick={logout}>LOGOUT</NavLink>

@@ -16,13 +16,6 @@ namespace TheFooder.Controllers
             _userProfileRepository = UserProfileRepository;
         }
         //[Authorize]
-        [HttpPost]
-        public IActionResult Post(UserProfile userProfile)
-        {
-            _userProfileRepository.Add(userProfile);
-            return CreatedAtAction("Get", new { id = userProfile.Id }, userProfile);
-        }
-
         [HttpGet("DoesUserExist/{firebaseUserId}")]
         public IActionResult DoesUserExist(string firebaseUserId)
         {
@@ -33,7 +26,6 @@ namespace TheFooder.Controllers
             }
             return Ok();
         }
-
         [HttpGet("{firebaseUserId}")]
         public IActionResult GetByFirebaseUserId(string firebaseUserId)
         {
@@ -44,18 +36,25 @@ namespace TheFooder.Controllers
             }
             return Ok(userProfile);
         }
+
+        [HttpPost]
+        public IActionResult Post(UserProfile userProfile)
+        {
+            _userProfileRepository.Add(userProfile);
+            return CreatedAtAction("Get", new { id = userProfile.Id }, userProfile);
+        }
+
+
         //[Authorize]
         [HttpPut("{id}")]
         public IActionResult Put(int id, UserProfile userProfile)
         {
-            if (id != userProfile.Id)
-            {
-                return BadRequest();
-            }
-
+            userProfile.Id = id;
             _userProfileRepository.Update(userProfile);
             return NoContent();
         }
+
+
         //[Authorize]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)

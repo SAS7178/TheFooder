@@ -14,15 +14,13 @@ export default function ApplicationViews({ isLoggedIn }) {
     <main>
       <Routes>
         <Route path="/">
-          <Route
-            index
-            element={isLoggedIn ? <RecipeList />  : <Navigate to="/login" />}
+          <Route index element={isLoggedIn ? <RecipeList />  : <Navigate to="/login" />}
           />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
-          <Route path="recipe" element={<RecipeList />} />
           <Route path="recipe/create" element={<RecipeCreate />} />
           <Route path="recipe/edit/:recipeId" element={<RecipeEdit />} />
+          <Route path="userProfile" element={<UserProfile />} />
  
           <Route
             path="userProfile/:firebaseUserId"

@@ -8,9 +8,7 @@ import { getUserProfileDetails } from "../../modules/userProfileManager";
 
 const UserProfile = () => {
   const { firebaseUserId } = useParams();
-const [userProfile, setProfileDetails] = useState({}) 
-
-// const token = getToken();
+const [ userProfile , setProfileDetails] = useState({}) 
 
 const getProfileDetails = (id) => {
   getUserProfileDetails(id).then((userProfile) => {

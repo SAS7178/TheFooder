@@ -24,7 +24,7 @@ export default function RecipeList() {
             <img alt="" className="quillLogo" src={process.env.PUBLIC_URL + "/fooderIcon.png"} />
           </span>
         </div>
-        <h1 className="recipePageHeader">FOODER RECIPES</h1>
+        <h1 className="recipePageHeader">Recipe List</h1>
         {
           recipes.map((recipe) => (
             <Recipe recipe={recipe} key={recipe.id} />

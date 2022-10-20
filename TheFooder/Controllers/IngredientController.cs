@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Azure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TheFooder.Models;
@@ -29,18 +30,17 @@ namespace TheFooder.Controllers
             _ingredientRepository.Add(ingredient);
             return CreatedAtAction("Get", new { id = ingredient.Id }, ingredient);
         }
+
         //[Authorize]
         [HttpPut("{id}")]
-        public IActionResult Put(int id, Ingredient ingredient)
+        public IActionResult Put(int id, Ingredient ingredient)    
         {
-            if (id != ingredient.Id)
-            {
-                return BadRequest();
-            }
-
-            _ingredientRepository.Update(ingredient);
-            return NoContent();
+                ingredient.Id = id;
+                _ingredientRepository.Update(ingredient);
+                return NoContent();
         }
+        
+
         //[Authorize]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)

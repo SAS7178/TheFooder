@@ -34,14 +34,12 @@ namespace TheFooder.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, Recipe recipe)
         {
-            if (id != recipe.Id)
-            {
-                return BadRequest();
-            }
-
+            recipe.Id = id;
             _recipeRepository.Update(recipe);
             return NoContent();
         }
+
+
         //[Authorize]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
