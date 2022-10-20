@@ -59,7 +59,7 @@ const [recipe, update] = useState({
                                       <label htmlFor="name">imageUrl:</label>
                             <input type="name"
                                 className="form-control"
-                                placeholder="Enter image Url..."
+                                placeholder="Enter imageUrl..."
                                 onChange={
                                     //take current obj value and update with user selected value
                                     (evt) => {

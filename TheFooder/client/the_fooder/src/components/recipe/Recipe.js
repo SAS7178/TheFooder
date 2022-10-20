@@ -2,15 +2,21 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Card, CardBody, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { deleteRecipe } from "../../modules/recipeManager";
-// import { NavLink as RRNavLink } from "react-router-dom";
+
 
 const Recipe = ({ recipe }) => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
+  const [vidModal, setVidModal] = useState(false);
+  const vidToggle = () => setVidModal(!modal);
   const navigate = useNavigate()
+
   const deleteButton = (id) => {
     deleteRecipe(id)
       .then(toggle)
+  }
+  const handleCloseModule = () => {
+    setVidModal(false)
   }
 
   return (
@@ -18,11 +24,36 @@ const Recipe = ({ recipe }) => {
       <CardBody id="recipe-cardBody">
         <section className="recipeContainer">
           <div className="recipeNameContainer">
-            <span className="recipeName">{recipe.name}</span>
-            <img alt="" src={recipe.imageUrl} height="200px" />
+            <span className="recipeName"><strong>{recipe.name}</strong></span>
+            <div className="recipeImg">
+              <img className="recipeImage" alt="" src={recipe.imageUrl} height="200px" />
+            </div>
+
+            <Modal isOpen={vidModal} toggle={vidToggle} {...recipe}>
+              <ModalBody>
+                <>
+                  <section className='quickView'>
+                    <div>{recipe.name}</div>
+                    <iframe className="recipeVideo" width="400" height="300" src="https://www.youtube.com/embed/ZYoYffXWiwk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </section>
+                </>
+                <Modal>
+                </Modal>
+              </ModalBody>
+              <ModalFooter>
+                <button onClick={() => { handleCloseModule() }}>
+                  CLOSE
+                </button>
+              </ModalFooter>
+            </Modal>
+
             <div className="buttonContainer">
               {/* <Button id="editButton" recipe={RRNavLink} to={`/recipe/edit/${recipe.id}`}>EDIT</Button> */}
               <button onClick={() => { navigate(`/recipe/edit/${recipe.id}`) }} className="editButton" >EDIT</button>
+              <button onClick={vidToggle}
+                className="videoButton">
+                Video
+              </button>
               <button onClick={toggle}
                 className="deleteButton">
                 DELETE

@@ -57,13 +57,13 @@ namespace TheFooder.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        INSERT INTO UserProfile (Name, Email, DateCreated, ImageUrl)
+                        INSERT INTO UserProfile (Name, Email)
                         OUTPUT INSERTED.ID
-                        VALUES (@Name, @Email, @DateCreated, @Email, @ImageUrl)";
+                        VALUES (@Name, @Email)";
 
-          
-
-
+                    DbUtils.AddParameter(cmd, "@Name", userProfile.Name);
+                    DbUtils.AddParameter(cmd, "@Email", userProfile.Email);
+                    
                     userProfile.Id = (int)cmd.ExecuteScalar();
                 }
             }

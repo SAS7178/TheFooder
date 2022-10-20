@@ -64,8 +64,8 @@ namespace TheFooder.Repositories
                 {
                     cmd.CommandText = @"
                         UPDATE ingredient
-                           SET [Name] = @name,
-                         WHERE Id = @Id";
+                           SET [Name] = @name
+                         WHERE Id = @id";
 
                     cmd.Parameters.AddWithValue("@name", ingredient.Name);
                     cmd.Parameters.AddWithValue("@id", ingredient.Id);
