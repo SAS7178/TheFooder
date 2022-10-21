@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using TheFooder.Models;
 using TheFooder.Repositories;
 
@@ -15,7 +16,8 @@ namespace TheFooder.Controllers
         {
             _userProfileRepository = UserProfileRepository;
         }
-        //[Authorize]
+
+        [Authorize]
         [HttpGet("DoesUserExist/{firebaseUserId}")]
         public IActionResult DoesUserExist(string firebaseUserId)
         {
@@ -29,6 +31,18 @@ namespace TheFooder.Controllers
         [HttpGet("{firebaseUserId}")]
         public IActionResult GetByFirebaseUserId(string firebaseUserId)
         {
+            var userProfile = _userProfileRepository.GetByFirebaseUserId(firebaseUserId);
+            if (userProfile == null)
+            {
+                return NotFound();
+            }
+            return Ok(userProfile);
+        }
+        [Authorize]
+        [HttpGet("myProfile")]
+        public IActionResult MyProfile()
+        {
+            var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var userProfile = _userProfileRepository.GetByFirebaseUserId(firebaseUserId);
             if (userProfile == null)
             {

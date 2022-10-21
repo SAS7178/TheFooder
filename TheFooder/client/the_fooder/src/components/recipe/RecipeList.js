@@ -4,6 +4,7 @@ import { getAllRecipes } from "../../modules/recipeManager";
 import { NavItem } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import "./Recipe.css";
+import IngredientList from "../ingredients/IngredientList";
 
 export default function RecipeList() {
   const [recipes, setRecipes] = useState([]);

@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
@@ -30,6 +31,7 @@ namespace TheFooder
         public void ConfigureServices(IServiceCollection services)
         {
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");
+  
             var googleTokenUrl = $"https://securetoken.google.com/{firebaseProjectId}";
             services
                 .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -59,8 +61,9 @@ namespace TheFooder
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            if (env.IsDevelopment()) 
             {
+   
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TheFooder v1"));
@@ -78,6 +81,8 @@ namespace TheFooder
 
             app.UseRouting();
 
+            app.UseAuthentication();
+            
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

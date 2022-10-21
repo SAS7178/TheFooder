@@ -1,32 +1,33 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import { Card, CardBody } from "reactstrap";
 // import { getToken } from "../../modules/authManager";
-import { getUserProfileDetails } from "../../modules/userProfileManager";
+import { getUser } from "../../modules/userProfileManager";
 // import { callComp } from "../../modules/userProfileManager";
 
 
 const UserProfile = () => {
-  const { firebaseUserId } = useParams();
+  // const { firebaseUserId } = useParams();
 const [ userProfile , setProfileDetails] = useState({}) 
 
-const getProfileDetails = (id) => {
-  getUserProfileDetails(id).then((userProfile) => {
+const getProfileDetails = () => {
+  getUser().then((userProfile) => {
     setProfileDetails(userProfile);
   });
 };
 
+
 useEffect(() => {
-  getProfileDetails(firebaseUserId);
+  getProfileDetails();
 }, []);
 
 
   return (
     <Card>
-      <p>User Profile</p>
+      <p></p>
       <CardBody>
         <p>
-            Name: {userProfile.Name}
+            Welcome Back {userProfile.name}
         </p>
       </CardBody>
     </Card>

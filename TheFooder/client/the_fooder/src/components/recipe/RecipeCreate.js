@@ -3,7 +3,8 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Form, FormGroup } from "reactstrap"
 import { addRecipe } from "../../modules/recipeManager"
-
+import IngredientList from "../ingredients/IngredientList"
+import "./Recipe.css";
 
 export const RecipeCreate = () => {
 //create a use state to hold tag obj value that will be set upon the users click of button
@@ -19,6 +20,7 @@ const [recipe, update] = useState({
       Instructions: recipe.Instructions,
       ImageUrl: recipe.ImageUrl,
       VideoUrl: recipe.VideoUrl
+
     }
     addRecipe(recipeToSendToApi)
     return  navigate("/recipe")
@@ -80,6 +82,9 @@ const [recipe, update] = useState({
                                         update(copy)
                                     }
                                 } />
+
+                                <IngredientList/>
+                                
                                 <button    onClick={(clickEvent) => { handleCreateButtonClick(clickEvent)}}
                                 className="saveButton" >Save Recipe</button>
                         </div>

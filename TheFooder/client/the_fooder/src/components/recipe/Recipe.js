@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Card, CardBody, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { deleteRecipe } from "../../modules/recipeManager";
-
+import "./Recipe.css";
 
 const Recipe = ({ recipe }) => {
   const [modal, setModal] = useState(false);
