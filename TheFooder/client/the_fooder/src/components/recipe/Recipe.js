@@ -9,26 +9,44 @@ const Recipe = ({ recipe }) => {
   const toggle = () => setModal(!modal);
   const [vidModal, setVidModal] = useState(false);
   const vidToggle = () => setVidModal(!modal);
+  const [imgModal, setImgModal] = useState(false);
+  const imgToggle = () => setImgModal(!modal);
   const navigate = useNavigate()
 
   const deleteButton = (id) => {
     deleteRecipe(id)
       .then(toggle)
   }
-  const handleCloseModule = () => {
+  const handleCloseModal = () => {
     setVidModal(false)
+  }
+  const handleOpenImageModal = () => {
+    setImgModal(true)
+  }
+  const handleCloseImageModal = () => {
+    setImgModal(false)
   }
 
   return (
-    <Card>
+    <Card id="card">
       <CardBody id="recipe-cardBody">
         <section className="recipeContainer">
           <div className="recipeNameContainer">
             <span className="recipeName"><strong>{recipe.name}</strong></span>
             <div className="recipeImg">
-              <img className="recipeImage" alt="" src={recipe.imageUrl} height="200px" />
+              <img onClick={() => {handleOpenImageModal()}} className="recipeImage" alt="" src={recipe.imageUrl} height="200px" />
             </div>
-
+            <Modal isOpen={imgModal} toggle={imgToggle} {...recipe}>
+              <ModalBody>
+              <div>{  recipe.instructions }</div>
+              </ModalBody>
+              <ModalFooter>
+                <button onClick={() => { handleCloseImageModal() }}>
+                  CLOSE
+                </button>
+              </ModalFooter>
+            </Modal>
+           
             <Modal isOpen={vidModal} toggle={vidToggle} {...recipe}>
               <ModalBody>
                 <>
@@ -37,11 +55,9 @@ const Recipe = ({ recipe }) => {
                     <iframe className="recipeVideo" width="400" height="300" src="https://www.youtube.com/embed/ZYoYffXWiwk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   </section>
                 </>
-                <Modal>
-                </Modal>
               </ModalBody>
               <ModalFooter>
-                <button onClick={() => { handleCloseModule() }}>
+                <button onClick={() => { handleCloseModal() }}>
                   CLOSE
                 </button>
               </ModalFooter>
@@ -68,7 +84,7 @@ const Recipe = ({ recipe }) => {
               <section className='quickView'>
                 <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
                 <br />
-                <div>{recipe.name}</div>
+                <div>Are you positive you want to delete "{recipe.name}"?</div>
               </section>
             </>
           </ModalBody>
