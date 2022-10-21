@@ -59,6 +59,7 @@
     border-radius: 15% 15% 15% 15% ;
     height: 2.5em;
     margin: 1em;
+    border: 1px solid black;
     border: 0ch;
     font-size: small;
 }
@@ -75,13 +76,14 @@
 .editButton {
     display: flex;
     justify-content: center;
-    background-color: yellowgreen;
-    color: white;
+    background-color: rgb(252, 252, 169);
+    color: black;
+    font: bolder;
     padding: 0.25rem 1rem;
     border-radius: 15% 15% 15% 15% ;
     height: 2.5em;
     margin: 1em;
-    border: 0ch;
+    border: 1px solid black;
     font-size: small;
 }
 .videoButton {
@@ -93,6 +95,7 @@
     border-radius: 15% 15% 15% 15% ;
     height: 2.5em;
     margin: 1em;
+    border: 1px solid black;
     border: 0ch;
     font-size: small;
 }
@@ -129,22 +132,14 @@
     width: 22em;
 }
 
-/* .logoCircle {
-    height: 7.5rem;
-    width: 7.5rem;
-    display: inline-block;
-    border: 1px #db534b solid;
-    border-radius: 50%;
-    padding: 10px;
-    background-color: #583fc7;
-} */
-
 .logoContainer {
     display: flex;
     justify-content: center;
     opacity: 90%;
 }
-.card
+#card
 {
+    border: 2px solid black;
+    border-color: #db534b;
     margin: 2em;
 }

@@ -14,7 +14,7 @@ export default function RecipeList() {
 
   useEffect(() => {
     getRecipesFromApi();
-  }, [recipes]);
+  }, []);
 
   return (
     <div className="container">

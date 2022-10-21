@@ -3,5 +3,7 @@
 }
 .navbar
 {
-
+background-color: rgb(252, 252, 169);
+border: 1.5px solid red;
+border-radius: 0% 0% 2% 2%;
 }

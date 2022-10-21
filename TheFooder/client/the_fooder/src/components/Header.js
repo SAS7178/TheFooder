@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink as RRNavLink } from "react-router-dom";
+import { Link, NavLink as RRNavLink, useNavigate } from "react-router-dom";
 import {
   Collapse,
   Navbar,
@@ -9,14 +9,14 @@ import {
   NavItem,
   NavLink,
 } from "reactstrap";
-import { logout } from "../modules/authManager";
-import { getUserProfileDetails } from "../modules/userProfileManager";
+import { getToken, logout } from "../modules/authManager";
 import "./Header.css";
 
 export default function Header({ isLoggedIn }) {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-
+    const JWT = getToken()
+  console.log(JWT)
   // const userProfileId = getUserProfileDetails()
   return (
     <div>
@@ -35,10 +35,11 @@ export default function Header({ isLoggedIn }) {
                   <NavLink tag={RRNavLink} to="/">HOME</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={RRNavLink} to='/userProfile'>MY SAVED LIST</NavLink>
+                  <NavLink tag={RRNavLink} to={`/userProfile/:`}>MY SAVED LIST</NavLink>
                 </NavItem>
+                  {/* <button onClick={navigate(`/userProfile/:$}`)}></button> */}
                 <NavItem>
-                  <NavLink onClick={logout}>LOGOUT</NavLink>
+                  <NavLink id="logout" tag={RRNavLink} to={`/`} onClick={logout}>LOGOUT</NavLink>
                 </NavItem>
               </>
             )}
