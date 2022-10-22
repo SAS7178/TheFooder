@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Card, CardBody, CardTitle, FormGroup, Input, Label, NavItem } from "reactstrap";
-import { useNavigate } from "react-router-dom";
 import "./Ingredients.css";
 
 import { getAllIngredients } from "../../modules/ingredientManager";
 
 export default function IngredientList() {
     const [ingredients, setIngredients] = useState([]);
-    const [listIngredients, setListIngredients] = useState([]);
-    const navigate = useNavigate()
-
+    const [recipeIngredients, setRecipeIngredients] = useState([]);
+    let ingList = [];
+   
     const getIngredientsFromApi = () => {
         getAllIngredients().then(is => setIngredients(is));
     };
@@ -18,14 +17,13 @@ export default function IngredientList() {
         getIngredientsFromApi();
     }, []);
 
-    let ingList = []
-    const addIngToList = (ingredientId) => {
+    const addIngToList = (ingredientObj) => {
         {
-            ingList.push(ingredientId)
+            ingList.push(ingredientObj)
         }
     }
-    const setAllIngredients = (ingList) => {
-        setListIngredients(ingList)
+    const setAllIngredients = (List) => {
+        setRecipeIngredients(List)
         ingList = [];
     }
     return (
@@ -43,11 +41,11 @@ export default function IngredientList() {
             <div className="ingredientChecks">
                 {ingredients?.map(ing => <Card outline color="warning" key={ing.id} style={{ marginBottom: '4px' }}>
                     <CardBody>
-                        {ing.name}&nbsp;&nbsp;<input onClick={(evt) => { addIngToList(evt.id) }} type="checkbox" />
+                        {ing.name}&nbsp;&nbsp;<input onClick={(evt) => { addIngToList(evt) }} type="checkbox" />
                     </CardBody>
                 </Card>)}
             </div>
-                <button onClick={()=>{setAllIngredients()}} >add all ingredients</button>
+                <button onClick={()=>{setAllIngredients(ingList)}} >add all ingredients</button>
         </div>
     )
 }
