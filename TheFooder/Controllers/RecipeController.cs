@@ -19,7 +19,7 @@ namespace TheFooder.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_recipeRepository.GetAll());
+            return Ok(_recipeRepository.GetAllWithIngredients());
         }
 
         //[Authorize]

@@ -9,15 +9,16 @@ import {
   NavItem,
   NavLink,
 } from "reactstrap";
-import { getToken, logout } from "../modules/authManager";
+import { logout } from "../modules/authManager";
+// import { getUser } from "../modules/userProfileManager";
 import "./Header.css";
 
 export default function Header({ isLoggedIn }) {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-    const JWT = getToken()
-  console.log(JWT)
-  // const userProfileId = getUserProfileDetails()
+  
+  //  const userProfile = getUser().then()
+  //  console.log(userProfile)
   return (
     <div>
       <Navbar className="navbar" expand="md">
@@ -35,7 +36,7 @@ export default function Header({ isLoggedIn }) {
                   <NavLink tag={RRNavLink} to="/">HOME</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={RRNavLink} to={`/userProfile/:`}>MY SAVED LIST</NavLink>
+                  <NavLink tag={RRNavLink} to={`/userProfile`}>MY SAVED LIST</NavLink>
                 </NavItem>
                   {/* <button onClick={navigate(`/userProfile/:$}`)}></button> */}
                 <NavItem>

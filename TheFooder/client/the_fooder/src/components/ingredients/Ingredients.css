@@ -1,0 +1,4 @@
+.ingredientChecks{
+    display: flex;
+    flex-wrap: wrap;
+}

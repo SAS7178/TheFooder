@@ -20,7 +20,7 @@ export default function ApplicationViews({ isLoggedIn }) {
           <Route path="register" element={<Register />} />
           <Route path="recipe/create" element={<RecipeCreate />} />
           <Route path="recipe/edit/:recipeId" element={<RecipeEdit />} />
-          <Route path="userProfile/:firebaseUserId" element={<UserProfile />} />
+          <Route path="userProfile" element={<UserProfile />} />
  
           <Route
             path="userProfile/:firebaseUserId"

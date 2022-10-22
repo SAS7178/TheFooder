@@ -4,6 +4,7 @@ import { getAllRecipes } from "../../modules/recipeManager";
 import { NavItem } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import "./Recipe.css";
+import IngredientList from "../ingredients/IngredientList";
 
 export default function RecipeList() {
   const [recipes, setRecipes] = useState([]);
@@ -19,6 +20,9 @@ export default function RecipeList() {
   return (
     <div className="container">
       <div className="row justify-content-center">
+        <NavItem id="createNewRecipeButton">
+          <button    onClick={() => { navigate("/recipe/create")}} id="createButton" >Create new Recipe</button>
+        </NavItem>
         <div className="logoContainer">
           <span className="logoCircle">
             <img alt="" className="quillLogo" src={process.env.PUBLIC_URL + "/fooderIcon.png"} />
@@ -30,10 +34,6 @@ export default function RecipeList() {
             <Recipe recipe={recipe} key={recipe.id} />
           ))
         }
-        <NavItem className="addRecipeContainer">
-          <div className="addRecipeContainer">Add a new recipe</div>
-          <button    onClick={() => { navigate("/recipe/create")}} id="createButton" >Create</button>
-        </NavItem>
       </div>
     </div>
   )

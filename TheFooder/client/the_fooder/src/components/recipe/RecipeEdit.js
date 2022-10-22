@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { Form, FormGroup } from "reactstrap"
 import { updateRecipe } from "../../modules/recipeManager"
-
+import "./Recipe.css";
 export const RecipeEdit = () => {
     const {recipeId} = useParams()
     const navigate = useNavigate()

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using TheFooder.Models;
 
 namespace TheFooder.Models
 {
@@ -18,5 +20,8 @@ namespace TheFooder.Models
         public string ImageUrl { get; set; }
 
         public string VideoUrl { get; set; }
+
+        public List<Ingredient> Ingredients { get; set; }
+
     }
 }
