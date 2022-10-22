@@ -83,7 +83,7 @@ const [recipe, update] = useState({
                                     }
                                 } />
 
-                                <IngredientList/>
+                                <IngredientList />
                                 
                                 <button    onClick={(clickEvent) => { handleCreateButtonClick(clickEvent)}}
                                 className="saveButton" >Save Recipe</button>

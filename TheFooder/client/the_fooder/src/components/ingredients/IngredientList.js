@@ -7,6 +7,7 @@ import { getAllIngredients } from "../../modules/ingredientManager";
 
 export default function IngredientList() {
     const [ingredients, setIngredients] = useState([]);
+    const [listIngredients, setListIngredients] = useState([]);
     const navigate = useNavigate()
 
     const getIngredientsFromApi = () => {
@@ -17,6 +18,16 @@ export default function IngredientList() {
         getIngredientsFromApi();
     }, []);
 
+    let ingList = []
+    const addIngToList = (ingredientId) => {
+        {
+            ingList.push(ingredientId)
+        }
+    }
+    const setAllIngredients = (ingList) => {
+        setListIngredients(ingList)
+        ingList = [];
+    }
     return (
         <div className="container">
             <div className="row justify-content-center">
@@ -26,18 +37,17 @@ export default function IngredientList() {
                         <div>{ing.name}</div>
                     })
                 }
-                <NavItem className="addIngredientContainer">
-                    <button onClick={() => { navigate("/ingredient/create") }} id="createButton" >Create</button>
-                </NavItem>
             </div >
             <h4>Ingredient List</h4>
+
             <div className="ingredientChecks">
-            {ingredients?.map(ing => <Card  outline color="warning" key={ing.id} style={{ marginBottom: '4px' }}>
-                <CardBody>
-                        {ing.name}<input type="checkbox"/>
-                </CardBody>
-            </Card>)}
+                {ingredients?.map(ing => <Card outline color="warning" key={ing.id} style={{ marginBottom: '4px' }}>
+                    <CardBody>
+                        {ing.name}&nbsp;&nbsp;<input onClick={(evt) => { addIngToList(evt.id) }} type="checkbox" />
+                    </CardBody>
+                </Card>)}
             </div>
+                <button onClick={()=>{setAllIngredients()}} >add all ingredients</button>
         </div>
     )
 }
