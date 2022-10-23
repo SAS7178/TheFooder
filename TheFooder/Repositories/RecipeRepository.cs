@@ -22,7 +22,7 @@ namespace TheFooder.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT r.id as RecipeId, r.name, r.instructions, r.createdDateTime, r.imageUrl, r.videoUrl,i.id as IngredientId,i.name AS IngredientName
+                    cmd.CommandText = @"SELECT r.id as RecipeId, r.name, r.instructions, r.UserProfileId, r.createdDateTime, r.imageUrl, r.videoUrl,i.id as IngredientId,i.name AS IngredientName
                                           FROM Recipe r
                                           Left Join recipeIngredients ri On ri.recipeId = r.id
                                           Left Join Ingredient i On i.id = ri.ingredientId
@@ -41,6 +41,7 @@ namespace TheFooder.Repositories
                                 existingRecipe = new Recipe()
                                 {
                                        Id = reader.GetInt32(reader.GetOrdinal("RecipeId")),
+                                       UserProfileId = reader.GetInt32(reader.GetOrdinal("UserProfileId")),
                                        Name = reader.GetString(reader.GetOrdinal("name")),
                                        Instructions = reader.GetString(reader.GetOrdinal("instructions")),
                                        CreatedDateTime = DbUtils.GetDateTime(reader, "createdDateTime"),

@@ -34,7 +34,7 @@ const Recipe = ({ recipe }) => {
           <div className="recipeNameContainer">
             <span className="recipeName"><strong>{recipe.name}</strong></span>
             <div className="recipeImg">
-              <img onClick={() => {handleOpenImageModal()}} className="recipeImage" alt="" src={recipe.imageUrl} height="200px" />
+              <img onClick={() => {handleOpenImageModal()}} className="recipeImage" alt="recipe" src={recipe.imageUrl} height="200px" />
             </div>
             <Modal isOpen={imgModal} toggle={imgToggle} {...recipe}>
               <ModalBody>

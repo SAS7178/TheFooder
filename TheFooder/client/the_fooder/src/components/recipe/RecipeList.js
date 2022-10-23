@@ -9,6 +9,7 @@ import IngredientList from "../ingredients/IngredientList";
 export default function RecipeList() {
   const [recipes, setRecipes] = useState([]);
   const navigate = useNavigate()  
+  
   const getRecipesFromApi = () => {
     getAllRecipes().then(rs => setRecipes(rs));
   };
