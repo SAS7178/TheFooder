@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Card, CardBody } from "reactstrap";
 // import { getToken } from "../../modules/authManager";
 import { getUser } from "../../modules/userProfileManager";
+import Recipe from "../recipe/Recipe";
 // import { callComp } from "../../modules/userProfileManager";
 
 
@@ -15,7 +16,9 @@ const getProfileDetails = () => {
     setProfileDetails(userProfile);
   });
 };
-
+// const usersRecipes = (userProf) => {
+//   if(user)
+// }
 
 useEffect(() => {
   getProfileDetails();
@@ -23,6 +26,7 @@ useEffect(() => {
 
 
   return (
+    <>
     <Card>
       <p></p>
       <CardBody>
@@ -31,6 +35,8 @@ useEffect(() => {
         </p>
       </CardBody>
     </Card>
+    {/* <Recipe/> */}
+    </>
   );
 };
 
