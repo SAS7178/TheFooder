@@ -21,6 +21,13 @@ namespace TheFooder.Controllers
         {
             return Ok(_recipeRepository.GetAllWithIngredients());
         }
+        // 
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            return Ok(_recipeRepository.GetAllByUserId(id));
+
+        }
 
         //[Authorize]
         [HttpPost]

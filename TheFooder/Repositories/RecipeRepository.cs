@@ -67,59 +67,60 @@ namespace TheFooder.Repositories
                 }
             }
         }
-        //public List<Recipe> GetAllByUserId()
-        //{
-        //    using (var conn = Connection)
-        //    {
-        //        conn.Open();
-        //        using (var cmd = conn.CreateCommand())
-        //        {
-        //            cmd.CommandText = @"SELECT r.id as RecipeId, r.name, r.instructions, r.createdDateTime, r.imageUrl, r.videoUrl,i.id as IngredientId,i.name AS IngredientName
-        //                                  FROM Recipe r
-        //                                  Left Join recipeIngredients ri On ri.recipeId = r.id
-        //                                  Left Join Ingredient i On i.id = ri.ingredientId
-        //                                  Where
-        //                                  ORDER BY name";
+        public List<Recipe> GetAllByUserId(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT r.id as RecipeId,up.Id as userProfileId, r.name, r.instructions, r.createdDateTime, r.imageUrl, r.videoUrl,i.id as IngredientId,i.name AS IngredientName
+                                          FROM Recipe r
+                                          Left Join UserProfile up On up.Id = r.UserProfileId
+                                          Left Join recipeIngredients ri On ri.recipeId = r.id
+                                          Left Join Ingredient i On i.id = ri.ingredientId
+                                           WHERE up.Id = @id
+                                          ORDER BY name";
+                    cmd.Parameters.AddWithValue("@id", id);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        var recipes = new List<Recipe>();
+                        while (reader.Read())
+                        {
+                            var recipeId = DbUtils.GetInt(reader, "RecipeId");
+                            var existingRecipe = recipes.FirstOrDefault(r => r.Id == recipeId);
 
-        //            using (SqlDataReader reader = cmd.ExecuteReader())
-        //            {
-        //                var recipes = new List<Recipe>();
-        //                while (reader.Read())
-        //                {
-        //                    var recipeId = DbUtils.GetInt(reader, "RecipeId");
-        //                    var existingRecipe = recipes.FirstOrDefault(r => r.Id == recipeId);
+                            if (existingRecipe == null)
+                            {
+                                existingRecipe = new Recipe()
+                                {
+                                    Id = reader.GetInt32(reader.GetOrdinal("RecipeId")),
+                                    Name = reader.GetString(reader.GetOrdinal("name")),
+                                    Instructions = reader.GetString(reader.GetOrdinal("instructions")),
+                                    CreatedDateTime = DbUtils.GetDateTime(reader, "createdDateTime"),
+                                    ImageUrl = reader.GetString(reader.GetOrdinal("imageUrl")),
+                                    VideoUrl = reader.GetString(reader.GetOrdinal("videoUrl")),
+                                    Ingredients = new List<Ingredient>()
+                                };
 
-        //                    if (existingRecipe == null)
-        //                    {
-        //                        existingRecipe = new Recipe()
-        //                        {
-        //                            Id = reader.GetInt32(reader.GetOrdinal("RecipeId")),
-        //                            Name = reader.GetString(reader.GetOrdinal("name")),
-        //                            Instructions = reader.GetString(reader.GetOrdinal("instructions")),
-        //                            CreatedDateTime = DbUtils.GetDateTime(reader, "createdDateTime"),
-        //                            ImageUrl = reader.GetString(reader.GetOrdinal("imageUrl")),
-        //                            VideoUrl = reader.GetString(reader.GetOrdinal("videoUrl")),
-        //                            Ingredients = new List<Ingredient>()
-        //                        };
+                                recipes.Add(existingRecipe);
+                            }
 
-        //                        recipes.Add(existingRecipe);
-        //                    }
+                            if (DbUtils.IsNotDbNull(reader, "IngredientId"))
+                            {
+                                existingRecipe.Ingredients.Add(new Ingredient()
+                                {
+                                    Id = DbUtils.GetInt(reader, "IngredientId"),
+                                    Name = DbUtils.GetString(reader, "IngredientName"),
+                                });
+                            }
+                        }
 
-        //                    if (DbUtils.IsNotDbNull(reader, "IngredientId"))
-        //                    {
-        //                        existingRecipe.Ingredients.Add(new Ingredient()
-        //                        {
-        //                            Id = DbUtils.GetInt(reader, "IngredientId"),
-        //                            Name = DbUtils.GetString(reader, "IngredientName"),
-        //                        });
-        //                    }
-        //                }
-
-        //                return recipes;
-        //            }
-        //        }
-        //    }
-        //}
+                        return recipes;
+                    }
+                }
+            }
+        }
         public void Add(Recipe recipe)
         {
             using (var conn = Connection)
