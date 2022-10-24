@@ -15,41 +15,6 @@ namespace TheFooder.Repositories
     {
         public RecipeRepository(IConfiguration configuration) : base(configuration) { }
 
-        //public List<Recipe> GetAll()
-        //{
-        //    using (var conn = Connection)
-        //    {
-        //        conn.Open();
-        //        using (var cmd = conn.CreateCommand())
-        //        {
-        //            cmd.CommandText = @"SELECT r.id, r.name, r.instructions, r.createdDateTime, r.imageUrl, r.videoUrl,i.id as IngredientId,i.name AS IngredientName
-        //                                  FROM Recipe r
-        //                                  Left Join recipeIngredients ri On ri.recipeId = r.id
-        //                                  Left Join Ingredient i On i.id = ri.ingredientId
-        //                              ORDER BY name";
-        //            var reader = cmd.ExecuteReader();
-
-        //            var recipes = new List<Recipe>();
-
-        //            var ingredients = new List<Recipe>();
-        //            while (reader.Read())
-        //            {
-        //                recipes.Add(new Recipe()
-        //                {
-        //                    Id = reader.GetInt32(reader.GetOrdinal("Id")),
-        //                    Name = reader.GetString(reader.GetOrdinal("name")),
-        //                    Instructions = reader.GetString(reader.GetOrdinal("instructions")),
-        //                    CreatedDateTime = DbUtils.GetDateTime(reader, "createdDateTime"),
-        //                    ImageUrl = reader.GetString(reader.GetOrdinal("imageUrl")),
-        //                    VideoUrl = reader.GetString(reader.GetOrdinal("videoUrl")),
-        //                    Ingredients = new List<Ingredient>() 
-        //                });
-        //            }
-        //            reader.Close();
-        //            return recipes;
-        //        }
-        //    }
-        //}
         public List<Recipe> GetAllWithIngredients()
         {
             using (var conn = Connection)
@@ -57,7 +22,7 @@ namespace TheFooder.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT r.id as RecipeId, r.name, r.instructions, r.createdDateTime, r.imageUrl, r.videoUrl,i.id as IngredientId,i.name AS IngredientName
+                    cmd.CommandText = @"SELECT r.id as RecipeId, r.name, r.instructions, r.UserProfileId, r.createdDateTime, r.imageUrl, r.videoUrl,i.id as IngredientId,i.name AS IngredientName
                                           FROM Recipe r
                                           Left Join recipeIngredients ri On ri.recipeId = r.id
                                           Left Join Ingredient i On i.id = ri.ingredientId
@@ -76,12 +41,67 @@ namespace TheFooder.Repositories
                                 existingRecipe = new Recipe()
                                 {
                                        Id = reader.GetInt32(reader.GetOrdinal("RecipeId")),
+                                       UserProfileId = reader.GetInt32(reader.GetOrdinal("UserProfileId")),
                                        Name = reader.GetString(reader.GetOrdinal("name")),
                                        Instructions = reader.GetString(reader.GetOrdinal("instructions")),
                                        CreatedDateTime = DbUtils.GetDateTime(reader, "createdDateTime"),
                                        ImageUrl = reader.GetString(reader.GetOrdinal("imageUrl")),
                                        VideoUrl = reader.GetString(reader.GetOrdinal("videoUrl")),
                                        Ingredients = new List<Ingredient>()
+                                };
+
+                                recipes.Add(existingRecipe);
+                            }
+
+                            if (DbUtils.IsNotDbNull(reader, "IngredientId"))
+                            {
+                                existingRecipe.Ingredients.Add(new Ingredient()
+                                {
+                                    Id = DbUtils.GetInt(reader, "IngredientId"),
+                                    Name = DbUtils.GetString(reader, "IngredientName"),
+                                });
+                            }
+                        }
+
+                        return recipes;
+                    }
+                }
+            }
+        }
+        public List<Recipe> GetAllByUserId(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT r.id as RecipeId,up.Id as userProfileId, r.name, r.instructions, r.createdDateTime, r.imageUrl, r.videoUrl,i.id as IngredientId,i.name AS IngredientName
+                                          FROM Recipe r
+                                          Left Join UserProfile up On up.Id = r.UserProfileId
+                                          Left Join recipeIngredients ri On ri.recipeId = r.id
+                                          Left Join Ingredient i On i.id = ri.ingredientId
+                                           WHERE up.Id = @id
+                                          ORDER BY name";
+                    cmd.Parameters.AddWithValue("@id", id);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        var recipes = new List<Recipe>();
+                        while (reader.Read())
+                        {
+                            var recipeId = DbUtils.GetInt(reader, "RecipeId");
+                            var existingRecipe = recipes.FirstOrDefault(r => r.Id == recipeId);
+
+                            if (existingRecipe == null)
+                            {
+                                existingRecipe = new Recipe()
+                                {
+                                    Id = reader.GetInt32(reader.GetOrdinal("RecipeId")),
+                                    Name = reader.GetString(reader.GetOrdinal("name")),
+                                    Instructions = reader.GetString(reader.GetOrdinal("instructions")),
+                                    CreatedDateTime = DbUtils.GetDateTime(reader, "createdDateTime"),
+                                    ImageUrl = reader.GetString(reader.GetOrdinal("imageUrl")),
+                                    VideoUrl = reader.GetString(reader.GetOrdinal("videoUrl")),
+                                    Ingredients = new List<Ingredient>()
                                 };
 
                                 recipes.Add(existingRecipe);

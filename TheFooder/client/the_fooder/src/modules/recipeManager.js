@@ -6,6 +6,10 @@ export function getAllRecipes() {
   return fetch(baseUrl)
     .then((res) => res.json())
 };
+export function getAllByUserProfileId(userProfileid) {
+  return fetch(baseUrl + `/${userProfileid}`)
+    .then((res) => res.json())
+};
 
 export const addRecipe = (recipe) => {
   return fetch(baseUrl, {

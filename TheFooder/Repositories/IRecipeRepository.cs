@@ -9,5 +9,6 @@ namespace TheFooder.Repositories
         void Add(Recipe recipe);
         void Delete(int id);
         void Update(Recipe recipe);
+        public List<Recipe> GetAllByUserId(int id);
     }
 }
