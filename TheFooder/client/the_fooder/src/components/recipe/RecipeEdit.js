@@ -24,22 +24,16 @@ export const RecipeEdit = () => {
     }, []);
 
     const currentRecipe = () => {
-        {
-          return recipes.map((recipe) => {
+         recipes.map((recipe) => {
             if (recipeId === recipe.id) {
-              {
-                return setEditRecipe(recipe)
-              }
+             setEditRecipe(recipe)
             }
-          })
-        }
-      }
+        })
+    }
 
     useEffect(() => {
         currentRecipe()
     }, [recipes]);
-
-    
 
     const handleEditButtonClick = (recipe) => {
         // event.preventDefault()

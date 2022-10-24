@@ -4,7 +4,7 @@ import { Button, Card, CardBody, Modal, ModalBody, ModalFooter, ModalHeader } fr
 import { deleteRecipe } from "../../modules/recipeManager";
 import "./Recipe.css";
 
-const Recipe = ({ recipe }) => {
+const UserRecipe = ({ recipe }) => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
   const [vidModal, setVidModal] = useState(false);
@@ -34,11 +34,11 @@ const Recipe = ({ recipe }) => {
           <div className="recipeNameContainer">
             <span className="recipeName"><strong>{recipe.name}</strong></span>
             <div className="recipeImg">
-              <img onClick={() => { handleOpenImageModal() }} className="recipeImage" alt="recipe" src={recipe.imageUrl} height="200px" />
+              <img onClick={() => {handleOpenImageModal()}} className="recipeImage" alt="recipe" src={recipe.imageUrl} height="200px" />
             </div>
             <Modal isOpen={imgModal} toggle={imgToggle} {...recipe}>
               <ModalBody>
-                <div>{recipe.instructions}</div>
+              <div>{  recipe.instructions }</div>
               </ModalBody>
               <ModalFooter>
                 <button onClick={() => { handleCloseImageModal() }}>
@@ -46,7 +46,7 @@ const Recipe = ({ recipe }) => {
                 </button>
               </ModalFooter>
             </Modal>
-
+           
             <Modal isOpen={vidModal} toggle={vidToggle} {...recipe}>
               <ModalBody>
                 <>
@@ -62,12 +62,21 @@ const Recipe = ({ recipe }) => {
                 </button>
               </ModalFooter>
             </Modal>
+            
+            
             <div className="buttonContainer">
+              <button onClick={() => { navigate(`/recipe/edit/${recipe.id}`) }} className="editButton" >EDIT</button>
               <button onClick={vidToggle}
                 className="videoButton">
-                Watch Video
+                Video
+              </button>
+              <button onClick={toggle}
+                className="deleteButton">
+                DELETE
               </button>
             </div>
+            
+                
           </div>
         </section>
         <Modal isOpen={modal} toggle={toggle} {...recipe}>
@@ -96,4 +105,4 @@ const Recipe = ({ recipe }) => {
 
 };
 
-export default Recipe;
+export default UserRecipe;

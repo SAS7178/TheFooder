@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { NavItem } from "reactstrap";
 import { getAllRecipes } from "../../modules/recipeManager";
 import { getUser } from "../../modules/userProfileManager";
-import Recipe from "../recipe/Recipe";
+import UserRecipe from "../recipe/UserRecipe";
 
 
 const UserProfile = () => {
@@ -29,15 +29,11 @@ const UserProfile = () => {
   }, []);
 
   const showMeMyRecipes = () => {
-    {
       return recipes.map((recipe) => {
         if (userProfile.id === recipe.userProfileId) {
-          {
-            return <Recipe recipe={recipe} key={recipe.id} />
-          }
+            return <UserRecipe recipe={recipe} key={recipe.id} />
         }
       })
-    }
   }
 
   return (

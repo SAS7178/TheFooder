@@ -4,7 +4,7 @@ import { getAllRecipes } from "../../modules/recipeManager";
 import { NavItem } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import "./Recipe.css";
-import IngredientList from "../ingredients/IngredientList";
+// import IngredientList from "../ingredients/IngredientList";
 
 export default function RecipeList() {
   const [recipes, setRecipes] = useState([]);
@@ -25,6 +25,7 @@ export default function RecipeList() {
           <button    onClick={() => { navigate("/recipe/create")}} id="createButton" >Create new Recipe</button>
         </NavItem>
         <div className="logoContainer">
+          <div>Welcome!</div>
           <span className="logoCircle">
             <img alt="" className="quillLogo" src={process.env.PUBLIC_URL + "/fooderIcon.png"} />
           </span>
