@@ -4,9 +4,9 @@ import "./Ingredients.css";
 
 import { getAllIngredients } from "../../modules/ingredientManager";
 
-export default function IngredientList() {
+export default function IngredientList({setIngState}) {
     const [ingredients, setIngredients] = useState([]);
-    const [recipeIngredients, setRecipeIngredients] = useState([]);
+    // const [recipeIngredients, setRecipeIngredients] = useState([]);
     let ingList = [];
    
     const getIngredientsFromApi = () => {
@@ -19,11 +19,11 @@ export default function IngredientList() {
 
     const addIngToList = (ingredientObj) => {
         {
-            ingList.push(ingredientObj)
+            ingList.push(ingredientObj.id)
         }
     }
     const setAllIngredients = (List) => {
-        setRecipeIngredients(List)
+        setIngState(List)
         ingList = [];
     }
     return (

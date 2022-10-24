@@ -57,13 +57,14 @@ namespace TheFooder.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        INSERT INTO UserProfile (Name, Email)
+                        INSERT INTO UserProfile (Name, Email, FirebaseUserId)
                         OUTPUT INSERTED.ID
-                        VALUES (@Name, @Email)";
+                        VALUES (@Name, @Email, @FirebaseUserId)";
 
                     DbUtils.AddParameter(cmd, "@Name", userProfile.Name);
                     DbUtils.AddParameter(cmd, "@Email", userProfile.Email);
-                    
+                    DbUtils.AddParameter(cmd, "@FirebaseUserId", userProfile.FirebaseUserId);
+
                     userProfile.Id = (int)cmd.ExecuteScalar();
                 }
             }

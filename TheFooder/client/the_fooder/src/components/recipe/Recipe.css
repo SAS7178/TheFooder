@@ -15,6 +15,10 @@
     justify-content: center;
     margin-right: 0px;
 }
+.mb-3{
+    width: 50%;
+}
+
 .addRecipeContainer {
     display: flex;
     flex-direction: row;
@@ -24,17 +28,28 @@
     justify-content: space-between;
     margin-right: 0px;
 }
+#createButton {
+    display: flex;
+    background-color: blue;
+    color: black;
+    margin-top: 1em;
+    border: 0ch;
+    font-size: medium;
+    font-weight: 900;
+}
 #createNewRecipeButton {
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    background-color: blue;
     color: blue;
-    border: 1px dotted ;
-    width: 13em;
+    border: 2px solid black ;
+    border-radius: 25% 5% 25% 5%;
+    width: 8em;
     padding-bottom: 9px;
+    opacity: 80%;
     margin-top: 1.5em;
     flex-wrap: nowrap;
     justify-content: right;
-    margin-right: 0px;
 }
 
 .buttonContainer {
@@ -52,15 +67,11 @@
     border: 0ch;
     font-size: small;
 }
+ .editButtons {
+display: flex;
 
-#createButton {
-    background-color: aliceblue;
-    color: black;
-    margin-top: 1em;
-    padding: 0.25rem 1rem;
-    border: 0ch;
-    font-size: large;
 }
+
 
 .deleteButton {
     display: flex;
@@ -82,7 +93,8 @@
     color: white;
     padding: 0.25rem 1rem;
     margin: 1em;
-    border: 0ch;
+    border-radius: 10%;
+    border: 1px solid black;
     font-size: small;
 }
 .editButton {
@@ -98,22 +110,29 @@
     border: 1px solid black;
     font-size: small;
 }
+.editForm{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
 .videoButton {
     display: flex;
     justify-content: center;
+    align-items: center;
     background-color: darkblue;
     color: white;
     padding: 0.25rem 1rem;
-    border-radius: 15% 15% 15% 15% ;
+    border-radius: 10% 10% 10% 10% ;
     height: 2.5em;
     margin: 1em;
     border: 1px solid black;
-    border: 0ch;
     font-size: small;
 }
 .recipeVideo {
     margin: 1em;
     border-radius: 10%;
+
 }
 .recipeImage {
     margin: 1em;
@@ -128,6 +147,7 @@
 
 .recipeNameContainer {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     flex-direction: column;
     padding-top: 0.25rem;
@@ -154,4 +174,5 @@
     border: 2px solid black;
     border-color: #db534b;
     margin: 2em;
+    width: 60%;
 }

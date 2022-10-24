@@ -36,7 +36,7 @@ export default function Header({ isLoggedIn }) {
                   <NavLink tag={RRNavLink} to="/">HOME</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={RRNavLink} to={`/userProfile`}>MY SAVED LIST</NavLink>
+                  <NavLink tag={RRNavLink} to={`/userProfile`}>MY RECIPES</NavLink>
                 </NavItem>
                   {/* <button onClick={navigate(`/userProfile/:$}`)}></button> */}
                 <NavItem>

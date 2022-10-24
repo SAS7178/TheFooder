@@ -1,24 +1,18 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Card, CardBody, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { deleteRecipe } from "../../modules/recipeManager";
-import { getUser } from "../../modules/userProfileManager";
 import "./Recipe.css";
 
-const Recipe = ({ recipe }) => {
+const UserRecipe = ({ recipe }) => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
   const [vidModal, setVidModal] = useState(false);
   const vidToggle = () => setVidModal(!modal);
   const [imgModal, setImgModal] = useState(false);
   const imgToggle = () => setImgModal(!modal);
-  const [userProfile, setProfileDetails] = useState({})
+  const navigate = useNavigate()
 
-
-  const getProfileDetails = () => {
-    getUser().then((user) => {
-      setProfileDetails(user);
-    });
-  };
   const deleteButton = (id) => {
     deleteRecipe(id)
       .then(toggle)
@@ -32,9 +26,6 @@ const Recipe = ({ recipe }) => {
   const handleCloseImageModal = () => {
     setImgModal(false)
   }
-  // const handleSaveRecipe = (recipeId) => {
-  //   userSavedRecipe(recipeId)
-  // }
 
   return (
     <Card id="card">
@@ -43,11 +34,11 @@ const Recipe = ({ recipe }) => {
           <div className="recipeNameContainer">
             <span className="recipeName"><strong>{recipe.name}</strong></span>
             <div className="recipeImg">
-              <img onClick={() => { handleOpenImageModal() }} className="recipeImage" alt="recipe" src={recipe.imageUrl} height="200px" />
+              <img onClick={() => {handleOpenImageModal()}} className="recipeImage" alt="recipe" src={recipe.imageUrl} height="200px" />
             </div>
             <Modal isOpen={imgModal} toggle={imgToggle} {...recipe}>
               <ModalBody>
-                <div>{recipe.instructions}</div>
+              <div>{  recipe.instructions }</div>
               </ModalBody>
               <ModalFooter>
                 <button onClick={() => { handleCloseImageModal() }}>
@@ -55,12 +46,13 @@ const Recipe = ({ recipe }) => {
                 </button>
               </ModalFooter>
             </Modal>
+           
             <Modal isOpen={vidModal} toggle={vidToggle} {...recipe}>
               <ModalBody>
                 <>
                   <section className='quickView'>
                     <div>{recipe.name}</div>
-                    <iframe className="recipeVideo" width="400" height="300" src={recipe.videoUrl} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe className="recipeVideo" width="400" height="300" src="https://www.youtube.com/embed/ZYoYffXWiwk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   </section>
                 </>
               </ModalBody>
@@ -70,22 +62,47 @@ const Recipe = ({ recipe }) => {
                 </button>
               </ModalFooter>
             </Modal>
+            
+            
             <div className="buttonContainer">
+              <button onClick={() => { navigate(`/recipe/edit/${recipe.id}`) }} className="editButton" >EDIT</button>
               <button onClick={vidToggle}
                 className="videoButton">
                 Watch Video
               </button>
-              <button onClick={() => {}}
-                className="saveButton">
-                Save Recipe
+              <button onClick={toggle}
+                className="deleteButton">
+                DELETE
               </button>
             </div>
+            
+                
           </div>
         </section>
+        <Modal isOpen={modal} toggle={toggle} {...recipe}>
+          <ModalHeader toggle={toggle}>Delete Recipe</ModalHeader>
+          <ModalBody>
+            <>
+              <section className='quickView'>
+                <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
+                <br />
+                <div>Are you positive you want to delete "{recipe.name}"?</div>
+              </section>
+            </>
+          </ModalBody>
+          <ModalFooter>
+            <Button color="secondary" onClick={toggle}>
+              CANCEL
+            </Button>
+            <Button color="secondary" onClick={() => { deleteButton(recipe.id) }} >
+              CONFIRM
+            </Button>
+          </ModalFooter>
+        </Modal>
       </CardBody>
     </Card>
   );
 
 };
 
-export default Recipe;
+export default UserRecipe;

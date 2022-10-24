@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TheFooder.Models;
 using TheFooder.Repositories;
+using System.Collections.Generic;
 
 namespace TheFooder.Controllers
 {
@@ -22,7 +23,7 @@ namespace TheFooder.Controllers
             return Ok(_recipeRepository.GetAllWithIngredients());
         }
         // 
-        [HttpGet("{id}")]
+        [HttpGet("{userId}")]
         public IActionResult Get(int id)
         {
             return Ok(_recipeRepository.GetAllByUserId(id));
