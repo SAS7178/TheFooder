@@ -7,50 +7,56 @@ import Recipe from "../recipe/Recipe";
 
 
 const UserProfile = () => {
-  // const { firebaseUserId } = useParams();
-const [ userProfile , setProfileDetails] = useState({}) 
-const [recipes, setRecipes] = useState([]);
-const navigate = useNavigate()
+  const [userProfile, setProfileDetails] = useState({})
+  const [recipes, setRecipes] = useState([]);
+  const navigate = useNavigate()
 
-const getProfileDetails = () => {
-  getUser().then((userProfile) => {
-    setProfileDetails(userProfile);
-  });
-};
-const getRecipesFromApi = () => {
-  getAllRecipes().then(rs => setRecipes(rs));
-};
+  const getProfileDetails = () => {
+    getUser().then((userProfile) => {
+      setProfileDetails(userProfile);
+    });
+  };
+  const getRecipesFromApi = () => {
+    getAllRecipes().then(rs => setRecipes(rs));
+  };
 
+  useEffect(() => {
+    getProfileDetails();
+  }, []);
 
-useEffect(() => {
-  getProfileDetails();
-}, []);
+  useEffect(() => {
+    getRecipesFromApi();
+  }, []);
 
-useEffect(() => {
-  getRecipesFromApi();
-}, []);
+  const showMeMyRecipes = () => {
+    {
+      return recipes.map((recipe) => {
+        if (userProfile.id === recipe.userProfileId) {
+          {
+            return <Recipe recipe={recipe} key={recipe.id} />
+          }
+        }
+      })
+    }
+  }
 
-
-return (
-  <div className="container">
-    <div className="row justify-content-center">
-      <NavItem id="createNewRecipeButton">
-        <button    onClick={() => { navigate("/recipe/create")}} id="createButton" >Create new Recipe</button>
-      </NavItem>
-      <div className="logoContainer">
-        <span className="logoCircle">
-          <img alt="" className="quillLogo" src={process.env.PUBLIC_URL + "/fooderIcon.png"} />
-        </span>
+  return (
+    <div className="container">
+      <div className="row justify-content-center">
+        <NavItem id="createNewRecipeButton">
+          <button onClick={() => { navigate("/recipe/create") }} id="createButton" >Create new Recipe</button>
+        </NavItem>
+        <div className="logoContainer">
+          <span className="logoCircle">
+            <img alt="" className="quillLogo" src={process.env.PUBLIC_URL + "/fooderIcon.png"} />
+          </span>
+        </div>
+        <h1 className="recipePageHeader">My Contributed Recipes</h1>
+        {showMeMyRecipes()}
       </div>
-      <h1 className="recipePageHeader">Recipe List</h1>
-      {
-        recipes.map((recipe) => (
-          <Recipe recipe={recipe} key={recipe.id} />
-        ))
-      }
+      <h1 className="recipePageHeader">My Saved Recipes</h1>
     </div>
-  </div>
-)
+  )
 };
 
 export default UserProfile;
