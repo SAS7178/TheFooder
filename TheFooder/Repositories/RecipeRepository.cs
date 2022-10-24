@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using TheFooder.Models;
 using TheFooder.Utils;
 
@@ -130,17 +131,37 @@ namespace TheFooder.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        INSERT INTO Recipe (Name, UserProfileId, Instructions, CreatedDateTime, ImageUrl, VideoUrl, Ingredients)
+                        INSERT INTO Recipe (Name, UserProfileId, Instructions, CreatedDateTime, ImageUrl, VideoUrl)
                         OUTPUT INSERTED.ID
-                        VALUES (@Name,@UserProfileId, @Instructions, GETDATE(), @ImageUrl, @VideoUrl, @Ingredients)";
-
+                        VALUES (@Name,@UserProfileId, @Instructions, GETDATE(), @ImageUrl, @VideoUrl)";
+                    
                     DbUtils.AddParameter(cmd, "@Name", recipe.Name);
                     DbUtils.AddParameter(cmd, "@UserProfileId", recipe.UserProfileId);
                     DbUtils.AddParameter(cmd, "@Instructions", recipe.Instructions);
                     DbUtils.AddParameter(cmd, "@ImageUrl", recipe.ImageUrl);
                     DbUtils.AddParameter(cmd, "@VideoUrl", recipe.VideoUrl);
-                    DbUtils.AddParameter(cmd, "@Ingredients", recipe.Ingredients);
                     recipe.Id = (int)cmd.ExecuteScalar();
+                    AddSavedIngredients(recipe.Id, recipe.Ingredients);
+                }
+            }
+        }
+        public void AddSavedIngredients( int recipeId, List<Ingredient> Ingredients)
+        {
+                    foreach (var ingredient in Ingredients)
+                    {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                        cmd.CommandText = @"
+                        INSERT INTO recipeIngredients (recipeId, ingredientId)
+                        VALUES (@RecipeId, @ingredientId)";
+
+                        DbUtils.AddParameter(cmd, "@RecipeId", recipeId);
+                        DbUtils.AddParameter(cmd, "@ingredientId", ingredient.Id);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
             }
         }

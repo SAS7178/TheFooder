@@ -2,7 +2,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Form, FormGroup } from "reactstrap"
-import { addIngredient } from "../../modules/ingredientManager"
+// import { addIngredient } from "../../modules/ingredientManager"
 import { addRecipe } from "../../modules/recipeManager"
 import IngredientList from "../ingredients/IngredientList"
 import "./Recipe.css";
@@ -10,11 +10,14 @@ import "./Recipe.css";
 export const RecipeCreate = () => {
 //create a use state to hold tag obj value that will be set upon the users click of button
 const navigate = useNavigate()
-
+const [rIngredients, setRIngredients] = useState([]);
 const [recipe, update] = useState({
     Name: ""
   })
-
+const setIngState = (ing) => 
+{
+    setRIngredients(ing)
+}
   const handleCreateButtonClick = (event) => {
     event.preventDefault()
     const recipeToSendToApi = {
@@ -22,7 +25,7 @@ const [recipe, update] = useState({
       Instructions: recipe.Instructions,
       ImageUrl: recipe.ImageUrl,
       VideoUrl: recipe.VideoUrl,
-    //   Ingredients: recipeIngredients
+      Ingredients: rIngredients
     }
     addRecipe(recipeToSendToApi)
     return  navigate("/recipe")
@@ -39,7 +42,7 @@ const [recipe, update] = useState({
                             <label htmlFor="name">Recipe Name:</label>
                             <input type="name"
                                 className="form-control"
-                                placeholder="Enter recipe name..."
+                                placeholder={recipe.Name}
                                 onChange={
                                     //take current obj value and update with user selected value
                                     (evt) => {
@@ -85,7 +88,7 @@ const [recipe, update] = useState({
                                     }
                                 } />
 
-                                <IngredientList />
+                                <IngredientList setIngState= {setIngState} />
                                 
                                 <button    onClick={(clickEvent) => { handleCreateButtonClick(clickEvent)}}
                                 className="saveButton" >Save Recipe</button>

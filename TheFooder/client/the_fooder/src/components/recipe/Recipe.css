@@ -15,6 +15,10 @@
     justify-content: center;
     margin-right: 0px;
 }
+.mb-3{
+    width: 50%;
+}
+
 .addRecipeContainer {
     display: flex;
     flex-direction: row;
@@ -63,6 +67,10 @@
     border: 0ch;
     font-size: small;
 }
+ .editButtons {
+display: flex;
+
+}
 
 
 .deleteButton {
@@ -85,7 +93,8 @@
     color: white;
     padding: 0.25rem 1rem;
     margin: 1em;
-    border: 0ch;
+    border-radius: 10%;
+    border: 1px solid black;
     font-size: small;
 }
 .editButton {
@@ -101,6 +110,12 @@
     border: 1px solid black;
     font-size: small;
 }
+.editForm{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
 .videoButton {
     display: flex;
     justify-content: center;
@@ -108,7 +123,7 @@
     background-color: darkblue;
     color: white;
     padding: 0.25rem 1rem;
-    border-radius: 15% 15% 15% 15% ;
+    border-radius: 10% 10% 10% 10% ;
     height: 2.5em;
     margin: 1em;
     border: 1px solid black;

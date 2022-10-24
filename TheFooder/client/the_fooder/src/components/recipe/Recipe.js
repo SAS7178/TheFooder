@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Button, Card, CardBody, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { deleteRecipe } from "../../modules/recipeManager";
+import { getUser } from "../../modules/userProfileManager";
 import "./Recipe.css";
 
 const Recipe = ({ recipe }) => {
@@ -11,8 +11,14 @@ const Recipe = ({ recipe }) => {
   const vidToggle = () => setVidModal(!modal);
   const [imgModal, setImgModal] = useState(false);
   const imgToggle = () => setImgModal(!modal);
-  const navigate = useNavigate()
+  const [userProfile, setProfileDetails] = useState({})
 
+
+  const getProfileDetails = () => {
+    getUser().then((user) => {
+      setProfileDetails(user);
+    });
+  };
   const deleteButton = (id) => {
     deleteRecipe(id)
       .then(toggle)
@@ -26,6 +32,9 @@ const Recipe = ({ recipe }) => {
   const handleCloseImageModal = () => {
     setImgModal(false)
   }
+  // const handleSaveRecipe = (recipeId) => {
+  //   userSavedRecipe(recipeId)
+  // }
 
   return (
     <Card id="card">
@@ -46,13 +55,12 @@ const Recipe = ({ recipe }) => {
                 </button>
               </ModalFooter>
             </Modal>
-
             <Modal isOpen={vidModal} toggle={vidToggle} {...recipe}>
               <ModalBody>
                 <>
                   <section className='quickView'>
                     <div>{recipe.name}</div>
-                    <iframe className="recipeVideo" width="400" height="300" src="https://www.youtube.com/embed/ZYoYffXWiwk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe className="recipeVideo" width="400" height="300" src={recipe.videoUrl} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   </section>
                 </>
               </ModalBody>
@@ -67,29 +75,13 @@ const Recipe = ({ recipe }) => {
                 className="videoButton">
                 Watch Video
               </button>
+              <button onClick={() => {}}
+                className="saveButton">
+                Save Recipe
+              </button>
             </div>
           </div>
         </section>
-        <Modal isOpen={modal} toggle={toggle} {...recipe}>
-          <ModalHeader toggle={toggle}>Delete Recipe</ModalHeader>
-          <ModalBody>
-            <>
-              <section className='quickView'>
-                <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
-                <br />
-                <div>Are you positive you want to delete "{recipe.name}"?</div>
-              </section>
-            </>
-          </ModalBody>
-          <ModalFooter>
-            <Button color="secondary" onClick={toggle}>
-              CANCEL
-            </Button>
-            <Button color="secondary" onClick={() => { deleteButton(recipe.id) }} >
-              CONFIRM
-            </Button>
-          </ModalFooter>
-        </Modal>
       </CardBody>
     </Card>
   );

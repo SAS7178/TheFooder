@@ -5,15 +5,19 @@ import { getAllRecipes, updateRecipe } from "../../modules/recipeManager"
 import "./Recipe.css";
 
 export const RecipeEdit = () => {
-    const { recipeId } = useParams()
+    const { recipeId } = useParams();
+        const recID = parseInt(recipeId);
     const [recipes, setRecipes] = useState([]);
     const [recipeToEdit, setEditRecipe] = useState({});
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     //create a use state to hold tag obj value that will be set upon the users click of button
     const [updatedRecipe, update] = useState({
         id: recipeId,
-        Name: ""
-    })
+        Name: "",
+        Instructions: "",
+        ImageUrl: "",
+        VideoUrl: ""
+    });
 
     const getRecipesFromApi = () => {
         getAllRecipes().then(rs => setRecipes(rs));
@@ -24,9 +28,10 @@ export const RecipeEdit = () => {
     }, []);
 
     const currentRecipe = () => {
-         recipes.map((recipe) => {
-            if (recipeId === recipe.id) {
-             setEditRecipe(recipe)
+        return recipes.map((recipe) => {
+            if (recID === recipe.id) {
+
+                  setEditRecipe(recipe)
             }
         })
     }
@@ -45,7 +50,7 @@ export const RecipeEdit = () => {
         //this form will take input data from the user and set those values to a object
         //then a edit tag button will put to the database and the tag list will rerender will the edited tag
         <>
-            <Form>
+            <Form className="editForm">
                 <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="100em"></img>
                 <FormGroup>
                     <fieldset>
@@ -53,7 +58,7 @@ export const RecipeEdit = () => {
                             <label htmlFor="name">Name:</label>
                             <input type="name"
                                 className="form-control"
-                                placeholder={recipeId}
+                                placeholder={recipeToEdit.name}
                                 onChange={
                                     //take current obj value and update with user selected value
                                     (evt) => {
@@ -63,10 +68,11 @@ export const RecipeEdit = () => {
                                     }
                                 } />
 
-                            <label htmlFor="name">Directions:</label>
-                            <input type="name"
+                            <label htmlFor="instructions">Directions:</label>
+                            <textarea 
+                                rows="4"
                                 className="form-control"
-                                placeholder={recipeToEdit.Instructions}
+                                placeholder={recipeToEdit.instructions}
                                 onChange={
                                     //take current obj value and update with user selected value
                                     (evt) => {
@@ -75,10 +81,10 @@ export const RecipeEdit = () => {
                                         update(copy)
                                     }
                                 } />
-                            <label htmlFor="name">imageUrl:</label>
-                            <input type="name"
+                            <label htmlFor="image">imageUrl:</label>
+                            <input type="url"
                                 className="form-control"
-                                placeholder={recipeToEdit.ImageUrl}
+                                placeholder={recipeToEdit.imageUrl}
                                 onChange={
                                     //take current obj value and update with user selected value
                                     (evt) => {
@@ -87,10 +93,10 @@ export const RecipeEdit = () => {
                                         update(copy)
                                     }
                                 } />
-                            <label htmlFor="name">videoUrl:</label>
-                            <input type="name"
+                            <label htmlFor="video">videoUrl:</label>
+                            <input type="url"
                                 className="form-control"
-                                placeholder={recipeToEdit.VideoUrl}
+                                placeholder={recipeToEdit.videoUrl}
                                 onChange={
                                     //take current obj value and update with user selected value
                                     (evt) => {
@@ -99,8 +105,12 @@ export const RecipeEdit = () => {
                                         update(copy)
                                     }
                                 } />
+                                <div className="editButtons">
                             <button onClick={() => { handleEditButtonClick(updatedRecipe) }}
-                                className="editButton" >Edit Recipe</button>
+                                className="editButton" >EDIT RECIPE</button>
+                            <button  onClick={() => { navigate("/userProfile")}}
+                                className="editButton" >CANCEL</button>
+                        </div>
                         </div>
                     </fieldset>
                 </FormGroup>

@@ -25,7 +25,7 @@ export default function RecipeList() {
           <button    onClick={() => { navigate("/recipe/create")}} id="createButton" >Create new Recipe</button>
         </NavItem>
         <div className="logoContainer">
-          <div>Welcome!</div>
+          <div>Welcome Message!</div>
           <span className="logoCircle">
             <img alt="" className="quillLogo" src={process.env.PUBLIC_URL + "/fooderIcon.png"} />
           </span>

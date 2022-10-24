@@ -68,7 +68,7 @@ const UserRecipe = ({ recipe }) => {
               <button onClick={() => { navigate(`/recipe/edit/${recipe.id}`) }} className="editButton" >EDIT</button>
               <button onClick={vidToggle}
                 className="videoButton">
-                Video
+                Watch Video
               </button>
               <button onClick={toggle}
                 className="deleteButton">
