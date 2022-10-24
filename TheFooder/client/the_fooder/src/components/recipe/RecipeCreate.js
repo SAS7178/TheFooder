@@ -22,6 +22,7 @@ const setIngState = (ing) =>
     event.preventDefault()
     const recipeToSendToApi = {
       Name: recipe.Name,
+      userProfileId: recipe.userProfileId,
       Instructions: recipe.Instructions,
       ImageUrl: recipe.ImageUrl,
       VideoUrl: recipe.VideoUrl,
@@ -42,7 +43,7 @@ const setIngState = (ing) =>
                             <label htmlFor="name">Recipe Name:</label>
                             <input type="name"
                                 className="form-control"
-                                placeholder={recipe.Name}
+                                placeholder="Enter recipe name..."
                                 onChange={
                                     //take current obj value and update with user selected value
                                     (evt) => {
@@ -66,7 +67,7 @@ const setIngState = (ing) =>
                                       <label htmlFor="name">imageUrl:</label>
                             <input type="name"
                                 className="form-control"
-                                placeholder="Enter imageUrl..."
+                                placeholder="Enter ImageUrl..."
                                 onChange={
                                     //take current obj value and update with user selected value
                                     (evt) => {

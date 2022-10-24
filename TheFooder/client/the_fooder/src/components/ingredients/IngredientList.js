@@ -19,7 +19,7 @@ export default function IngredientList({setIngState}) {
 
     const addIngToList = (ingredientObj) => {
         {
-            ingList.push(ingredientObj)
+            ingList.push(ingredientObj.id)
         }
     }
     const setAllIngredients = (List) => {
