@@ -1,36 +1,52 @@
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Form, FormGroup } from "reactstrap"
-// import { addIngredient } from "../../modules/ingredientManager"
 import { addRecipe } from "../../modules/recipeManager"
+import { getUser } from "../../modules/userProfileManager"
 import IngredientList from "../ingredients/IngredientList"
 import "./Recipe.css";
 
 export const RecipeCreate = () => {
-//create a use state to hold tag obj value that will be set upon the users click of button
-const navigate = useNavigate()
-const [rIngredients, setRIngredients] = useState([]);
-const [recipe, update] = useState({
-    Name: ""
-  })
-const setIngState = (ing) => 
-{
-    setRIngredients(ing)
-}
-  const handleCreateButtonClick = (event) => {
-    event.preventDefault()
-    const recipeToSendToApi = {
-      Name: recipe.Name,
-      userProfileId: recipe.userProfileId,
-      Instructions: recipe.Instructions,
-      ImageUrl: recipe.ImageUrl,
-      VideoUrl: recipe.VideoUrl,
-      Ingredients: rIngredients
+    //create a use state to hold tag obj value that will be set upon the users click of button
+    const navigate = useNavigate()
+    const [rIngredients, setRIngredients] = useState([]);
+    const [userProfile, setProfileDetails] = useState({})
+    const [recipe, update] = useState({
+        Name: ""
+    })
+    const setIngState = (ing) => {
+        setRIngredients(ing)
     }
-    addRecipe(recipeToSendToApi)
-    return  navigate("/recipe")
-}
+    const getProfileDetails = () => {
+        getUser().then((userProfile) => {
+            setProfileDetails(userProfile);
+        });
+    };
+    useEffect(() => {
+        getProfileDetails();
+    }, []);
+
+    const handleCreateButtonClick = (event) => {
+        event.preventDefault()
+        const recipeToSendToApi = {
+            Name: recipe.Name,
+            UserProfileId: userProfile.id,
+            Instructions: recipe.Instructions,
+            ImageUrl: recipe.ImageUrl,
+            VideoUrl: recipe.VideoUrl,
+            Ingredients: rIngredients
+        }
+        if (recipeToSendToApi.Name != null
+            && recipeToSendToApi.UserProfileId != null
+            && recipeToSendToApi.Instructions != null
+            && recipeToSendToApi.ImageUrl != null
+            && recipeToSendToApi.VideoUrl != null
+            && recipeToSendToApi.Ingredients != null) {
+            addRecipe(recipeToSendToApi)
+            return navigate("/userProfile")
+        } else { window.alert("Please fill out all form inputs.") }
+    }
     return (
         //this form will take input data from the user and set those values to a object
         //then a create post video button will post to the database and the video list will rerender will the added video
@@ -52,7 +68,7 @@ const setIngState = (ing) =>
                                         update(copy)
                                     }
                                 } />
-                                     <label htmlFor="name">Directions:</label>
+                            <label htmlFor="name">Directions:</label>
                             <input type="name"
                                 className="form-control"
                                 placeholder="Enter recipe directions..."
@@ -64,7 +80,7 @@ const setIngState = (ing) =>
                                         update(copy)
                                     }
                                 } />
-                                      <label htmlFor="name">imageUrl:</label>
+                            <label htmlFor="name">imageUrl:</label>
                             <input type="name"
                                 className="form-control"
                                 placeholder="Enter ImageUrl..."
@@ -76,7 +92,7 @@ const setIngState = (ing) =>
                                         update(copy)
                                     }
                                 } />
-                                      <label htmlFor="name">videoUrl:</label>
+                            <label htmlFor="name">videoUrl:</label>
                             <input type="name"
                                 className="form-control"
                                 placeholder="Enter VideoUrl ..."
@@ -88,11 +104,13 @@ const setIngState = (ing) =>
                                         update(copy)
                                     }
                                 } />
-
-                                <IngredientList setIngState= {setIngState} />
-                                
-                                <button    onClick={(clickEvent) => { handleCreateButtonClick(clickEvent)}}
+                            <IngredientList setIngState={setIngState} />
+                            <div className="CreateFormButtons">
+                            <button onClick={(clickEvent) => { handleCreateButtonClick(clickEvent) }}
                                 className="saveButton" >Save Recipe</button>
+                            <button onClick={() => { navigate("/userProfile") }}
+                                className="saveButton" >Cancel</button>
+                        </div>
                         </div>
                     </fieldset>
                 </FormGroup>
