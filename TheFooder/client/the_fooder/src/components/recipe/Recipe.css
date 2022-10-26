@@ -31,26 +31,27 @@
 #createButton {
     display: flex;
     background-color: rgb(73, 192, 73);
+    border-radius: 25% 5% 25% 5%;
     color: black;
     margin-top: 1em;
     border: 0ch;
     font-size: medium;
     font-weight: 900;
 }
-#createNewRecipeButton {
+/* #createNewRecipeButton {
     display: flex;
     align-items: center;
     background-color: rgb(73, 192, 73);
     color: blue;
     border: 2px solid black ;
     border-radius: 25% 5% 25% 5%;
-    width: 8em;
+    width: 2em;
     padding-bottom: 9px;
     opacity: 80%;
     margin-top: 1.5em;
     flex-wrap: nowrap;
     justify-content: right;
-}
+} */
 
 .buttonContainer {
     display: flex;
@@ -145,6 +146,7 @@ display: flex;
 }
 #navbar-toggler{
     border: 2px solid black;
+    width: 10%
 }
 .recipeImage {
     margin: 1em;
@@ -175,6 +177,8 @@ display: flex;
 }
 
 .fooderLogo {
+    display: flex;
+    align-self: center;
     height: 18rem;
     width: 29em;
 }
@@ -189,6 +193,7 @@ display: flex;
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-right: 3em;
 }
 #card
 {

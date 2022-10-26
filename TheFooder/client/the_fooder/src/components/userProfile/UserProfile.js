@@ -43,9 +43,11 @@ const UserProfile = () => {
       <div className="row justify-content-center">
         <div className="logoContainer">
           <span className="logoCircle">
+          <img alt="" src="https://previews.123rf.com/images/emojiimage/emojiimage1910/emojiimage191002096/132873726-groceries-vector-illustrated-set-different-food-from-supermarket-concept-purchases-collection.jpg" width="100%" height="150em"></img>
           <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
           <img alt="" className="fooderLogo" src={process.env.PUBLIC_URL + "TheFooder-1.png"} />
           <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
+          <img alt="" src="https://365psd.com/images/previews/fe4/vegetable-vector-illustrations-free-33981.jpg" width="100%" height="150em"></img>
           </span>
         </div>
         <NavbarToggler className='hamburger' id="navbar-toggler" onClick={toggle} />
