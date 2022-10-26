@@ -19,10 +19,7 @@ const Recipe = ({ recipe }) => {
       setProfileDetails(user);
     });
   };
-  const deleteButton = (id) => {
-    deleteRecipe(id)
-      .then(toggle)
-  }
+
   const handleCloseModal = () => {
     setVidModal(false)
   }

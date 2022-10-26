@@ -55,22 +55,13 @@ const UserProfile = () => {
           <NavbarToggler className='hamburger' id="navbar-toggler" onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav fill pills>
-
               <NavItem id="createNewRecipeButton">
                 <button onClick={() => { navigate("/recipe/create") }} id="createButton" >Create a Recipe</button>
               </NavItem>
-
               <div className="seperation"></div>
             </Nav>
             <NavbarText className='welcome__home'><strong>Welcome!</strong></NavbarText>
           </Collapse>
-
-          <select typeof="dropdown">
-            <NavItem id="createNewRecipeButton">
-              <button onClick={() => { navigate("/recipe/create") }} id="createButton" >Create a Recipe</button>
-            </NavItem>
-          </select>
-
           <h1 className="recipePageHeader">My Contributed Recipes</h1>
           {showMeMyRecipes()}
         </div>

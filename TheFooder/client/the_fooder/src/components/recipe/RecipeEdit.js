@@ -8,16 +8,15 @@ export const RecipeEdit = () => {
     const { recipeId } = useParams();
     const recID = parseInt(recipeId);
     const [recipes, setRecipes] = useState([]);
-    const [recipeToEdit, setEditRecipe] = useState({});
     const navigate = useNavigate();
 
     //create a use state to hold tag obj value that will be set upon the users click of button
-    const [updatedRecipe, update] = useState({
+    const [updatedRecipe, setUpdateRecipe] = useState({
         id: recipeId,
-        Name: "",
-        Instructions: "",
-        ImageUrl: "",
-        VideoUrl: ""
+        name: "",
+        instructions: "",
+        imageUrl: "",
+        videoUrl: ""
     });
 
     const getRecipesFromApi = () => {
@@ -31,8 +30,7 @@ export const RecipeEdit = () => {
     const currentRecipe = () => {
         return recipes.map((recipe) => {
             if (recID === recipe.id) {
-
-                setEditRecipe(recipe)
+                setUpdateRecipe(recipe)
             }
         })
     }
@@ -43,10 +41,10 @@ export const RecipeEdit = () => {
 
     const handleEditButtonClick = (recipe) => {
         // event.preventDefault()
-        if (updatedRecipe.Name != ""
-            && updatedRecipe.Instructions != ""
-            && updatedRecipe.ImageUrl != ""
-            && updatedRecipe.VideoUrl != "") {
+        if (updatedRecipe.name != ""
+            && updatedRecipe.instructions != ""
+            && updatedRecipe.imageUrl != ""
+            && updatedRecipe.videoUrl != "") {
             updateRecipe(recipe)
             return navigate("/userProfile")
         } else { window.alert("Please fill out all form inputs. If no value enter (none).") }
@@ -61,15 +59,15 @@ export const RecipeEdit = () => {
                     <fieldset>
                         <div className="form-description">
                             <label htmlFor="name">Name:</label>
-                            <input type="name"
+                            <input type="text"
                                 className="form-control"
-                                placeholder={recipeToEdit.name}
+                                value={updatedRecipe.name}
                                 onChange={
                                     //take current obj value and update with user selected value
                                     (evt) => {
                                         let copy = { ...updatedRecipe }
-                                        copy.Name = evt.target.value
-                                        update(copy)
+                                        copy.name = evt.target.value
+                                        setUpdateRecipe(copy)
                                     }
                                 } />
 
@@ -77,37 +75,38 @@ export const RecipeEdit = () => {
                             <textarea
                                 rows="4"
                                 className="form-control"
-                                placeholder={recipeToEdit.instructions}
+                                placeholder={updatedRecipe.instructions}
                                 onChange={
                                     //take current obj value and update with user selected value
                                     (evt) => {
                                         let copy = { ...updatedRecipe }
                                         copy.Instructions = evt.target.value
-                                        update(copy)
+                                        setUpdateRecipe(copy)
                                     }
                                 } />
                             <label htmlFor="image">imageUrl:</label>
-                            <input type="url"
+                            <input 
+                                type="url"
                                 className="form-control"
-                                placeholder={recipeToEdit.imageUrl}
+                                placeholder={updatedRecipe.imageUrl}
                                 onChange={
                                     //take current obj value and update with user selected value
                                     (evt) => {
-                                        let copy = { ...updatedRecipe }
+                                        const copy = { ...updatedRecipe }
                                         copy.ImageUrl = evt.target.value
-                                        update(copy)
+                                        setUpdateRecipe(copy)
                                     }
                                 } />
                             <label htmlFor="video">videoUrl:</label>
                             <input type="url"
                                 className="form-control"
-                                placeholder={recipeToEdit.videoUrl}
+                                placeholder={updatedRecipe.videoUrl}
                                 onChange={
                                     //take current obj value and update with user selected value
                                     (evt) => {
                                         let copy = { ...updatedRecipe }
                                         copy.VideoUrl = evt.target.value
-                                        update(copy)
+                                        setUpdateRecipe(copy)
                                     }
                                 } />
                             <div className="editButtons">
