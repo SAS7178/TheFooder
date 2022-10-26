@@ -33,7 +33,6 @@ export const getUser = () => {
   });
 };
 
-
 // export const addUserProfile = (userProfile) => {
 //   return fetch(baseUrl, {
 //     method: "POST",

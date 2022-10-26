@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, NavLink as RRNavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink as RRNavLink } from "react-router-dom";
 import {
   Collapse,
   Navbar,
@@ -10,15 +10,12 @@ import {
   NavLink,
 } from "reactstrap";
 import { logout } from "../modules/authManager";
-// import { getUser } from "../modules/userProfileManager";
 import "./Header.css";
 
 export default function Header({ isLoggedIn }) {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  
-  //  const userProfile = getUser().then()
-  //  console.log(userProfile)
+
   return (
     <div>
       <Navbar className="navbar" expand="md">
@@ -38,9 +35,8 @@ export default function Header({ isLoggedIn }) {
                 <NavItem>
                   <NavLink tag={RRNavLink} to={`/userProfile`}>MY RECIPES</NavLink>
                 </NavItem>
-                  {/* <button onClick={navigate(`/userProfile/:$}`)}></button> */}
                 <NavItem>
-                  <NavLink id="logout" tag={RRNavLink} to={`/`} onClick={logout}>LOGOUT</NavLink>
+                  <NavLink id="logout" tag={RRNavLink} to={`/login`} onClick={logout}>LOGOUT</NavLink>
                 </NavItem>
               </>
             )}

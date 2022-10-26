@@ -97,6 +97,10 @@ display: flex;
     border: 1px solid black;
     font-size: small;
 }
+.CreateFormButtons{
+    display: flex;
+    
+}
 .editButton {
     display: flex;
     justify-content: center;

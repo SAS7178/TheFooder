@@ -29,11 +29,11 @@ const UserProfile = () => {
   }, []);
 
   const showMeMyRecipes = () => {
-      return recipes.map((recipe) => {
-        if (userProfile.id === recipe.userProfileId) {
-            return <UserRecipe recipe={recipe} key={recipe.id} />
-        }
-      })
+    return recipes.map((recipe) => {
+      if (userProfile.id === recipe.userProfileId) {
+        return <UserRecipe recipe={recipe} key={recipe.id} />
+      }
+    })
   }
 
   return (

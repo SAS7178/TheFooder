@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Security.Claims;
 using TheFooder.Models;
 using TheFooder.Repositories;
@@ -55,9 +56,10 @@ namespace TheFooder.Controllers
         public IActionResult Post(UserProfile userProfile)
         {
             _userProfileRepository.Add(userProfile);
-            return CreatedAtAction("Get", new { id = userProfile.Id }, userProfile);
+            return CreatedAtAction(
+                nameof(MyProfile),
+                new { firebaseUserId = userProfile.FirebaseUserId }, userProfile);
         }
-
 
         //[Authorize]
         [HttpPut("{id}")]

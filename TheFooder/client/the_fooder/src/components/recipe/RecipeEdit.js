@@ -6,10 +6,11 @@ import "./Recipe.css";
 
 export const RecipeEdit = () => {
     const { recipeId } = useParams();
-        const recID = parseInt(recipeId);
+    const recID = parseInt(recipeId);
     const [recipes, setRecipes] = useState([]);
     const [recipeToEdit, setEditRecipe] = useState({});
     const navigate = useNavigate();
+
     //create a use state to hold tag obj value that will be set upon the users click of button
     const [updatedRecipe, update] = useState({
         id: recipeId,
@@ -31,7 +32,7 @@ export const RecipeEdit = () => {
         return recipes.map((recipe) => {
             if (recID === recipe.id) {
 
-                  setEditRecipe(recipe)
+                setEditRecipe(recipe)
             }
         })
     }
@@ -42,10 +43,14 @@ export const RecipeEdit = () => {
 
     const handleEditButtonClick = (recipe) => {
         // event.preventDefault()
-        updateRecipe(recipe)
-        return navigate("/userProfile")
+        if (updatedRecipe.Name != ""
+            && updatedRecipe.Instructions != ""
+            && updatedRecipe.ImageUrl != ""
+            && updatedRecipe.VideoUrl != "") {
+            updateRecipe(recipe)
+            return navigate("/userProfile")
+        } else { window.alert("Please fill out all form inputs. If no value enter (none).") }
     }
-
     return (
         //this form will take input data from the user and set those values to a object
         //then a edit tag button will put to the database and the tag list will rerender will the edited tag
@@ -69,7 +74,7 @@ export const RecipeEdit = () => {
                                 } />
 
                             <label htmlFor="instructions">Directions:</label>
-                            <textarea 
+                            <textarea
                                 rows="4"
                                 className="form-control"
                                 placeholder={recipeToEdit.instructions}
@@ -105,12 +110,12 @@ export const RecipeEdit = () => {
                                         update(copy)
                                     }
                                 } />
-                                <div className="editButtons">
-                            <button onClick={() => { handleEditButtonClick(updatedRecipe) }}
-                                className="editButton" >EDIT RECIPE</button>
-                            <button  onClick={() => { navigate("/userProfile")}}
-                                className="editButton" >CANCEL</button>
-                        </div>
+                            <div className="editButtons">
+                                <button onClick={() => { handleEditButtonClick(updatedRecipe) }}
+                                    className="editButton" >EDIT RECIPE</button>
+                                <button onClick={() => { navigate("/userProfile") }}
+                                    className="editButton" >CANCEL</button>
+                            </div>
                         </div>
                     </fieldset>
                 </FormGroup>

@@ -60,7 +60,9 @@ const Recipe = ({ recipe }) => {
                 <>
                   <section className='quickView'>
                     <div>{recipe.name}</div>
-                    <iframe className="recipeVideo" width="400" height="300" src={recipe.videoUrl} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe className="recipeVideo" width="400" height="300" src={recipe.videoUrl} 
+                    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
                   </section>
                 </>
               </ModalBody>
