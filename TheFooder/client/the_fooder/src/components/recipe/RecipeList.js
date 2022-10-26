@@ -32,12 +32,14 @@ export default function RecipeList() {
     <div className="container">
       <div className="row justify-content-center">
         <div className="logoContainer">
-          <div>Welcome {userProfile.name}!</div>
-          <span className="logoCircle">
-            <img alt="" className="quillLogo" src={process.env.PUBLIC_URL + "/fooderIcon.png"} />
+        <span className="logoCircle">
+          <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
+          <img alt="" className="fooderLogo" src={process.env.PUBLIC_URL + "TheFooder-1.png"} />
+          <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
           </span>
         </div>
-        <h1 className="recipePageHeader">Recipe List</h1>
+        <h2><strong>Welcome</strong> {userProfile.name}!</h2>
+        <h3 className="recipePageHeader">Recipe List</h3>
         {
           recipes.map((recipe) => (
             <Recipe recipe={recipe} key={recipe.id} />
