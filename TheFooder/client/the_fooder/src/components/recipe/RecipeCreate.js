@@ -51,7 +51,7 @@ export const RecipeCreate = () => {
         //this form will take input data from the user and set those values to a object
         //then a create post video button will post to the database and the video list will rerender will the added video
         <>
-            <Form>
+            <Form className="createForm">
                 <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="100em"></img>
                 <FormGroup>
                     <fieldset>

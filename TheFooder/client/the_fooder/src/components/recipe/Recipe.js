@@ -19,10 +19,7 @@ const Recipe = ({ recipe }) => {
       setProfileDetails(user);
     });
   };
-  const deleteButton = (id) => {
-    deleteRecipe(id)
-      .then(toggle)
-  }
+
   const handleCloseModal = () => {
     setVidModal(false)
   }
@@ -56,7 +53,7 @@ const Recipe = ({ recipe }) => {
               </ModalFooter>
             </Modal>
             <Modal isOpen={vidModal} toggle={vidToggle} {...recipe}>
-              <ModalBody>
+              <ModalBody >
                 <>
                   <section className='quickView'>
                     <div>{recipe.name}</div>

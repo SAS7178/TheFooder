@@ -30,27 +30,28 @@
 }
 #createButton {
     display: flex;
-    background-color: blue;
+    background-color: rgb(73, 192, 73);
+    border-radius: 25% 5% 25% 5%;
     color: black;
     margin-top: 1em;
     border: 0ch;
     font-size: medium;
     font-weight: 900;
 }
-#createNewRecipeButton {
+/* #createNewRecipeButton {
     display: flex;
     align-items: center;
-    background-color: blue;
+    background-color: rgb(73, 192, 73);
     color: blue;
     border: 2px solid black ;
     border-radius: 25% 5% 25% 5%;
-    width: 8em;
+    width: 2em;
     padding-bottom: 9px;
     opacity: 80%;
     margin-top: 1.5em;
     flex-wrap: nowrap;
     justify-content: right;
-}
+} */
 
 .buttonContainer {
     display: flex;
@@ -120,6 +121,12 @@ display: flex;
     width: 100%;
     justify-content: center;
 }
+.createForm{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
 .videoButton {
     display: flex;
     justify-content: center;
@@ -136,11 +143,17 @@ display: flex;
 .recipeVideo {
     margin: 1em;
     border-radius: 10%;
-
+}
+#navbar-toggler{
+    border: 2px solid black;
+    width: 10%
 }
 .recipeImage {
     margin: 1em;
     border-radius: 10%;
+    border: 3px solid rgb(252, 252, 169);
+    border-right: 4px solid red;
+    border-bottom: 4px solid red;
 }
 .recipeName {
     text-align: center;
@@ -163,20 +176,34 @@ display: flex;
     padding-right: 0px;
 }
 
-.quillLogo {
-    height: 13rem;
-    width: 22em;
+.fooderLogo {
+    display: flex;
+    align-self: center;
+    height: 18rem;
+    width: 29em;
 }
 
 .logoContainer {
     display: flex;
     justify-content: center;
     opacity: 90%;
+    /* background-image:url( "https://previews.123rf.com/images/teravector/teravector1901/teravector190100089/126359790-spacious-kitchen-interior-design-cartoon-vector-illustration-with-chairs-around-dinning-table-variou.jpg"); */
 }
+.logoCircle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 3em;
+}
+.modal-body{
+    background-color: black;
+}
+
 #card
 {
-    border: 2px solid black;
-    border-color: #db534b;
+    border: 2px solid;
+    border-color: rgb(73, 192, 73);
+    border-right: 5px solid red;
     margin: 2em;
     width: 60%;
 }

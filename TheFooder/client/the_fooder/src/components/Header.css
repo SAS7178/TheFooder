@@ -1,9 +1,10 @@
 .headerLogo {
     height: 2rem;
+    color: darkgreen;
 }
 .navbar
 {
-background-color: rgb(252, 252, 169);
-border: 1.5px solid red;
+background-color: rgb(243, 243, 94);
+border: 2.5px solid rgb(110, 99, 99);
 border-radius: 0% 0% 2% 2%;
 }
