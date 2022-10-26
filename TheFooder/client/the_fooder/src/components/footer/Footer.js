@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom"
-import { NavLink } from "reactstrap"
 import "./Footer.css"
 // import {Contact} from "./contact&about/contact.js"
 // import {About} from "./contact&about/aboutus"
@@ -34,10 +33,10 @@ export const WelcomeFooter = () => {
                         &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                         <nav className="footer-resources">&nbsp;&nbsp;&nbsp;&nbsp; <div className="font"><b>Helpful Resources</b></div>
-                            <NavLink className="footer__link" href="https://www.who.int/news-room/fact-sheets/detail/healthy-diet">
-                                Healthy Nutrition                            </NavLink>
-                            <NavLink className="footer__link" href="https://ice.edu/newyork/free-online-cooking-classes">
-                                Learn about Cooking</NavLink>
+                            <Link className="footer__link" href="https://www.who.int/news-room/fact-sheets/detail/healthy-diet">
+                                Healthy Nutrition                            </Link>
+                            <Link className="footer__link" href="https://ice.edu/newyork/free-online-cooking-classes">
+                                Learn about Cooking</Link>
                         </nav>
                     </section>
 

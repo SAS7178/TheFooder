@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Card, CardBody, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { deleteRecipe } from "../../modules/recipeManager";
+import { WelcomeFooter } from "../footer/Footer";
 import "./Recipe.css";
 
 const UserRecipe = ({ recipe }) => {
@@ -30,6 +31,7 @@ const UserRecipe = ({ recipe }) => {
     }
 
     return (
+        <>
         <Card id="card">
             <CardBody id="recipe-cardBody">
                 <section className="recipeContainer">
@@ -101,6 +103,7 @@ const UserRecipe = ({ recipe }) => {
                 </Modal>
             </CardBody>
         </Card>
+              </>
     );
 
 };
