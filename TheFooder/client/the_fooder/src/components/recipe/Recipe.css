@@ -195,6 +195,9 @@ display: flex;
     align-items: center;
     margin-right: 3em;
 }
+.modal-body{
+    background-color: black;
+}
 #card
 {
     border: 2px solid;

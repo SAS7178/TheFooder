@@ -55,7 +55,7 @@ const Recipe = ({ recipe }) => {
                 </button>
               </ModalFooter>
             </Modal>
-            <Modal isOpen={vidModal} toggle={vidToggle} {...recipe}>
+            <Modal className="vidModul" isOpen={vidModal} toggle={vidToggle} {...recipe}>
               <ModalBody>
                 <>
                   <section className='quickView'>
