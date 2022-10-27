@@ -191,9 +191,10 @@ display: flex;
 }
 .logoCircle {
     display: flex;
+    justify-content: center;
     flex-direction: row;
     align-items: center;
-    margin-right: 3em;
+
 }
 .modal-body{
     word-wrap: break-word;

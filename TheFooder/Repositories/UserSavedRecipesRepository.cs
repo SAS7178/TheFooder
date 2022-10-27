@@ -71,7 +71,7 @@ namespace TheFooder.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "DELETE FROM savedUserRecipes WHERE Id = @Id";
+                    cmd.CommandText = "DELETE FROM savedUserRecipes WHERE Id = @id";
                     DbUtils.AddParameter(cmd, "@id", id);
                     cmd.ExecuteNonQuery();
                 }

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Card, CardBody, Modal, ModalBody, ModalFooter } from "reactstrap";
 import { deleteSavedRecipe, savedUserRecipe } from "../../modules/savedUserRecipeManager";
 import { getUser } from "../../modules/userProfileManager";
 import "./Recipe.css";
 
-const Recipe = ({ recipe, bool }) => {
+const Recipe = ({ recipe , bool }) => {
   const [modal, setModal] = useState(false);
   // const toggle = () => setModal(!modal);
   const [vidModal, setVidModal] = useState(false);
@@ -97,8 +97,9 @@ const Recipe = ({ recipe, bool }) => {
                     Save Recipe
                   </button>
                   :
+                  
                   <button onClick={() => {
-                      handleUnsaveRecipe(recipe.id)
+                      handleUnsaveRecipe(parseInt(recipe.id))
                    }}
                     className="editButton">
                     Unsave Recipe
