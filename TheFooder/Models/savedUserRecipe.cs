@@ -3,7 +3,7 @@ using TheFooder.Models;
 
 namespace TheFooder.Models
 {
-    public class savedUserRecipe
+    public class SavedUserRecipe
     {
         public int Id { get; set; }
         [Required]

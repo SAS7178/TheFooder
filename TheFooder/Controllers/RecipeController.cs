@@ -16,20 +16,26 @@ namespace TheFooder.Controllers
         {
             _recipeRepository = RecipeRepository;
         }
-
+        //get all recipes with their ingredients
         [HttpGet]
         public IActionResult Get()
         {
             return Ok(_recipeRepository.GetAllWithIngredients());
         }
-        // 
+        // gets all recipes created by user
         [HttpGet("{userId}")]
         public IActionResult Get(int id)
         {
             return Ok(_recipeRepository.GetAllByUserId(id));
 
         }
+        // get single recipe by its id for edit component
+        //[HttpGet("/EditRecipe/{recipeId}")]
+        //public IActionResult Get(int recipeId)
+        //{
+        //    return Ok(_recipeRepository.GetRecipeById(recipeId));
 
+        //}
         //[Authorize]
         [HttpPost]
         public IActionResult Post(Recipe recipe)
@@ -55,5 +61,6 @@ namespace TheFooder.Controllers
             _recipeRepository.Delete(id);
             return NoContent();
         }
+
     }
 }

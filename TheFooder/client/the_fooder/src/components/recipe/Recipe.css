@@ -191,12 +191,13 @@ display: flex;
 }
 .logoCircle {
     display: flex;
+    justify-content: center;
     flex-direction: row;
     align-items: center;
-    margin-right: 3em;
+
 }
 .modal-body{
-    background-color: black;
+    word-wrap: break-word;
 }
 
 #card
@@ -204,6 +205,7 @@ display: flex;
     border: 2px solid;
     border-color: rgb(73, 192, 73);
     border-right: 5px solid red;
+    word-wrap: break-word;
     margin: 2em;
     width: 60%;
 }

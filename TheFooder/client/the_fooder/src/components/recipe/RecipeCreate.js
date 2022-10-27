@@ -70,6 +70,7 @@ export const RecipeCreate = () => {
                                 } />
                             <label htmlFor="name">Directions:</label>
                             <input type="name"
+                                maxLength="2549"
                                 className="form-control"
                                 placeholder="Enter recipe directions..."
                                 onChange={
