@@ -28,7 +28,7 @@ export default function RecipeList() {
   useEffect(() => {
     getRecipesFromApi();
   }, []);
-
+const bool = false;
   return (
     <div className="container">
       <div className="row justify-content-center">
@@ -38,7 +38,7 @@ export default function RecipeList() {
           <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
           <img alt="" className="fooderLogo" src={process.env.PUBLIC_URL + "TheFooder-1.png"} />
           <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
-          <img alt="" src="https://365psd.com/images/previews/fe4/vegetable-vector-illustrations-free-33981.jpg" width="100%" height="150em"></img>
+          <img alt="" src="https://www.kindpng.com/picc/m/219-2192745_vegetables-vector-illustrations-ndash-free-download-imagenes-de.png" width="100%" height="150em"></img>
           </span>
         </div>
         <h2><strong>Welcome</strong> {userProfile.name}!</h2>
@@ -46,7 +46,7 @@ export default function RecipeList() {
         <h3 className="recipePageHeader">Recipe List</h3>
         {
           recipes.map((recipe) => (
-            <Recipe recipe={recipe} key={recipe.id} />
+            <Recipe recipe={recipe} key={recipe.id} bool={bool} />
           ))
         }
         </div>

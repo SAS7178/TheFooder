@@ -20,15 +20,7 @@ export const addRecipe = (recipe) => {
     body: JSON.stringify(recipe),
   });
 };
-// export const userSavedRecipe = (recipeId) => {
-//   return fetch(baseUrl, {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(recipe),
-//   });
-// };
+
 
 export const updateRecipe = (recipe) => {
   return fetch(baseUrl+`/${recipe.id}`, {

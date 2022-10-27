@@ -75,7 +75,7 @@ export const RecipeEdit = () => {
                             <textarea
                                 rows="4"
                                 className="form-control"
-                                placeholder={updatedRecipe.instructions}
+                                defaultValue={updatedRecipe.instructions}
                                 onChange={
                                     //take current obj value and update with user selected value
                                     (evt) => {
@@ -88,7 +88,7 @@ export const RecipeEdit = () => {
                             <input 
                                 type="url"
                                 className="form-control"
-                                placeholder={updatedRecipe.imageUrl}
+                                defaultValue={updatedRecipe.imageUrl}
                                 onChange={
                                     //take current obj value and update with user selected value
                                     (evt) => {
@@ -100,7 +100,7 @@ export const RecipeEdit = () => {
                             <label htmlFor="video">videoUrl:</label>
                             <input type="url"
                                 className="form-control"
-                                placeholder={updatedRecipe.videoUrl}
+                                defaultValue={updatedRecipe.videoUrl}
                                 onChange={
                                     //take current obj value and update with user selected value
                                     (evt) => {

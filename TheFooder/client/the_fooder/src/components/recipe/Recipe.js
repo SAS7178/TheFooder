@@ -1,24 +1,28 @@
-import React, { useState } from "react";
-import { Button, Card, CardBody, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
-import { deleteRecipe } from "../../modules/recipeManager";
+import React, { useEffect, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+import { Card, CardBody, Modal, ModalBody, ModalFooter } from "reactstrap";
+import { deleteSavedRecipe, savedUserRecipe } from "../../modules/savedUserRecipeManager";
 import { getUser } from "../../modules/userProfileManager";
 import "./Recipe.css";
 
-const Recipe = ({ recipe }) => {
+const Recipe = ({ recipe, bool }) => {
   const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
+  // const toggle = () => setModal(!modal);
   const [vidModal, setVidModal] = useState(false);
   const vidToggle = () => setVidModal(!modal);
   const [imgModal, setImgModal] = useState(false);
   const imgToggle = () => setImgModal(!modal);
   const [userProfile, setProfileDetails] = useState({})
-
-
+  const navigate = useNavigate()
   const getProfileDetails = () => {
     getUser().then((user) => {
       setProfileDetails(user);
     });
   };
+
+  useEffect(() => {
+    getProfileDetails();
+  }, []);
 
   const handleCloseModal = () => {
     setVidModal(false)
@@ -29,9 +33,18 @@ const Recipe = ({ recipe }) => {
   const handleCloseImageModal = () => {
     setImgModal(false)
   }
-  // const handleSaveRecipe = (recipeId) => {
-  //   userSavedRecipe(recipeId)
-  // }
+  const handleSaveRecipe = (recipeId) => {
+    let userObj = {
+      RecipeId: recipeId,
+      UserProfileId: userProfile.id,
+    }
+    savedUserRecipe(userObj)
+  window.alert("The recipe was saved to your profile list!")
+  }
+  const handleUnsaveRecipe = (recipeId) => {
+    deleteSavedRecipe(recipeId)
+    window.alert("The recipe was removed from your profile list.")
+  }
 
   return (
     <Card id="card">
@@ -57,9 +70,9 @@ const Recipe = ({ recipe }) => {
                 <>
                   <section className='quickView'>
                     <div>{recipe.name}</div>
-                    <iframe className="recipeVideo" width="400" height="300" src={recipe.videoUrl} 
-                    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen></iframe>
+                    <iframe className="recipeVideo" width="400" height="300" src={recipe.videoUrl}
+                      title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen></iframe>
                   </section>
                 </>
               </ModalBody>
@@ -74,10 +87,23 @@ const Recipe = ({ recipe }) => {
                 className="videoButton">
                 Watch Video
               </button>
-              <button onClick={() => {}}
-                className="saveButton">
-                Save Recipe
-              </button>
+              {
+                !bool
+                  ?
+                  <button onClick={() => {
+                    handleSaveRecipe(parseInt(recipe.id))
+                  }}
+                    className="saveButton">
+                    Save Recipe
+                  </button>
+                  :
+                  <button onClick={() => {
+                      handleUnsaveRecipe(recipe.id)
+                   }}
+                    className="editButton">
+                    Unsave Recipe
+                  </button>
+              }
             </div>
           </div>
         </section>

@@ -124,6 +124,88 @@ namespace TheFooder.Repositories
                 }
             }
         }
+        public void Add(Recipe recipe)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        INSERT INTO Recipe (Name, UserProfileId, Instructions, CreatedDateTime, ImageUrl, VideoUrl)
+                        OUTPUT INSERTED.ID
+                        VALUES (@Name,@UserProfileId, @Instructions, GETDATE(), @ImageUrl, @VideoUrl)";
+                    
+                    DbUtils.AddParameter(cmd, "@Name", recipe.Name);
+                    DbUtils.AddParameter(cmd, "@UserProfileId", recipe.UserProfileId);
+                    DbUtils.AddParameter(cmd, "@Instructions", recipe.Instructions);
+                    DbUtils.AddParameter(cmd, "@ImageUrl", recipe.ImageUrl);
+                    DbUtils.AddParameter(cmd, "@VideoUrl", recipe.VideoUrl);
+                    recipe.Id = (int)cmd.ExecuteScalar();
+                    AddSavedIngredients(recipe.Id, recipe.Ingredients);
+                }
+            }
+        }
+        //method called in the add recipe method
+        public void AddSavedIngredients(int recipeId, List<Ingredient> Ingredients)
+        {
+            foreach (var ingredient in Ingredients)
+            {
+                using (var conn = Connection)
+                {
+                    conn.Open();
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = @"
+                        INSERT INTO recipeIngredients (recipeId,ingredientId)
+                        VALUES (@RecipeId, @IngredientId)";
+
+                        DbUtils.AddParameter(cmd, "@RecipeId", recipeId);
+                        DbUtils.AddParameter(cmd, "@IngredientId", ingredient.Id);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+        }
+
+        public void Update(Recipe recipe)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        UPDATE Recipe
+                           SET Name = @Name,
+                               Instructions = @Instructions,
+                               ImageUrl = @ImageUrl,
+                               VideoUrl = @VideoUrl
+                         WHERE Id = @Id";
+                    DbUtils.AddParameter(cmd, "@Id", recipe.Id);
+                    cmd.Parameters.AddWithValue("@name", recipe.Name);
+                    cmd.Parameters.AddWithValue("@Instructions", recipe.Instructions);
+                    cmd.Parameters.AddWithValue("@ImageUrl", recipe.ImageUrl);
+                    cmd.Parameters.AddWithValue("@VideoUrl", recipe.VideoUrl);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        public void Delete(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM Recipe WHERE Id = @Id";
+                    DbUtils.AddParameter(cmd, "@id", id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+         //Dereks method
         public Recipe GetRecipeById(int recipeId)
         {
             using (var conn = Connection)
@@ -170,118 +252,6 @@ namespace TheFooder.Repositories
                 }
             }
         }
-        public void Add(Recipe recipe)
-        {
-            using (var conn = Connection)
-            {
-                conn.Open();
-                using (var cmd = conn.CreateCommand())
-                {
-                    cmd.CommandText = @"
-                        INSERT INTO Recipe (Name, UserProfileId, Instructions, CreatedDateTime, ImageUrl, VideoUrl)
-                        OUTPUT INSERTED.ID
-                        VALUES (@Name,@UserProfileId, @Instructions, GETDATE(), @ImageUrl, @VideoUrl)";
-                    
-                    DbUtils.AddParameter(cmd, "@Name", recipe.Name);
-                    DbUtils.AddParameter(cmd, "@UserProfileId", recipe.UserProfileId);
-                    DbUtils.AddParameter(cmd, "@Instructions", recipe.Instructions);
-                    DbUtils.AddParameter(cmd, "@ImageUrl", recipe.ImageUrl);
-                    DbUtils.AddParameter(cmd, "@VideoUrl", recipe.VideoUrl);
-                    recipe.Id = (int)cmd.ExecuteScalar();
-                    AddSavedIngredients(recipe.Id, recipe.Ingredients);
-                }
-            }
-        }
-        public void AddSavedRecipe(savedUserRecipe savedUserRecipe)
-        {
-            using (var conn = Connection)
-            {
-                conn.Open();
-                using (var cmd = conn.CreateCommand())
-                {
-                    cmd.CommandText = @"
-                        INSERT INTO SavedRecipe (RecipeId, UserProfileId)
-                        OUTPUT INSERTED.ID
-                        VALUES (@RecipeId,@UserProfileId)";
-
-                    DbUtils.AddParameter(cmd, "@RecipeId", savedUserRecipe.RecipeId);
-                    DbUtils.AddParameter(cmd, "@UserProfileId", savedUserRecipe.UserProfileId);
-                    savedUserRecipe.Id = (int)cmd.ExecuteScalar();
-                }
-            }
-        }
-
-        public void Update(Recipe recipe)
-        {
-            using (var conn = Connection)
-            {
-                conn.Open();
-                using (var cmd = conn.CreateCommand())
-                {
-                    cmd.CommandText = @"
-                        UPDATE Recipe
-                           SET Name = @Name,
-                               Instructions = @Instructions,
-                               ImageUrl = @ImageUrl,
-                               VideoUrl = @VideoUrl
-                         WHERE Id = @Id";
-                    DbUtils.AddParameter(cmd, "@Id", recipe.Id);
-                    cmd.Parameters.AddWithValue("@name", recipe.Name);
-                    cmd.Parameters.AddWithValue("@Instructions", recipe.Instructions);
-                    cmd.Parameters.AddWithValue("@ImageUrl", recipe.ImageUrl);
-                    cmd.Parameters.AddWithValue("@VideoUrl", recipe.VideoUrl);
-
-                    cmd.ExecuteNonQuery();
-                }
-            }
-        }
-
-        public void Delete(int id)
-        {
-            using (var conn = Connection)
-            {
-                conn.Open();
-                using (var cmd = conn.CreateCommand())
-                {
-                    cmd.CommandText = "DELETE FROM Recipe WHERE Id = @Id";
-                    DbUtils.AddParameter(cmd, "@id", id);
-                    cmd.ExecuteNonQuery();
-                }
-            }
-        }
-
-        public void AddSavedIngredients( int recipeId, List<Ingredient> Ingredients)
-        {
-                    foreach (var ingredient in Ingredients)
-                    {
-            using (var conn = Connection)
-            {
-                conn.Open();
-                using (var cmd = conn.CreateCommand())
-                {
-                        cmd.CommandText = @"
-                        INSERT INTO savedUserRecipes (recipeId, ingredientId)
-                        VALUES (@RecipeId, @ingredientId)";
-
-                        DbUtils.AddParameter(cmd, "@RecipeId", recipeId);
-                        DbUtils.AddParameter(cmd, "@ingredientId", ingredient.Id);
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-            }
-        }
-        public void DeleteSavedRecipe(int id)
-        {
-            using (var conn = Connection)
-            {
-                conn.Open();
-                using (var cmd = conn.CreateCommand())
-                {
-                    cmd.CommandText = "DELETE FROM savedUserRecipes WHERE Id = @Id";
-                    DbUtils.AddParameter(cmd, "@id", id);
-                    cmd.ExecuteNonQuery();
-                }
-            }
-        }
+   
     }
 }

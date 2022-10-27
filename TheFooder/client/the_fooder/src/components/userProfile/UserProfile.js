@@ -1,24 +1,39 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Collapse, Dropdown, Nav, NavbarText, NavbarToggler, NavItem, NavLink } from "reactstrap";
+import { Collapse, Nav, NavbarText, NavbarToggler, NavItem } from "reactstrap";
 import { getAllRecipes } from "../../modules/recipeManager";
+import { getAllSavedRecipes } from "../../modules/savedUserRecipeManager";
 import { getUser } from "../../modules/userProfileManager";
 import { WelcomeFooter } from "../footer/Footer";
+import Recipe from "../recipe/Recipe";
 import UserRecipe from "../recipe/UserRecipe";
 
 
 const UserProfile = () => {
   const [userProfile, setProfileDetails] = useState({})
   const [recipes, setRecipes] = useState([]);
+  const [savedObjRecipes, setSavedRecipes] = useState([]);
   const navigate = useNavigate()
   const toggle = () => setIsOpen(!isOpen);
   const [isOpen, setIsOpen] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
 
   const getProfileDetails = () => {
     getUser().then((userProfile) => {
       setProfileDetails(userProfile);
     });
   };
+
+  const getSaved = () => {
+    getAllSavedRecipes().then((savedRecipes) => {
+      setSavedRecipes(savedRecipes);
+    });
+  };
+
+  useEffect(() => {
+    getSaved();
+  }, []);
+
   const getRecipesFromApi = () => {
     getAllRecipes().then(rs => setRecipes(rs));
   };
@@ -38,6 +53,18 @@ const UserProfile = () => {
       }
     })
   }
+  const bool = true;
+  const showMeMySavedRecipes = () => {
+    let saves = [];
+     recipes.map((recipe) => {
+      savedObjRecipes.map((savedRecipe) => {
+        if (userProfile.id === savedRecipe.userProfileId && savedRecipe.recipeId === recipe.id) {
+          saves.push(recipe) 
+        }
+      })
+    })
+    return saves.map((s) => {return <Recipe recipe={s} key={s.id} bool={bool} />})
+  }
 
   return (
     <>
@@ -49,7 +76,7 @@ const UserProfile = () => {
               <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
               <img alt="" className="fooderLogo" src={process.env.PUBLIC_URL + "TheFooder-1.png"} />
               <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
-              <img alt="" src="https://365psd.com/images/previews/fe4/vegetable-vector-illustrations-free-33981.jpg" width="100%" height="150em"></img>
+              <img alt="" src="https://www.kindpng.com/picc/m/219-2192745_vegetables-vector-illustrations-ndash-free-download-imagenes-de.png" width="100%" height="150em"></img>
             </span>
           </div>
           <NavbarToggler className='hamburger' id="navbar-toggler" onClick={toggle} />
@@ -62,10 +89,11 @@ const UserProfile = () => {
             </Nav>
             <NavbarText className='welcome__home'><strong>Welcome!</strong></NavbarText>
           </Collapse>
-          <h1 className="recipePageHeader">My Contributed Recipes</h1>
+          <h1 className="recipePageHeader"><b>My Contributed Recipes</b></h1>
           {showMeMyRecipes()}
+        <h1 className="recipePageHeader"><b>My Saved Recipes</b></h1>
+        {showMeMySavedRecipes()}
         </div>
-        <h1 className="recipePageHeader">My Saved Recipes</h1>
       </div>
       <WelcomeFooter />
     </>
