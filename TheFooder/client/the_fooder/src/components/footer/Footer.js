@@ -6,7 +6,6 @@ export const WelcomeFooter = () => {
 
     return (
         <>
-
             <footer className="footer">
                 <article className="footer-links">
                     <section className="footer-items">

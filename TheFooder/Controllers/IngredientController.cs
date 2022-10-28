@@ -17,13 +17,14 @@ namespace TheFooder.Controllers
             _ingredientRepository = IngredientRepository;
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Get()
         {
             return Ok(_ingredientRepository.GetAll());
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPost]
         public IActionResult Post(Ingredient ingredient)
         {
@@ -31,7 +32,7 @@ namespace TheFooder.Controllers
             return CreatedAtAction("Get", new { id = ingredient.Id }, ingredient);
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPut("{id}")]
         public IActionResult Put(int id, Ingredient ingredient)    
         {
@@ -41,7 +42,7 @@ namespace TheFooder.Controllers
         }
         
 
-        //[Authorize]
+        [Authorize]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

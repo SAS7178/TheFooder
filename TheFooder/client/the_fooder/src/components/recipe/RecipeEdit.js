@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { Form, FormGroup } from "reactstrap"
-import { getAllRecipes, updateRecipe } from "../../modules/recipeManager"
+import { getAllRecipes, getRecipeById, updateRecipe } from "../../modules/recipeManager"
 import "./Recipe.css";
 
 export const RecipeEdit = () => {
@@ -19,14 +19,17 @@ export const RecipeEdit = () => {
         videoUrl: ""
     });
 
+    //method to get all recipes and set in state
     const getRecipesFromApi = () => {
         getAllRecipes().then(rs => setRecipes(rs));
     };
 
+    // runs above method on component render
     useEffect(() => {
         getRecipesFromApi()
     }, []);
 
+    // method to set recipe to edit obj properties
     const currentRecipe = () => {
         return recipes.map((recipe) => {
             if (recID === recipe.id) {
@@ -34,20 +37,21 @@ export const RecipeEdit = () => {
             }
         })
     }
-
+    // calls above method on change on recipes state
     useEffect(() => {
         currentRecipe()
     }, [recipes]);
 
+    // checks all values to verify not empty strings and then calls endpoint put method with given inputs rerenders component
     const handleEditButtonClick = (recipe) => {
-         //event.preventDefault()
+        //event.preventDefault()
         if (updatedRecipe.name != ""
             && updatedRecipe.instructions != ""
             && updatedRecipe.imageUrl != ""
             && updatedRecipe.videoUrl != "") {
             updateRecipe(recipe)
-             navigate("/userProfile")
-    //needs to rerender userprofile recipes on completion
+            navigate("/userProfile")
+            //needs to rerender userprofile recipes on completion
         } else { window.alert("Please fill out all form inputs. If no value enter (none).") }
     }
     return (
@@ -86,7 +90,7 @@ export const RecipeEdit = () => {
                                     }
                                 } />
                             <label htmlFor="image">imageUrl:</label>
-                            <input 
+                            <input
                                 type="url"
                                 className="form-control"
                                 defaultValue={updatedRecipe.imageUrl}

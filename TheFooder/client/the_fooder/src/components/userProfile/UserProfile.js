@@ -11,30 +11,35 @@ import UserRecipe from "../recipe/UserRecipe";
 
 
 const UserProfile = () => {
+  //set initial states of currentuser, allrecipes, and savedObjrecipes
   const [userProfile, setProfileDetails] = useState({})
   const [recipes, setRecipes] = useState([]);
   const [savedObjRecipes, setSavedRecipes] = useState([]);
-  const navigate = useNavigate()
-  const toggle = () => setIsOpen(!isOpen);
+  
+  const navigate = useNavigate() 
   const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => setIsOpen(!isOpen);
 
+  //method to get current user
   const getProfileDetails = () => {
-
     getUser().then((userProfile) => {
       setProfileDetails(userProfile);
     });
   };
 
+  //method to get all saved recipeObjs
   const getSaved = () => {
     getAllSavedRecipes().then((savedRecipes) => {
       setSavedRecipes(savedRecipes);
     });
   };
 
+  //calls above method on render
   useEffect(() => {
     getSaved();
   }, []);
 
+  //methos to get all recipes
   const getRecipesFromApi = () => {
     getAllRecipes().then(rs => setRecipes(rs));
   };
@@ -43,19 +48,25 @@ const UserProfile = () => {
     getProfileDetails();
   }, []);
 
+
   useEffect(() => {
     getRecipesFromApi();
-    // this.setState()
   }, []);
 
+  //method to show current created recipes
   const showMeMyRecipes = () => {
     return recipes.map((recipe) => {
       if (userProfile.id === recipe.userProfileId) {
-        return <UserRecipe recipe={recipe} key={recipe.id} />
+        return <UserRecipe recipe={recipe} getRecipesFromApi={getRecipesFromApi}  key={recipe.id} />
       }
     })
   }
+  
+  //var to pass to let Recipe component know its being called by the userProfile page therefore on savedList
+  //and to render unsave button
   const bool = true;
+
+  //method to show current created recipes
   const showMeMySavedRecipes = () => {
     let saves = [];
      recipes.map((recipe) => {
@@ -65,7 +76,7 @@ const UserProfile = () => {
         }
       })
     })
-    return saves.map((s) => {return <Recipe recipe={s} key={s.id} bool={bool} />})
+    return saves.map((s) => {return <Recipe recipe={s} key={s.id} getRecipesFromApi={getSaved}  isSavedRecipe={bool} />})
   }
 
   return (
@@ -82,9 +93,8 @@ const UserProfile = () => {
             </span>
           </div>
           <NavbarToggler className='hamburger' id="navbar-toggler" onClick={toggle} />
-          <Collapse isOpen={isOpen} navbar>
-            <Nav fill pills>
-
+          <Collapse  isOpen={isOpen} navbar>
+            <Nav fill pills >
               <div id="userMenuRecipeButtons">
               <NavItem >
                 <button onClick={() => { navigate("/recipe/create") }} id="createButton" >Create a Recipe</button>

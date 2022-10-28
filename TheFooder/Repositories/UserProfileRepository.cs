@@ -43,7 +43,6 @@ namespace TheFooder.Repositories
                             }
                          
                         }
-
                     return userProfile;
                 }
             }
@@ -84,8 +83,6 @@ namespace TheFooder.Repositories
                                DateCreated = @DateCreated,
                                ImageUrl = @ImageUrl
                          WHERE Id = @Id";
-
-            
                     cmd.ExecuteNonQuery();
                 }
             }
