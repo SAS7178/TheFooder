@@ -19,13 +19,14 @@ namespace TheFooder.Controllers
         }
         // get all savedUserRecipe join table objects 
         [HttpGet]
+        [Authorize]
         public IActionResult Get()
         {
             return Ok(_userSavedRecipeRepository.GetAllSavedUserRecipes());
 
         }
         //endpoint to add a savedUserRecipe obj
-        //[Authorize]
+        [Authorize]
         [HttpPost]
         public IActionResult Post(SavedUserRecipe savedUserRecipe)
         {
@@ -33,7 +34,7 @@ namespace TheFooder.Controllers
             return CreatedAtAction("Get", new { id = savedUserRecipe.Id }, savedUserRecipe);
         }
         //endpoint to delete a savedUserRecipe obj
-        //[Authorize]
+        [Authorize]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

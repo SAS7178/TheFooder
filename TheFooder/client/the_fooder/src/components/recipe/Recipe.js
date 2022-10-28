@@ -1,63 +1,72 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Card, CardBody, Modal, ModalBody, ModalFooter } from "reactstrap";
 import { deleteSavedRecipe, getAllSavedRecipes, savedUserRecipe } from "../../modules/savedUserRecipeManager";
 import { getUser } from "../../modules/userProfileManager";
 import "./Recipe.css";
 
-const Recipe = ({ recipe , bool, key }) => {
-  const [modal, setModal] = useState(false);
-  // const toggle = () => setModal(!modal);
-  const [vidModal, setVidModal] = useState(false);
-  const vidToggle = () => setVidModal(!modal);
-  const [imgModal, setImgModal] = useState(false);
-  const imgToggle = () => setImgModal(!modal);
+const Recipe = ({ recipe , isSavedRecipe, getRecipesFromApi }) => {
+  //get initial states of user and savedRecipe Objects
   const [userProfile, setProfileDetails] = useState({})
   const [savedObjRecipes, setSavedRecipes] = useState([]);
-  // const navigate = useNavigate()
+
+ //set initial states for img and vid modal and their set callback functions
+  const [vidModal, setVidModal] = useState(false);
+  const vidToggle = () => setVidModal(!vidModal);
+  const [imgModal, setImgModal] = useState(false);
+  const imgToggle = () => setImgModal(!imgModal);
   
+  //get user details
   const getProfileDetails = () => {
     getUser().then((user) => {
       setProfileDetails(user);
     });
   };
 
+  //method to get savedObjs 
   const getSaved = () => {
     getAllSavedRecipes().then((savedRecipes) => {
       setSavedRecipes(savedRecipes);
     });
   };
-
+// runs above method on component render
   useEffect(() => {
     getSaved();
   }, []);
-
+//runs get currentuser method on render
   useEffect(() => {
     getProfileDetails();
   }, []);
-
+//func to close vid modal
   const handleCloseModal = () => {
     setVidModal(false)
   }
+  //func to open img modal
   const handleOpenImageModal = () => {
     setImgModal(true)
   }
+  //close img modal
   const handleCloseImageModal = () => {
     setImgModal(false)
   }
+  //creates saved recipe obj send to endpoint and window alerts user of completion
   const handleSaveRecipe = (recipeId) => {
     let userObj = {
       RecipeId: recipeId,
       UserProfileId: userProfile.id,
     }
     savedUserRecipe(userObj)
-  window.alert("The recipe was saved to your profile list!")
+  window.alert("The recipe was successfully saved to your profile list!")
   }
+  // send endpoint delete method the savedRecipeObjects Id then confirms removed successfully
   const handleUnsaveRecipe = (id) => {
     savedObjRecipes.map((sRObj) => {
       if(sRObj.recipeId === id)
       {
-        deleteSavedRecipe(sRObj.id)
+        deleteSavedRecipe(sRObj.id).then(() => 
+        {
+          getRecipesFromApi()
+        })
+        
       }})
     window.alert("The recipe was removed from your profile list.")
   }
@@ -104,7 +113,7 @@ const Recipe = ({ recipe , bool, key }) => {
                 Watch Video
               </button>
               {
-                !bool
+                !isSavedRecipe
                   ?
                   <button onClick={() => {
                     handleSaveRecipe(parseInt(recipe.id))

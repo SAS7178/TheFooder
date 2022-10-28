@@ -218,7 +218,7 @@ namespace TheFooder.Repositories
                                           Left Join UserProfile up On up.Id = r.UserProfileId
                                           Left Join recipeIngredients ri On ri.recipeId = r.id
                                           Left Join Ingredient i On i.id = ri.ingredientId
-                                           WHERE up.Id = @id
+                                           WHERE r.id = @id
                                           ORDER BY name";
                     cmd.Parameters.AddWithValue("@id", recipeId);
                     using (SqlDataReader reader = cmd.ExecuteReader())

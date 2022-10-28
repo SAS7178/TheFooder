@@ -23,10 +23,12 @@ export const RecipeCreate = () => {
             setProfileDetails(userProfile);
         });
     };
+    //get currentuser info on component render and set to state
     useEffect(() => {
         getProfileDetails();
     }, []);
 
+    // function to create recipe obj to pass to endpoint and rerender list
     const handleCreateButtonClick = (event) => {
         event.preventDefault()
         const recipeToSendToApi = {

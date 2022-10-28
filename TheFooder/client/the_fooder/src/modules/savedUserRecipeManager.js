@@ -1,23 +1,37 @@
-
+import { getToken } from "./authManager";
 const baseUrl = '/api/SavedUserRecipe';
 
 export function getAllSavedRecipes() {
-  return fetch(baseUrl)
-    .then((res) => res.json())
-};
-
-export const savedUserRecipe = (recipeObj) => {
+  return getToken().then((token) => {
   return fetch(baseUrl, {
-    method: "POST",
     headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(recipeObj),
+      Authorization: `Bearer ${token}`,
+    }
+  })
+    .then((res) => res.json())
   });
 };
 
-  export const deleteSavedRecipe = (id) => {
+export const savedUserRecipe = (recipeObj) => {
+  return getToken().then((token) => {
+    return fetch(baseUrl, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(recipeObj),
+    });
+  });
+};
+
+export const deleteSavedRecipe = (id) => {
+  return getToken().then((token) => {
     return fetch(baseUrl + `/${id}`, {
-      method: "DELETE"
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
     })
-  }
+  });
+}
