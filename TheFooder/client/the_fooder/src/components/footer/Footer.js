@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom"
 import { NavLink } from "reactstrap"
 import "./Footer.css"
-// import {Contact} from "./contact&about/contact.js"
-// import {About} from "./contact&about/aboutus"
 
 export const WelcomeFooter = () => {
 

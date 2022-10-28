@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { NavLink } from "reactstrap"
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Collapse, Nav, NavbarText, NavbarToggler, NavItem } from "reactstrap";
@@ -84,9 +84,16 @@ const UserProfile = () => {
           <NavbarToggler className='hamburger' id="navbar-toggler" onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav fill pills>
-              <NavItem id="createNewRecipeButton">
+
+              <div id="userMenuRecipeButtons">
+              <NavItem >
                 <button onClick={() => { navigate("/recipe/create") }} id="createButton" >Create a Recipe</button>
               </NavItem>
+              <NavLink href="https://www.epicurious.com/">
+             <button id="searchButton">Recipe Web Search</button>
+              </NavLink>
+              </div>
+              
               <div className="seperation"></div>
             </Nav>
             <NavbarText className='welcome__home'><strong>Welcome!</strong></NavbarText>
