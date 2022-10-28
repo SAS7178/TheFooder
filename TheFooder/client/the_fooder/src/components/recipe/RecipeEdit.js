@@ -40,13 +40,14 @@ export const RecipeEdit = () => {
     }, [recipes]);
 
     const handleEditButtonClick = (recipe) => {
-        // event.preventDefault()
+         //event.preventDefault()
         if (updatedRecipe.name != ""
             && updatedRecipe.instructions != ""
             && updatedRecipe.imageUrl != ""
             && updatedRecipe.videoUrl != "") {
             updateRecipe(recipe)
-            return navigate("/userProfile")
+             navigate("/userProfile")
+    //needs to rerender userprofile recipes on completion
         } else { window.alert("Please fill out all form inputs. If no value enter (none).") }
     }
     return (

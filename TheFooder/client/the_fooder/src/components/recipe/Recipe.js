@@ -95,10 +95,7 @@ const Recipe = ({ recipe , bool }) => {
                   }}
                     className="saveButton">
                     Save Recipe
-                  </button>
-                  :
-                  
-                  <button onClick={() => {
+                  </button> : <button onClick={() => {
                       handleUnsaveRecipe(parseInt(recipe.id))
                    }}
                     className="editButton">

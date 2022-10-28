@@ -1,3 +1,4 @@
+import { render } from "@testing-library/react";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Collapse, Nav, NavbarText, NavbarToggler, NavItem } from "reactstrap";
@@ -16,9 +17,9 @@ const UserProfile = () => {
   const navigate = useNavigate()
   const toggle = () => setIsOpen(!isOpen);
   const [isOpen, setIsOpen] = useState(false);
-  const [isSaved, setIsSaved] = useState(false);
 
   const getProfileDetails = () => {
+
     getUser().then((userProfile) => {
       setProfileDetails(userProfile);
     });
@@ -44,6 +45,7 @@ const UserProfile = () => {
 
   useEffect(() => {
     getRecipesFromApi();
+    // this.setState()
   }, []);
 
   const showMeMyRecipes = () => {
