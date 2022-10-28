@@ -38,6 +38,9 @@ export default function Header({ isLoggedIn }) {
                 <NavItem>
                   <NavLink id="logout" tag={RRNavLink} to={`/login`} onClick={logout}>LOGOUT</NavLink>
                 </NavItem>
+                <NavItem>
+                  <NavLink id="logout" tag={RRNavLink} to={`/login`} onClick={logout}>CONTACT US</NavLink>
+                </NavItem>
               </>
             )}
             {!isLoggedIn && (

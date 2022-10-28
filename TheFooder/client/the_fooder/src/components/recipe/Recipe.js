@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, CardBody, Modal, ModalBody, ModalFooter } from "reactstrap";
-import { deleteSavedRecipe, savedUserRecipe } from "../../modules/savedUserRecipeManager";
+import { deleteSavedRecipe, getAllSavedRecipes, savedUserRecipe } from "../../modules/savedUserRecipeManager";
 import { getUser } from "../../modules/userProfileManager";
 import "./Recipe.css";
 
-const Recipe = ({ recipe , bool }) => {
+const Recipe = ({ recipe , bool, key }) => {
   const [modal, setModal] = useState(false);
   // const toggle = () => setModal(!modal);
   const [vidModal, setVidModal] = useState(false);
@@ -13,12 +13,24 @@ const Recipe = ({ recipe , bool }) => {
   const [imgModal, setImgModal] = useState(false);
   const imgToggle = () => setImgModal(!modal);
   const [userProfile, setProfileDetails] = useState({})
-  const navigate = useNavigate()
+  const [savedObjRecipes, setSavedRecipes] = useState([]);
+  // const navigate = useNavigate()
+  
   const getProfileDetails = () => {
     getUser().then((user) => {
       setProfileDetails(user);
     });
   };
+
+  const getSaved = () => {
+    getAllSavedRecipes().then((savedRecipes) => {
+      setSavedRecipes(savedRecipes);
+    });
+  };
+
+  useEffect(() => {
+    getSaved();
+  }, []);
 
   useEffect(() => {
     getProfileDetails();
@@ -41,8 +53,12 @@ const Recipe = ({ recipe , bool }) => {
     savedUserRecipe(userObj)
   window.alert("The recipe was saved to your profile list!")
   }
-  const handleUnsaveRecipe = (recipeId) => {
-    deleteSavedRecipe(recipeId)
+  const handleUnsaveRecipe = (id) => {
+    savedObjRecipes.map((sRObj) => {
+      if(sRObj.recipeId === id)
+      {
+        deleteSavedRecipe(sRObj.id)
+      }})
     window.alert("The recipe was removed from your profile list.")
   }
 
@@ -95,10 +111,7 @@ const Recipe = ({ recipe , bool }) => {
                   }}
                     className="saveButton">
                     Save Recipe
-                  </button>
-                  :
-                  
-                  <button onClick={() => {
+                  </button> : <button onClick={() => {
                       handleUnsaveRecipe(parseInt(recipe.id))
                    }}
                     className="editButton">

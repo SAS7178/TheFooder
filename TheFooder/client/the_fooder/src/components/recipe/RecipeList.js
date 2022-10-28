@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Recipe from './Recipe';
 import { getAllRecipes } from "../../modules/recipeManager";
-import { useNavigate } from "react-router-dom";
 import "./Recipe.css";
 import { getUser } from "../../modules/userProfileManager";
 import { WelcomeFooter } from "../footer/Footer";
@@ -9,7 +8,6 @@ import { WelcomeFooter } from "../footer/Footer";
 export default function RecipeList() {
   const [recipes, setRecipes] = useState([]);
   const [userProfile, setProfileDetails] = useState({})
-  const navigate = useNavigate()
 
   const getRecipesFromApi = () => {
     getAllRecipes().then(rs => setRecipes(rs));

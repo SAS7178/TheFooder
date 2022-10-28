@@ -1,5 +1,4 @@
 
-
 const baseUrl = '/api/Recipe';
 
 export function getAllRecipes() {
@@ -20,7 +19,6 @@ export const addRecipe = (recipe) => {
     body: JSON.stringify(recipe),
   });
 };
-
 
 export const updateRecipe = (recipe) => {
   return fetch(baseUrl+`/${recipe.id}`, {

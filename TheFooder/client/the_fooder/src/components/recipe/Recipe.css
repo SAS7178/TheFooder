@@ -29,29 +29,30 @@
     margin-right: 0px;
 }
 #createButton {
-    display: flex;
     background-color: rgb(73, 192, 73);
     border-radius: 25% 5% 25% 5%;
     color: black;
-    margin-top: 1em;
+    margin-top: .8em;
     border: 0ch;
     font-size: medium;
     font-weight: 900;
 }
-/* #createNewRecipeButton {
+#searchButton {
     display: flex;
-    align-items: center;
+    align-self: flex-end;
     background-color: rgb(73, 192, 73);
-    color: blue;
-    border: 2px solid black ;
     border-radius: 25% 5% 25% 5%;
-    width: 2em;
-    padding-bottom: 9px;
-    opacity: 80%;
-    margin-top: 1.5em;
-    flex-wrap: nowrap;
-    justify-content: right;
-} */
+    color: black;
+    margin-top: .7em;
+    border: 0ch;
+    font-size: medium;
+    font-weight: 900;
+}
+#userMenuRecipeButtons {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+}
 
 .buttonContainer {
     display: flex;

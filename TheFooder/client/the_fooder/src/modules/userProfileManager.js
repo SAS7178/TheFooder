@@ -1,6 +1,5 @@
-// import UserProfile from "../components/userProfile/UserProfile";
+
 import { getToken } from "./authManager";
-// import firebase from "firebase/app";
 import "firebase/auth";
 
 const baseUrl = "/api/UserProfile";

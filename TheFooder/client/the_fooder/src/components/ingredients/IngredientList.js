@@ -6,7 +6,6 @@ import { getAllIngredients } from "../../modules/ingredientManager";
 export default function IngredientList({ setIngState }) {
     const [ingredients, setIngredients] = useState([]);
     const [ingredientChoices, setIngredientChoices] = useState([]);
-    // const [addedIngredients, setAddedIngredients] = useState([]);
     const [ingList, setIngList] = useState([]);
 
     const getIngredientsFromApi = () => {
@@ -34,31 +33,11 @@ export default function IngredientList({ setIngState }) {
             setIngState(copy)
         }
     }
-    // const setAddedList = (ingredient) => {
-    //     let ingObj = { id: 0, name: "" };
-    //     const ing = parseInt(ingredient)
-    //     ingObj.id = ing
-    //     const copy = structuredClone(addedIngredients)
-    //     ingredients.map(ingr => {
-    //         if (ingr.id === ingredient) {
-    //             ingObj.name = ingr?.Name
-    //         }
-    //     })
-    //     copy.push(ingObj)
-    //     setAddedIngredients(copy)
-    // }
 
     return (
         <div className="container">
             <div className="row justify-content-center">
                 <h1 className="recipePageHeader">Added Ingredients</h1>
-                {/* <div className="ingredientChecks">
-                    {ngredients.map(ing => <Card outline color="warning" key={ing.id} style={{ marginBottom: '2px' }}>
-                        <CardBody value={ing}>
-                            {ing.id} {ing.name}&nbsp;&nbsp;
-                        </CardBody>
-                    </Card>)}
-                </div> */}
             </div>
             <h4>Ingredient List</h4>
             <div className="ingredientChecks">
