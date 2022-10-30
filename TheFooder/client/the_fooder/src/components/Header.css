@@ -1,10 +1,15 @@
 .headerLogo {
-    height: 2rem;
+    height: 3.5rem;
+    width: 4em;
     color: darkgreen;
 }
 .navbar
 {
-background-color: rgb(243, 243, 94);
-border: 2.5px solid rgb(110, 99, 99);
-border-radius: 0% 0% 2% 2%;
+display: flex;
+border-radius: 0% 0% 2% 12%;
+}
+.header_options{
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 9em;
 }

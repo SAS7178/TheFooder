@@ -45,6 +45,18 @@
     width: 100%;
 
 }
+.yellowSeperation{
+    display: flex;
+    align-items: center;
+    margin: 1em;
+    background-image: radial-gradient(goldenrod, #FFF), radial-gradient(#CCC, #FFF);
+    background-position: 0, 100%, 0, 100%;
+    border-radius: 40%;
+    opacity: 25%;
+    height: 1em;
+    width: 100%;
+
+}
 
 .footer__link {
     opacity: 100%;

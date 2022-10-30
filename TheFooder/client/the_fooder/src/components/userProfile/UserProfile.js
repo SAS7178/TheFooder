@@ -85,16 +85,23 @@ const UserProfile = () => {
         <div className="row justify-content-center">
           <div className="logoContainer">
             <span className="logoCircle">
-              <img alt="" src="https://previews.123rf.com/images/emojiimage/emojiimage1910/emojiimage191002096/132873726-groceries-vector-illustrated-set-different-food-from-supermarket-concept-purchases-collection.jpg" width="100%" height="150em"></img>
+              {/* <img alt="" src="https://previews.123rf.com/images/emojiimage/emojiimage1910/emojiimage191002096/132873726-groceries-vector-illustrated-set-different-food-from-supermarket-concept-purchases-collection.jpg" width="100%" height="150em"></img> */}
               <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
               <img alt="" className="fooderLogo" src={process.env.PUBLIC_URL + "TheFooder-1.png"} />
               <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
-              <img alt="" src="https://www.kindpng.com/picc/m/219-2192745_vegetables-vector-illustrations-ndash-free-download-imagenes-de.png" width="100%" height="150em"></img>
+              {/* <img alt="" src="https://www.kindpng.com/picc/m/219-2192745_vegetables-vector-illustrations-ndash-free-download-imagenes-de.png" width="100%" height="150em"></img> */}
             </span>
           </div>
+          <div></div>
+          {/* <div className="yellowSeperation"> */}
+          <div></div>
           <NavbarToggler className='hamburger' id="navbar-toggler" onClick={toggle} />
+          <div></div>
+          {/* </div> */}
           <Collapse  isOpen={isOpen} navbar>
-            <Nav fill pills >
+            <NavbarText className='menu__tag'><strong>Try something new!</strong></NavbarText>
+            <Nav id="menu">   
+              <div className="yellowSeperation"></div>
               <div id="userMenuRecipeButtons">
               <NavItem >
                 <button onClick={() => { navigate("/recipe/create") }} id="createButton" >Create a Recipe</button>
@@ -103,14 +110,12 @@ const UserProfile = () => {
              <button id="searchButton">Recipe Web Search</button>
               </NavLink>
               </div>
-              
-              <div className="seperation"></div>
+              <div className="yellowSeperation"></div>
             </Nav>
-            <NavbarText className='welcome__home'><strong>Welcome!</strong></NavbarText>
           </Collapse>
-          <h1 className="recipePageHeader"><b>My Contributed Recipes</b></h1>
+          <h1 className="recipePageHeader"><b>My Creations</b></h1>
           {showMeMyRecipes()}
-        <h1 className="recipePageHeader"><b>My Saved Recipes</b></h1>
+        <h1 className="recipePageHeader"><b>Saved List</b></h1>
         {showMeMySavedRecipes()}
         </div>
       </div>

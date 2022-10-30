@@ -20,16 +20,16 @@ export default function Header({ isLoggedIn }) {
     <div>
       <Navbar className="navbar" expand="md">
         <NavbarBrand tag={RRNavLink} to="/">
-          <img className="headerLogo" src={process.env.PUBLIC_URL + "/fooderIcon.png"} />
-          &nbsp; TheFooder
+          <img className="headerLogo" src={process.env.PUBLIC_URL + "TheFooder-1.png"} />
+          &nbsp; The-Fooder
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
+        <Collapse isOpen={isOpen} navbar className="header_options">
           <Nav className="mr-auto" navbar>
             {/* When isLoggedIn === true, we will render the Home link */}
             {isLoggedIn && (
-              <>
-                <NavItem>
+                  <div className="header_options" >
+              <NavItem>
                   <NavLink tag={RRNavLink} to="/">HOME</NavLink>
                 </NavItem>
                 <NavItem>
@@ -38,7 +38,7 @@ export default function Header({ isLoggedIn }) {
                 <NavItem>
                   <NavLink id="logout" tag={RRNavLink} to={`/login`} onClick={logout}>LOGOUT</NavLink>
                 </NavItem>
-              </>
+              </div>
             )}
             {!isLoggedIn && (
               <>
