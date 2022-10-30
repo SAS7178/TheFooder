@@ -47,6 +47,7 @@ export default function RecipeList() {
    <>
    <div className="container">
       <div className="row justify-content-center">
+        <h2><strong>Welcome back</strong> {userProfile.name}!</h2>
         <div className="logoContainer">
           <span className="logoCircle">
             {/* <img alt="" src="https://previews.123rf.com/images/emojiimage/emojiimage1910/emojiimage191002096/132873726-groceries-vector-illustrated-set-different-food-from-supermarket-concept-purchases-collection.jpg" width="100%" height="150em"></img> */}
@@ -56,8 +57,8 @@ export default function RecipeList() {
             {/* <img alt="" src="https://www.kindpng.com/picc/m/219-2192745_vegetables-vector-illustrations-ndash-free-download-imagenes-de.png" width="100%" height="150em"></img> */}
           </span>
         </div>
-        <h2><strong>Welcome back</strong> {userProfile.name}!</h2>
-        <div className="row justify-content-center">
+                <div className="row justify-content-center">
+                  &nbsp;
           <h3 className="recipePageHeader">Recipe List</h3>
           {
             recipes.map((recipe) => (

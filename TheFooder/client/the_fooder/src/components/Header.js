@@ -20,8 +20,9 @@ export default function Header({ isLoggedIn }) {
     <div>
       <Navbar className="navbar" expand="md">
         <NavbarBrand tag={RRNavLink} to="/">
-          <img className="headerLogo" src={process.env.PUBLIC_URL + "TheFooder-1.png"} />
-          &nbsp; The-Fooder
+          &nbsp;   
+          <img className="headerLogo" src={process.env.PUBLIC_URL + "https://thumbs.dreamstime.com/z/master-chef-icon-vector-master-chef-icon-vector-isolated-white-background-172664477.jpg"} />
+          <img className="headertext" src={process.env.PUBLIC_URL + "(TF)TheFooder-icon.png"} />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar className="header_options">

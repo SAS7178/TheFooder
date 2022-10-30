@@ -71,8 +71,9 @@ export const RecipeCreate = () => {
                                     }
                                 } />
                             <label htmlFor="name">Directions:</label>
-                            <input type="name"
+                            <textarea type="name"
                                 maxLength="2549"
+                                rows="5"
                                 className="form-control"
                                 placeholder="Enter recipe directions..."
                                 onChange={
