@@ -6,8 +6,12 @@ import { getUser } from "../../modules/userProfileManager";
 import { WelcomeFooter } from "../footer/Footer";
 import Header from "../header/Header";
 import { onLoginStatusChange } from "../../modules/authManager";
+// import { RecipeSearch } from "../search/RecipeSearch";
+// import UserRecipe from "./UserRecipe";
+import RandomRecipe from "./RandomRecipe";
 
 export default function RecipeList() {
+  // const [searchTerms, setSearchTerms] = useState(null)
   const [recipes, setRecipes] = useState([]);
   const [userProfile, setProfileDetails] = useState({})
   const [randomRecipe, setRandom] = useState([])
@@ -20,10 +24,13 @@ export default function RecipeList() {
 
 
   useEffect(() => {
-    fetch(`www.themealdb.com/api/json/v1/1/categories.php`)
-    .then(response => response.json())
-        .then(response => {setRandom(response)
-     })
+    fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
+      .then(response => response.json())
+      .then(response => {
+        const recipe = { ...response }
+        const meal = recipe.meals[0]
+        setRandom(meal)
+      })
   }, []);
 
   //methed to hit endpoint that get all recipes
@@ -52,32 +59,33 @@ export default function RecipeList() {
 
   return (
     <div className="recipeListPage">
-    <Header  isLoggedIn={isLoggedIn} />
-   <div className="container">
-      <div className="row justify-content-center">
-        <h2><strong>Welcome back</strong> {userProfile.name}!</h2>
-        <div className="logoContainer">
-          <span className="logoCircle">
-            {/* <img alt="" src="https://previews.123rf.com/images/emojiimage/emojiimage1910/emojiimage191002096/132873726-groceries-vector-illustrated-set-different-food-from-supermarket-concept-purchases-collection.jpg" width="100%" height="150em"></img> */}
-            <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
-            <img alt="" className="fooderLogo" src={process.env.PUBLIC_URL + "TheFooderMainTransparent.png"} />
-            <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
-            {/* <img alt="" src="https://www.kindpng.com/picc/m/219-2192745_vegetables-vector-illustrations-ndash-free-download-imagenes-de.png" width="100%" height="150em"></img> */}
-          </span>
-        </div>
-                <div className="row justify-content-center">
-                  &nbsp;
+      <Header isLoggedIn={isLoggedIn} />
+      {/* <RecipeSearch setterFunction={setSearchTerms} /> */}
+      {/* <UserRecipe searchTermState={searchTerms} />/ */}
+      <div className="container">
+        <div className="row justify-content-center">
+          <h2><strong>Welcome back</strong> {userProfile.name}!</h2>
+          <div className="logoContainer">
+            <span className="logoCircle">
+              <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
+              <img alt="" className="fooderLogo" src={process.env.PUBLIC_URL + "TheFooderMainTransparent.png"} />
+              <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
+            </span>
+          </div>
+          <RandomRecipe recipe={randomRecipe} />
           <h3 className="recipePageHeader">Recipe List</h3>
-          {
-            recipes.map((recipe) => (
-              <Recipe recipe={recipe} key={recipe.id} isSavedRecipe={bool} />
-            ))
-          }
+          <div className="row justify-content-center">
+            &nbsp;
+            {
+              recipes.map((recipe) => (
+                <Recipe recipe={recipe} key={recipe.id} isSavedRecipe={bool} />
+              ))
+            }
+          </div>
         </div>
       </div>
-    </div>
       <WelcomeFooter />
-      </div>
+    </div>
   )
 }
 

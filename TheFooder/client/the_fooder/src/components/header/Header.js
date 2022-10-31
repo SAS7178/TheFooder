@@ -10,9 +10,11 @@ import {
   NavLink,
 } from "reactstrap";
 import { logout } from "../../modules/authManager";
+import { RecipeSearch } from "../search/RecipeSearch";
 import "./Header.css";
 
 export default function Header({ isLoggedIn }) {
+  // const [searchTerms, setSearchTerms] = useState(null)
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
@@ -24,6 +26,7 @@ export default function Header({ isLoggedIn }) {
           <img className="headerLogo" src={"https://thumbs.dreamstime.com/z/master-chef-icon-vector-master-chef-icon-vector-isolated-white-background-172664477.jpg"} />
           <img className="headertext" src={"(TF)TheFooder-icon.png"} />
         </NavbarBrand>
+        {/* <RecipeSearch setterFunction={setSearchTerms} /> */}
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar className="header_options">
           <Nav className="mr-auto" navbar>
