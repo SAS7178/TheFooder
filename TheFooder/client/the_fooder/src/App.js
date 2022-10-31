@@ -29,7 +29,7 @@ function App() {
   return (
 // insert if() statement to check isAdmin status to control a users accessibility
     <Router>
-      <Header  isLoggedIn={isLoggedIn} />
+      {/* <Header  isLoggedIn={isLoggedIn} /> */}
       <ApplicationViews isLoggedIn={isLoggedIn} />
     </Router>
     

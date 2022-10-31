@@ -8,6 +8,8 @@ import { getUser } from "../../modules/userProfileManager";
 import { WelcomeFooter } from "../footer/Footer";
 import Recipe from "../recipe/Recipe";
 import UserRecipe from "../recipe/UserRecipe";
+import Header from "../header/Header";
+import { onLoginStatusChange } from "../../modules/authManager";
 
 
 const UserProfile = () => {
@@ -15,7 +17,14 @@ const UserProfile = () => {
   const [userProfile, setProfileDetails] = useState({})
   const [recipes, setRecipes] = useState([]);
   const [savedObjRecipes, setSavedRecipes] = useState([]);
-  
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
+  // const [isAdmin, setAdminStatus] = useState(false);
+
+
+  useEffect(() => {
+    onLoginStatusChange(setIsLoggedIn);
+  }, []);
+
   const navigate = useNavigate() 
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
@@ -81,12 +90,13 @@ const UserProfile = () => {
 
   return (
     <>
+      <Header isLoggedIn={isLoggedIn} />
       <div className="container">
         <div className="row justify-content-center">
           <div className="logoContainer">
             <span className="logoCircle">
               <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
-              <img alt="" className="fooderLogo" src={process.env.PUBLIC_URL + "TheFooder-1.png"} />
+              <img alt="" className="fooderLogo" src={process.env.PUBLIC_URL + "TheFooderMainTransparent.png"} />
               <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
             </span>
           </div>

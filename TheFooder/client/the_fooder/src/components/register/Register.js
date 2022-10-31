@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { useNavigate } from "react-router-dom";
-import { register } from "../../modules/authManager";
+import { onLoginStatusChange, register } from "../../modules/authManager";
 import "./Register.css";
+import { useEffect } from "react";
+import Header from "../header/Header";
 
 export default function Register() {
   const navigate = useNavigate();
-
   const [name, setName] = useState();
   const [email, setEmail] = useState();
-
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
+
+
+  useEffect(() => {
+    onLoginStatusChange(setIsLoggedIn);
+  }, []);
 
   const registerClick = (e) => {
     e.preventDefault();
@@ -27,6 +33,8 @@ export default function Register() {
   };
 
   return (
+     <div className="reg-page">
+      <Header isLoggedIn={isLoggedIn} />
     <Form className="register" onSubmit={registerClick}>
       <fieldset >
         <FormGroup >
@@ -67,5 +75,6 @@ export default function Register() {
         </FormGroup>
       </fieldset>
     </Form>
+    </div>
   );
 }
