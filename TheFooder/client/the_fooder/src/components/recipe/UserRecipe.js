@@ -6,7 +6,7 @@ import { deleteRecipe } from "../../modules/recipeManager";
 import "./Recipe.css";
 
 
-const UserRecipe = ({ recipe , getRecipesFromApi }) => {
+const UserRecipe = ({ recipe, getRecipesFromApi }) => {
 
     //set initial delete state and call back to open close
     const [modal, setModal] = useState(false);
@@ -18,6 +18,8 @@ const UserRecipe = ({ recipe , getRecipesFromApi }) => {
     const [imgModal, setImgModal] = useState(false);
     const imgToggle = () => setImgModal(!modal);
     const navigate = useNavigate()
+    const [ingModal, setIngModal] = useState(false);
+    const ingToggle = () => setIngModal(!ingModal);
 
     const deleteButton = (id) => {
         deleteRecipe(id)
@@ -39,6 +41,13 @@ const UserRecipe = ({ recipe , getRecipesFromApi }) => {
     const handleCloseImageModal = () => {
         setImgModal(false)
     }
+
+    const showRecipeIngredients = (r) => {
+        return r.ingredients.map((i) => {
+            return `${i.name}` + ", "
+        });
+    }
+
     return (
         <>
             <Card id="card">
@@ -49,6 +58,18 @@ const UserRecipe = ({ recipe , getRecipesFromApi }) => {
                             <div className="recipeImg">
                                 <img onClick={() => { handleOpenImageModal() }} className="recipeImage" alt="recipe" src={recipe.imageUrl} height="200px" />
                             </div>
+                            <Modal isOpen={ingModal} toggle={ingToggle} {...recipe}>
+                                <ModalBody>
+                                    <div><b>Recipe Ingredients</b></div>
+                                    <div>{showRecipeIngredients(recipe)}</div>
+                                </ModalBody>
+                                <ModalFooter>
+                                    <button onClick={() => { ingToggle() }}>
+                                        CLOSE
+                                    </button>
+                                </ModalFooter>
+                            </Modal>
+                            <button className="seeIngredients" onClick={() => { ingToggle() }}>See Ingredients</button>
                             <Modal isOpen={imgModal} toggle={imgToggle} {...recipe}>
                                 <ModalBody>
                                     <div>
@@ -66,7 +87,7 @@ const UserRecipe = ({ recipe , getRecipesFromApi }) => {
                                     <>
                                         <section className='quickView'>
                                             <div>{recipe.name}</div>
-                                            <iframe className="recipeVideo" width="400" height="300" src="https://www.youtube.com/embed/ZYoYffXWiwk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                            <iframe className="recipeVideo" width="400" height="300" src={recipe.videoUrl} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                         </section>
                                     </>
                                 </ModalBody>

@@ -1,0 +1,22 @@
+
+.register{
+    display: flex;
+    justify-content: center;
+    margin: 12em;
+    background-color: gray;
+    border:  1px double rgb(233, 233, 86) ;
+    border-radius: 15%;
+    border-width: .3em;
+}
+#name{
+    width: 15em
+} 
+#email{
+    width: 15em
+} 
+#password{
+    width: 15em
+} 
+#confirmPassword{
+    width: 15em
+} 

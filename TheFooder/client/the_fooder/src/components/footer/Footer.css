@@ -45,16 +45,25 @@
     width: 100%;
 
 }
+.yellowSeperation{
+    display: flex;
+    align-items: center;
+    margin: 1em;
+    background-image: radial-gradient(goldenrod, #FFF), radial-gradient(#CCC, #FFF);
+    background-position: 0, 100%, 0, 100%;
+    border-radius: 40%;
+    opacity: 25%;
+    height: 1em;
+    width: 100%;
 
-.footer__link {
-    opacity: 100%;
+}
+
+#footer__link{
+      opacity: 100%;
     color: blue;
     text-decoration: underline;
     margin-left: 2em;
 }
-/* .footerLine{
-    color: rgb(243, 243, 94);
-} */
 .snap__logo {
     border-radius: 30%;
 }
@@ -131,7 +140,7 @@
     justify-content: space-around;
     margin-top: 3em;
 }
-.footer-logos {
+.footer-logos{
     display: flex;
     flex-wrap: wrap;
     align-items: center;

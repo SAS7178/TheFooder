@@ -9,7 +9,7 @@ import {
   NavItem,
   NavLink,
 } from "reactstrap";
-import { logout } from "../modules/authManager";
+import { logout } from "../../modules/authManager";
 import "./Header.css";
 
 export default function Header({ isLoggedIn }) {
@@ -20,16 +20,17 @@ export default function Header({ isLoggedIn }) {
     <div>
       <Navbar className="navbar" expand="md">
         <NavbarBrand tag={RRNavLink} to="/">
-          <img className="headerLogo" src={process.env.PUBLIC_URL + "/fooderIcon.png"} />
-          &nbsp; TheFooder
+          &nbsp;   
+          <img className="headerLogo" src={"https://thumbs.dreamstime.com/z/master-chef-icon-vector-master-chef-icon-vector-isolated-white-background-172664477.jpg"} />
+          <img className="headertext" src={"(TF)TheFooder-icon.png"} />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
+        <Collapse isOpen={isOpen} navbar className="header_options">
           <Nav className="mr-auto" navbar>
             {/* When isLoggedIn === true, we will render the Home link */}
             {isLoggedIn && (
-              <>
-                <NavItem>
+                  <div className="header_options" >
+              <NavItem>
                   <NavLink tag={RRNavLink} to="/">HOME</NavLink>
                 </NavItem>
                 <NavItem>
@@ -38,7 +39,7 @@ export default function Header({ isLoggedIn }) {
                 <NavItem>
                   <NavLink id="logout" tag={RRNavLink} to={`/login`} onClick={logout}>LOGOUT</NavLink>
                 </NavItem>
-              </>
+              </div>
             )}
             {!isLoggedIn && (
               <>

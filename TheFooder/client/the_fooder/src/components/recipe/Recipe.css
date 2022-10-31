@@ -33,30 +33,44 @@
     border-radius: 25% 5% 25% 5%;
     color: black;
     margin-top: .8em;
-    border: 0ch;
+    border: 2px solid black;
     font-size: medium;
+    margin-left: 3em;
     font-weight: 900;
 }
+.recipeImage:hover {
+opacity: 60%;
+}
 #navbar-toggler{
-    padding: var(--bs-navbar-toggler-padding-y) var(--bs-navbar-toggler-padding-x);
-    font-size: var(--bs-navbar-toggler-font-size);
-    line-height: 2.5;
-    color: var(--bs-navbar-color);
-    /* background-color: blue; */
-    background-image:  url( "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5SqE55eS9DZcf7qte--Ra_DIcv8SQSI9zTg&usqp=CAU");
-    border: var(--bs-border-width) solid var(--bs-navbar-toggler-border-color);
-    border-radius: 10%;
-}
-.navbar-toggler-icon {
-    display: inline-block;
-    width: 1.5em;
-    height: 1.5em;
-    vertical-align: middle;
-    background-image: var(--bs-navbar-toggler-icon-bg);
-    background-repeat: no-repeat;
-    background-position: center;
+    background-image:  url( "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXWchNLkR8ZW_Hi1_oTz73GNIojfc6yLsq5p9I-yyHif70meGN2muFOTByXdns8VmVwIs&usqp=CAU");
+    float :right;
+    width: 20em;
+    height: 50px;
+    border-radius: 30%;
     background-size: 100%;
+    border: none;
 }
+.menu__tag{
+    display: flex;
+    justify-content: center;
+}
+.nav-item{
+margin-right: 1em;
+}
+.nav-item:hover{
+    transform: scale(1,2);
+    scale: (1,2);
+}
+#navbar-toggler{
+    height: 3em;
+    width: 5.5em;
+    margin-bottom: 1em;
+}
+#navbar-toggler:hover{
+    /* background-position: bottom; */
+    transform: scale(1,1.3);
+}
+
 #searchButton {
     display: flex;
     align-self: flex-end;
@@ -64,7 +78,8 @@
     border-radius: 25% 5% 25% 5%;
     color: black;
     margin-top: .7em;
-    border: 0ch;
+    margin-left: 5em;
+    border: 2px solid black;
     font-size: medium;
     font-weight: 900;
 }
@@ -74,6 +89,10 @@
    align-items: center;
 }
 
+#menu{
+    display: flex;
+    justify-content: center;
+}
 .buttonContainer {
     display: flex;
     flex-direction: row;
@@ -91,7 +110,6 @@
 }
  .editButtons {
 display: flex;
-
 }
 
 
@@ -108,6 +126,9 @@ display: flex;
     border: 0ch;
     font-size: small;
 }
+.deleteButton:hover{
+    opacity: 80%;
+}
 .saveButton {
     display: flex;
     justify-content: center;
@@ -118,6 +139,9 @@ display: flex;
     border-radius: 10%;
     border: 1px solid black;
     font-size: small;
+}
+.saveButton:hover{
+    opacity: 80%;
 }
 .CreateFormButtons{
     display: flex;
@@ -135,6 +159,9 @@ display: flex;
     margin: 1em;
     border: 1px solid black;
     font-size: small;
+}
+.editButton:hover{
+    opacity: 70%;
 }
 .editForm{
     display: flex;
@@ -161,14 +188,12 @@ display: flex;
     border: 1px solid black;
     font-size: small;
 }
+.videoButton:hover{
+    opacity: 80%;
+}
 .recipeVideo {
     margin: 1em;
     border-radius: 10%;
-}
-#navbar-toggler{
-    border: 2px solid black;
-    width: 181px;
-
 }
 .recipeImage {
     margin: 1em;
@@ -192,7 +217,14 @@ display: flex;
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
 }
-
+.seeIngredients{
+    background-color: lightcyan;
+    border: 1px solid black;
+    border-radius: 15%;
+}
+.seeIngredients:hover{
+    transform: scale(1,1.2);
+}
 #recipe-cardBody {
     padding-left: 0px;
     padding-right: 0px;
@@ -209,14 +241,19 @@ display: flex;
     display: flex;
     justify-content: center;
     opacity: 90%;
-    /* background-image:url( "https://previews.123rf.com/images/teravector/teravector1901/teravector190100089/126359790-spacious-kitchen-interior-design-cartoon-vector-illustration-with-chairs-around-dinning-table-variou.jpg"); */
 }
 .logoCircle {
     display: flex;
     justify-content: center;
     flex-direction: row;
     align-items: center;
-
+}
+main{ 
+    position: relative;
+    top: 2;
+    width: 100%;
+    /* background-image: url("https://img.freepik.com/free-photo/concept-tasty-food-with-taco-white-background_185193-69605.jpg?w=2000"); */
+    fill-opacity: initial;
 }
 .modal-body{
     word-wrap: break-word;

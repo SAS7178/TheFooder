@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Login from "./Login";
-import Register from "./Register";
+import Login from "./login/Login";
+import Register from "./register/Register";
 import RecipeList from "./recipe/RecipeList";
 import UserProfile from "./userProfile/UserProfile";
 import { RecipeCreate } from "./recipe/RecipeCreate";
