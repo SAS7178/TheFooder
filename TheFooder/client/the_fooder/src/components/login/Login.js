@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { useNavigate, Link } from "react-router-dom";
-import { login } from "../../modules/authManager";
+import { login, onLoginStatusChange } from "../../modules/authManager";
 import "./Login.css";
+import Header from "../header/Header";
+// import Header from "../header/Header";
 export default function Login() {
   const navigate = useNavigate();
-
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
+
+
+  useEffect(() => {
+    onLoginStatusChange(setIsLoggedIn);
+  }, []);
 
   const loginSubmit = (e) => {
     e.preventDefault();
@@ -17,6 +24,9 @@ export default function Login() {
   };
 
   return (
+    
+    <article id="backgroundLogin">
+   <Header  isLoggedIn={isLoggedIn} />
     <Form className="login" onSubmit={loginSubmit}>
       <fieldset>
         <FormGroup>
@@ -44,5 +54,7 @@ export default function Login() {
         </em>
       </fieldset>
     </Form>
+    </article>
+    
   );
 }

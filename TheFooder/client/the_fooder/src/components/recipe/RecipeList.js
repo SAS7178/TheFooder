@@ -4,11 +4,19 @@ import { getAllRecipes } from "../../modules/recipeManager";
 import "./Recipe.css";
 import { getUser } from "../../modules/userProfileManager";
 import { WelcomeFooter } from "../footer/Footer";
+import Header from "../header/Header";
+import { onLoginStatusChange } from "../../modules/authManager";
 
 export default function RecipeList() {
   const [recipes, setRecipes] = useState([]);
   const [userProfile, setProfileDetails] = useState({})
   const [randomRecipe, setRandom] = useState([])
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
+
+
+  useEffect(() => {
+    onLoginStatusChange(setIsLoggedIn);
+  }, []);
 
 
   useEffect(() => {
@@ -43,7 +51,8 @@ export default function RecipeList() {
   const bool = false;
 
   return (
-   <>
+    <div className="recipeListPage">
+    <Header  isLoggedIn={isLoggedIn} />
    <div className="container">
       <div className="row justify-content-center">
         <h2><strong>Welcome back</strong> {userProfile.name}!</h2>
@@ -51,7 +60,7 @@ export default function RecipeList() {
           <span className="logoCircle">
             {/* <img alt="" src="https://previews.123rf.com/images/emojiimage/emojiimage1910/emojiimage191002096/132873726-groceries-vector-illustrated-set-different-food-from-supermarket-concept-purchases-collection.jpg" width="100%" height="150em"></img> */}
             <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
-            <img alt="" className="fooderLogo" src={process.env.PUBLIC_URL + "TheFooder-1.png"} />
+            <img alt="" className="fooderLogo" src={process.env.PUBLIC_URL + "TheFooderMainTransparent.png"} />
             <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
             {/* <img alt="" src="https://www.kindpng.com/picc/m/219-2192745_vegetables-vector-illustrations-ndash-free-download-imagenes-de.png" width="100%" height="150em"></img> */}
           </span>
@@ -68,7 +77,7 @@ export default function RecipeList() {
       </div>
     </div>
       <WelcomeFooter />
-      </>
+      </div>
   )
 }
 
