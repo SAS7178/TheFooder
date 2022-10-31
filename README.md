@@ -1,7 +1,6 @@
 # TheFooder
-# Fit-Generation
 
-In this project I, Stephen Smith, initiated through Nashville Software School this application for my full-stack Capestone. 
+In this project I, Stephen Smith, initiated through Nashville Software School this application for my Full-Stack Capestone. 
 
 The goal, in this application build was to provide an individual with easy convenient tools to create/find and save recipes, aswell as the instruct
 ions/ingredients and image/video to view personalized page with created and saved recipes based on their unique to them. 
@@ -54,6 +53,7 @@ Application GIF below
 4.User Login
 
       Stephen@Smith.com
+      Password: smithers
 
 
 - The-Fooder repository: https://github.com/SAS7178/TheFooder
