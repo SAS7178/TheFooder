@@ -59,7 +59,7 @@ margin-right: 1em;
 }
 .nav-item:hover{
     transform: scale(1,2);
-
+    scale: (1,2);
 }
 #navbar-toggler{
     height: 3em;
@@ -217,7 +217,14 @@ display: flex;
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
 }
-
+.seeIngredients{
+    background-color: lightcyan;
+    border: 1px solid black;
+    border-radius: 15%;
+}
+.seeIngredients:hover{
+    transform: scale(1,1.2);
+}
 #recipe-cardBody {
     padding-left: 0px;
     padding-right: 0px;
@@ -234,7 +241,6 @@ display: flex;
     display: flex;
     justify-content: center;
     opacity: 90%;
-    /* background-image:url( "https://image.shutterstock.com/image-photo/spices-herbs-wooden-spoons-website-260nw-1130253749.jpg"); */
 }
 .logoCircle {
     display: flex;

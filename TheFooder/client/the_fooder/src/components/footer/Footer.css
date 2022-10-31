@@ -58,15 +58,12 @@
 
 }
 
-.footer__link {
-    opacity: 100%;
+#footer__link{
+      opacity: 100%;
     color: blue;
     text-decoration: underline;
     margin-left: 2em;
 }
-/* .footerLine{
-    color: rgb(243, 243, 94);
-} */
 .snap__logo {
     border-radius: 30%;
 }

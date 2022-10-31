@@ -9,7 +9,7 @@ import {
   NavItem,
   NavLink,
 } from "reactstrap";
-import { logout } from "../modules/authManager";
+import { logout } from "../../modules/authManager";
 import "./Header.css";
 
 export default function Header({ isLoggedIn }) {
@@ -21,8 +21,8 @@ export default function Header({ isLoggedIn }) {
       <Navbar className="navbar" expand="md">
         <NavbarBrand tag={RRNavLink} to="/">
           &nbsp;   
-          <img className="headerLogo" src={process.env.PUBLIC_URL + "https://thumbs.dreamstime.com/z/master-chef-icon-vector-master-chef-icon-vector-isolated-white-background-172664477.jpg"} />
-          <img className="headertext" src={process.env.PUBLIC_URL + "(TF)TheFooder-icon.png"} />
+          <img className="headerLogo" src={"https://thumbs.dreamstime.com/z/master-chef-icon-vector-master-chef-icon-vector-isolated-white-background-172664477.jpg"} />
+          <img className="headertext" src={"(TF)TheFooder-icon.png"} />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar className="header_options">

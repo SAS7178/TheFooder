@@ -85,19 +85,17 @@ const UserProfile = () => {
         <div className="row justify-content-center">
           <div className="logoContainer">
             <span className="logoCircle">
-              {/* <img alt="" src="https://previews.123rf.com/images/emojiimage/emojiimage1910/emojiimage191002096/132873726-groceries-vector-illustrated-set-different-food-from-supermarket-concept-purchases-collection.jpg" width="100%" height="150em"></img> */}
               <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
               <img alt="" className="fooderLogo" src={process.env.PUBLIC_URL + "TheFooder-1.png"} />
               <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
-              {/* <img alt="" src="https://www.kindpng.com/picc/m/219-2192745_vegetables-vector-illustrations-ndash-free-download-imagenes-de.png" width="100%" height="150em"></img> */}
             </span>
           </div>
           <div></div>
-          {/* <div className="yellowSeperation"> */}
           <div></div>
           <NavbarToggler className='hamburger' id="navbar-toggler" onClick={toggle} />
           <div></div>
           {/* </div> */}
+        
           <Collapse  isOpen={isOpen} navbar>
             <NavbarText className='menu__tag'><strong>Try something new!</strong></NavbarText>
             <Nav id="menu">   
@@ -113,9 +111,13 @@ const UserProfile = () => {
               <div className="yellowSeperation"></div>
             </Nav>
           </Collapse>
-          <h1 className="recipePageHeader"><b>My Creations</b></h1>
+          <div className="yellowSeperation"></div>
+          <h2 className="recipePageHeader"><b>My Contributed Recipes</b></h2>
+          <div className="yellowSeperation"></div>
           {showMeMyRecipes()}
-        <h1 className="recipePageHeader"><b>Saved List</b></h1>
+          <div className="seperation"></div>
+        <h2 className="recipePageHeader"><b>My Favorited Recipes</b></h2>
+        <div className="seperation"></div>
         {showMeMySavedRecipes()}
         </div>
       </div>

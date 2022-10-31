@@ -10,8 +10,8 @@ export const WelcomeFooter = () => {
                 <article className="footer-links">
                     <section className="footer-items">
                         <nav className="footer-features">&nbsp;&nbsp;&nbsp;&nbsp; <div className="font"><b>Popular Features</b></div>
-                            <Link className="footer__link" to="/recipe/create">Create a Recipe </Link>
-                            <Link className="footer__link" to="/userProfile">My Profile View</Link>
+                            <Link id="footer__link" to="/recipe/create">Create a Recipe </Link>
+                            <Link id="footer__link" to="/userProfile">My Profile View</Link>
                             {/* <Link className="footer__link" to="/profile/:customerId">Recipe Search</Link> */}
                         </nav>
                         &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
@@ -31,9 +31,9 @@ export const WelcomeFooter = () => {
                         &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                         <nav className="footer-resources">&nbsp;&nbsp;&nbsp;&nbsp; <div className="font"><b>Helpful Resources</b></div>
-                            <NavLink className="footer__link" href="https://www.who.int/news-room/fact-sheets/detail/healthy-diet">
+                            <NavLink id="footer__link" href="https://www.who.int/news-room/fact-sheets/detail/healthy-diet">
                                 Healthy Nutrition</NavLink>
-                            <NavLink className="footer__link" href="https://ice.edu/newyork/free-online-cooking-classes">
+                            <NavLink id="footer__link" href="https://ice.edu/newyork/free-online-cooking-classes">
                                 Learn about Cooking</NavLink>
                         </nav>
                     </section>

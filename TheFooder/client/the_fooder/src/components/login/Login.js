@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { useNavigate, Link } from "react-router-dom";
-import { login } from "../modules/authManager";
-
+import { login } from "../../modules/authManager";
+import "./Login.css";
 export default function Login() {
   const navigate = useNavigate();
 
@@ -17,10 +17,10 @@ export default function Login() {
   };
 
   return (
-    <Form onSubmit={loginSubmit}>
+    <Form className="login" onSubmit={loginSubmit}>
       <fieldset>
         <FormGroup>
-          <Label for="email">Email</Label>
+          <Label for="email"><b>Email</b></Label>
           <Input
             id="email"
             type="text"
@@ -29,7 +29,7 @@ export default function Login() {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="password">Password</Label>
+          <Label for="password"><b>Password</b></Label>
           <Input
             id="password"
             type="password"

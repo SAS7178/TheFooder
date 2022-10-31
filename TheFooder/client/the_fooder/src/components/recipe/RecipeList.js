@@ -18,7 +18,6 @@ export default function RecipeList() {
      })
   }, []);
 
-  console.log(randomRecipe)
   //methed to hit endpoint that get all recipes
   const getRecipesFromApi = () => {
     getAllRecipes().then(rs => setRecipes(rs));

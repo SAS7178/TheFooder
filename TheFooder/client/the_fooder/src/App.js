@@ -5,7 +5,7 @@ import ApplicationViews from "./components/ApplicationViews";
 import { onLoginStatusChange } from "./modules/authManager";
 // import firebase from "firebase/app";
 import "firebase/auth";
-import Header from './components/Header';
+import Header from './components/header/Header';
 // import { IsUserAdmin } from './modules/userProfileManager';
 
 function App() {

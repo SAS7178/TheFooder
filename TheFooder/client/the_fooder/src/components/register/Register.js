@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { useNavigate } from "react-router-dom";
-import { register } from "../modules/authManager";
+import { register } from "../../modules/authManager";
+import "./Register.css";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -26,18 +27,19 @@ export default function Register() {
   };
 
   return (
-    <Form onSubmit={registerClick}>
-      <fieldset>
-        <FormGroup>
-          <Label htmlFor="name">Display Name</Label>
+    <Form className="register" onSubmit={registerClick}>
+      <fieldset >
+        <FormGroup >
+          <Label htmlFor="name"><b>Display Name</b></Label>
           <Input
+          className="regInput"
             id="name"
             type="text"
             onChange={(e) => setName(e.target.value)}
           />
         </FormGroup>
         <FormGroup>
-          <Label for="email">Email</Label>
+          <Label for="email"><b>Email</b></Label>
           <Input
             id="email"
             type="text"
@@ -45,7 +47,7 @@ export default function Register() {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="password">Password</Label>
+          <Label for="password"><b>Password</b></Label>
           <Input
             id="password"
             type="password"
@@ -53,7 +55,7 @@ export default function Register() {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="confirmPassword">Confirm Password</Label>
+          <Label for="confirmPassword"><b>Confirm Password</b></Label>
           <Input
             id="confirmPassword"
             type="password"
