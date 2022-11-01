@@ -31,8 +31,20 @@ const RandomRecipe = ({ recipe }) => {
     const showRecipeIngredients = (r) => {
         return r.strIngredient1 
         }
-    
-        return (
+        // const embedVid = (recipe) => { 
+        //         {
+        //             var embeddedVideo = recipe.strYoutube.Split("watch?v=")[1].Split("")[0];
+        //             embeddedVideo.strYoutube = `{https://www.youtube.com/embed/${embeddedVideo}}`;
+        //         } return embeddedVideo.strYoutube
+        //     }
+            // console.log(embedVid( recipe))
+            //wat need to give iframe
+            // "https://www.youtube.com/embed/xCh0j3Kisv8"
+
+            //wat api gives
+            // "https:\/\/www.youtube.com\/watch?v=J4D855Q9-jg"
+            
+            return (
         <Card id="card">
             <CardBody id="recipe-cardBody">
                 <section className="recipeContainer">
@@ -76,11 +88,11 @@ const RandomRecipe = ({ recipe }) => {
                             <>
                   <section className='quickView'>
                     <div>{recipe.strMeal}</div>
-                    {/* <iframe className="recipeVideo" width="400" height="300" src={recipe.strYoutube}
+                    {/* <iframe className="recipeVideo" width="400" height="300" src={embedVid(recipe)}
                       title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowfullscreen></iframe> */}
-                  <NavLink id="footer__link" href={recipe.strYoutube}>
-                                Watch the step by step of how to make this recipe!</NavLink>
+                  <NavLink id="footer__link" href={recipe.strYoutube}> 
+                                Watch the step by step of how to make this recipe!</NavLink> 
                   </section>
                 </>
                             </ModalBody>
