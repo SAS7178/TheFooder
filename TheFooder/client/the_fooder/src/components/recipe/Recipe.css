@@ -18,6 +18,16 @@
 .mb-3{
     width: 50%;
 }
+.tickets{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+.search{
+    display: flex;
+    justify-content: right;
+    margin-top: 2em;
+}
 .addRecipeContainer {
     display: flex;
     flex-direction: row;
@@ -51,6 +61,11 @@ opacity: 60%;
     border-radius: 30%;
     background-size: 100%;
     border: none;
+}
+.homeSearchBox{
+    display: flex;
+    justify-content: right;
+    flex-direction: column;
 }
 
 .menu__tag{
@@ -147,6 +162,11 @@ display: flex;
     border-radius: 10%;
     border: 1px solid black;
     font-size: small;
+}
+.searchLogo{
+    height: 2rem;
+    width: 2em;
+    border-radius: 100%;
 }
 .saveButton:hover{
     opacity: 80%;
@@ -270,6 +290,10 @@ main{
     border-color: rgb(73, 192, 73);
     border-right: 5px solid red;
     word-wrap: break-word;
-    margin: 2em;
-    width: 60%;
+    margin: 4em;
+    width: 20%;
+}
+#homeList{
+    display: flex;
+    flex-wrap: wrap;
 }

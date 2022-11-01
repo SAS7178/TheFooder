@@ -34,3 +34,11 @@
     margin-top: 2em;
     margin-left: 7em;
 }
+/* .header_options,::after {
+    display: flex;
+    justify-content: flex-end;
+    font-size: smaller;
+    font-weight: 800;
+    margin-top: -3.5em;
+    margin-left: 7em;
+} */

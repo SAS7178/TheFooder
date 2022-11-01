@@ -57,6 +57,7 @@ const Recipe = ({ recipe, isSavedRecipe, getRecipesFromApi }) => {
       UserProfileId: userProfile.id,
     }
     savedUserRecipe(userObj)
+    console.log(userObj)
     window.alert("The recipe was successfully saved to your profile list!")
   }
   // send endpoint delete method the savedRecipeObjects Id then confirms removed successfully

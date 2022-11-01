@@ -5,7 +5,9 @@ export const RecipeSearch = ({setterFunction}) => {
     return (
 
        <div className="search" >
-           <input className="search" 
+          <img className="searchLogo" src={" https://iconarchive.com/download/i60242/zerode/plump/Search.ico"}/>
+
+           <input className="searchMe" 
            onChange={
                (changeEvent) => {
                    setterFunction(changeEvent.target.value)
