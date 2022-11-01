@@ -9,6 +9,8 @@ import { onLoginStatusChange } from "../../modules/authManager";
 // import { RecipeSearch } from "../search/RecipeSearch";
 // import UserRecipe from "./UserRecipe";
 import RandomRecipe from "./RandomRecipe";
+import { RecipeSearch } from "../search/RecipeSearch";
+import { SearchList } from "../search/SearchList";
 
 export default function RecipeList() {
   // const [searchTerms, setSearchTerms] = useState(null)
@@ -16,7 +18,17 @@ export default function RecipeList() {
   const [userProfile, setProfileDetails] = useState({})
   const [randomRecipe, setRandom] = useState([])
   const [isLoggedIn, setIsLoggedIn] = useState(null);
+  const [searchTerms, setSearchTerms] = useState(null)
 
+  
+  useEffect(
+    () => {
+      if (searchTerms === "")
+        setSearchTerms(null)
+    },
+    [searchTerms]
+  )
+  
 
   useEffect(() => {
     onLoginStatusChange(setIsLoggedIn);
@@ -65,13 +77,20 @@ export default function RecipeList() {
       <div className="container">
         <div className="row justify-content-center">
           <h2><strong>Welcome back</strong> {userProfile.name}!</h2>
+            
           <div className="logoContainer">
             <span className="logoCircle">
               <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
               <img alt="" className="fooderLogo" src={process.env.PUBLIC_URL + "TheFooderMainTransparent.png"} />
               <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
             </span>
+            <div></div>
+            <div>
+          <RecipeSearch setterFunction={setSearchTerms} /> 
+          <SearchList searchTermState={searchTerms} /> 
           </div>
+          </div>
+        
           <RandomRecipe recipe={randomRecipe} />
           <h3 className="recipePageHeader">Recipe List</h3>
           <div className="row justify-content-center">
