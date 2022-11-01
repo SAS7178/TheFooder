@@ -10,6 +10,7 @@ import Recipe from "../recipe/Recipe";
 import UserRecipe from "../recipe/UserRecipe";
 import Header from "../header/Header";
 import { onLoginStatusChange } from "../../modules/authManager";
+import RandomRecipe from "../recipe/RandomRecipe";
 
 
 const UserProfile = () => {
@@ -25,7 +26,7 @@ const UserProfile = () => {
     onLoginStatusChange(setIsLoggedIn);
   }, []);
 
-  const navigate = useNavigate() 
+  const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
@@ -66,11 +67,11 @@ const UserProfile = () => {
   const showMeMyRecipes = () => {
     return recipes.map((recipe) => {
       if (userProfile.id === recipe.userProfileId) {
-        return <UserRecipe recipe={recipe} getRecipesFromApi={getRecipesFromApi}  key={recipe.id} />
+        return <UserRecipe recipe={recipe} getRecipesFromApi={getRecipesFromApi} key={recipe.id} />
       }
     })
   }
-  
+
   //var to pass to let Recipe component know its being called by the userProfile page therefore on savedList
   //and to render unsave button
   const bool = true;
@@ -78,16 +79,41 @@ const UserProfile = () => {
   //method to show current created recipes
   const showMeMySavedRecipes = () => {
     let saves = [];
-     recipes.map((recipe) => {
+    recipes.map((recipe) => {
       savedObjRecipes.map((savedRecipe) => {
         if (userProfile.id === savedRecipe.userProfileId && savedRecipe.recipeId === recipe.id) {
-          saves.push(recipe) 
+          saves.push(recipe)
         }
       })
     })
-    return saves.map((s) => {return <Recipe recipe={s} key={s.id} getRecipesFromApi={getSaved}  isSavedRecipe={bool} />})
+    return saves.map((s) => { return <Recipe recipe={s} key={s.id} getRecipesFromApi={getSaved} isSavedRecipe={bool} /> })
   }
 
+  //method to show current created recipes
+  const showMeMyAPISavedRecipes = () => {
+    let saves = [];
+    savedObjRecipes.map((savedRecipe) => {
+      if (userProfile.id === savedRecipe.userProfileId && savedRecipe.recipeId > 1000) {
+        saves.push(savedRecipe)
+      }
+    })
+    return saves
+  }
+  //   return saves.map((s) => {return <Recipe recipe={s} key={s.id} getRecipesFromApi={getSaved}  isSavedRecipe={bool} />})
+  const getRecipesFromAPiById = () => {
+    let ApiSavedRecipes = [];
+    const APIObjs = showMeMyAPISavedRecipes()
+    APIObjs.map((Obj) => {
+      fetch(`www.themealdb.com/api/json/v1/1/lookup.php?i=${parseInt(Obj.recipeId)}`)
+        .then(response => response.json())
+        .then(response => {
+          const recipe = { ...response }
+          const meal = recipe.meals[0]
+          ApiSavedRecipes.push(meal)
+        })
+      return ApiSavedRecipes.map((s) => { <RandomRecipe recipe={s} key={s.id} getRecipesFromApi={getSaved} isSavedRecipe={bool} /> })
+    })
+  }
   return (
     <>
       <Header isLoggedIn={isLoggedIn} />
@@ -105,18 +131,18 @@ const UserProfile = () => {
           <NavbarToggler className='hamburger' id="navbar-toggler" onClick={toggle} />
           <div></div>
           {/* </div> */}
-        
-          <Collapse  isOpen={isOpen} navbar>
+
+          <Collapse isOpen={isOpen} navbar>
             <NavbarText className='menu__tag'><strong>Try something new!</strong></NavbarText>
-            <Nav id="menu">   
+            <Nav id="menu">
               <div className="yellowSeperation"></div>
               <div id="userMenuRecipeButtons">
-              <NavItem >
-                <button onClick={() => { navigate("/recipe/create") }} id="createButton" >Create a Recipe</button>
-              </NavItem>
-              <NavLink href="https://www.epicurious.com/">
-             <button id="searchButton">Recipe Web Search</button>
-              </NavLink>
+                <NavItem >
+                  <button onClick={() => { navigate("/recipe/create") }} id="createButton" >Create a Recipe</button>
+                </NavItem>
+                <NavLink href="https://www.epicurious.com/">
+                  <button id="searchButton">Recipe Web Search</button>
+                </NavLink>
               </div>
               <div className="yellowSeperation"></div>
             </Nav>
@@ -126,9 +152,10 @@ const UserProfile = () => {
           <div className="yellowSeperation"></div>
           {showMeMyRecipes()}
           <div className="seperation"></div>
-        <h2 className="recipePageHeader"><b>My Favorited Recipes</b></h2>
-        <div className="seperation"></div>
-        {showMeMySavedRecipes()}
+          <h2 className="recipePageHeader"><b>My Favorited Recipes</b></h2>
+          <div className="seperation"></div>
+          {showMeMySavedRecipes()}
+          {/* {getRecipesFromAPiById()} */}
         </div>
       </div>
       <WelcomeFooter />

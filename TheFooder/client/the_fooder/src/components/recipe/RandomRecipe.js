@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "reactstrap"
 import { Card, CardBody, Modal, ModalBody, ModalFooter } from "reactstrap";
+import { deleteSavedRecipe, getAllSavedRecipes, savedUserRecipe } from "../../modules/savedUserRecipeManager";
+import { getUser } from "../../modules/userProfileManager";
 import "./Recipe.css";
 
-const RandomRecipe = ({ recipe }) => {
+const RandomRecipe = ({ recipe, isSavedRecipe, getRecipesFromApi }) => {
 
+    //get initial states of user and savedRecipe Objects
+    const [userProfile, setProfileDetails] = useState({})
+    const [savedObjRecipes, setSavedRecipes] = useState([]);
     //set initial states for img and vid modal and their set callback functions
     const [vidRModal, setVidRModal] = useState(false);
     const vidRToggle = () => setVidRModal(!vidRModal);
@@ -13,6 +18,25 @@ const RandomRecipe = ({ recipe }) => {
     const [ingRModal, setIngRModal] = useState(false);
     const ingRToggle = () => setIngRModal(!ingRModal);
 
+    const getProfileDetails = () => {
+        getUser().then((user) => {
+            setProfileDetails(user);
+        });
+    };
+    //method to get savedObjs 
+    const getSaved = () => {
+        getAllSavedRecipes().then((savedRecipes) => {
+            setSavedRecipes(savedRecipes);
+        });
+    };
+    //call get saved on render
+    useEffect(() => {
+        getSaved();
+    }, []);
+    //runs get currentuser method on render
+    useEffect(() => {
+        getProfileDetails();
+    }, []);
     //func to close vid modal
     const handleCloseVidModal = () => {
         setVidRModal(false)
@@ -26,36 +50,56 @@ const RandomRecipe = ({ recipe }) => {
         setImgRModal(false)
     }
 
-    // send endpoint delete method the savedRecipeObjects Id then confirms removed successfully
-
-    const showRecipeIngredients = (r) => {
-        return r.strIngredient1 
+    const handleSaveRecipe = (recipeId) => {
+        let userObj = {
+            RecipeId: recipeId,
+            UserProfileId: userProfile.id,
         }
-        // const embedVid = (recipe) => { 
-        //         {
-        //             var embeddedVideo = recipe.strYoutube.Split("watch?v=")[1].Split("")[0];
-        //             embeddedVideo.strYoutube = `{https://www.youtube.com/embed/${embeddedVideo}}`;
-        //         } return embeddedVideo.strYoutube
-        //     }
-            // console.log(embedVid( recipe))
-            //wat need to give iframe
-            // "https://www.youtube.com/embed/xCh0j3Kisv8"
+        savedUserRecipe(userObj)
+        console.log(userObj)
+        window.alert("The recipe was successfully saved to your profile list!")
+    }
+    // send endpoint delete method the savedRecipeObjects Id then confirms removed successfully
+    const handleUnsaveRecipe = (id) => {
+        savedObjRecipes.map((sRObj) => {
+            if (sRObj.recipeId === id) {
+                deleteSavedRecipe(sRObj.id).then(() => {
+                    getRecipesFromApi()
+                })
 
-            //wat api gives
-            // "https:\/\/www.youtube.com\/watch?v=J4D855Q9-jg"
-            
-            return (
+            }
+        })
+        window.alert("The recipe was removed from your profile list.")
+    }
+    const showRecipeIngredients = (r) => {
+        
+        return r.strIngredient1
+    }
+    // const embedVid = (recipe) => { 
+    //         {
+    //             var embeddedVideo = recipe.strYoutube.Split("watch?v=")[1].Split("")[0];
+    //             embeddedVideo.strYoutube = `{https://www.youtube.com/embed/${embeddedVideo}}`;
+    //         } return embeddedVideo.strYoutube
+    //     }
+    // console.log(embedVid( recipe))
+    //wat need to give iframe
+    // "https://www.youtube.com/embed/xCh0j3Kisv8"
+
+    //wat api gives
+    // "https:\/\/www.youtube.com\/watch?v=J4D855Q9-jg"
+
+    return (
         <Card id="card">
             <CardBody id="recipe-cardBody">
                 <section className="recipeContainer">
                     <div className="recipeNameContainer">
-                    <div><b>~Random Recipe~</b></div>
+                        <div><b>~Random Recipe~</b></div>
                         <span className="recipeName"><strong>{recipe.strMeal}</strong></span>
                         <div className="recipeImg">
                             <img onClick={() => { handleOpenImageModal() }} className="recipeImage" alt="recipe" src={recipe.strMealThumb} height="200px" />
                         </div>
 
-                      
+
                         <Modal isOpen={ingRModal} toggle={ingRToggle} {...recipe}>
                             <ModalBody>
                                 <div><b>Recipe Ingredients</b></div>
@@ -69,8 +113,8 @@ const RandomRecipe = ({ recipe }) => {
                         </Modal>
                         <button className="seeIngredients" onClick={() => { ingRToggle() }}>See Ingredients</button>
 
-                       
-                       
+
+
                         <Modal isOpen={imgRModal} toggle={imgRToggle} {...recipe}>
                             <ModalBody>
                                 <div>{recipe.strInstructions}</div>
@@ -81,20 +125,20 @@ const RandomRecipe = ({ recipe }) => {
                                 </button>
                             </ModalFooter>
                         </Modal>
-                        
-                        
-                       <Modal isOpen={vidRModal} toggle={vidRToggle} {...recipe}>
+
+
+                        <Modal isOpen={vidRModal} toggle={vidRToggle} {...recipe}>
                             <ModalBody >
-                            <>
-                  <section className='quickView'>
-                    <div>{recipe.strMeal}</div>
-                    {/* <iframe className="recipeVideo" width="400" height="300" src={embedVid(recipe)}
+                                <>
+                                    <section className='quickView'>
+                                        <div>{recipe.strMeal}</div>
+                                        {/* <iframe className="recipeVideo" width="400" height="300" src={embedVid(recipe)}
                       title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowfullscreen></iframe> */}
-                  <NavLink id="footer__link" href={recipe.strYoutube}> 
-                                Watch the step by step of how to make this recipe!</NavLink> 
-                  </section>
-                </>
+                                        <NavLink id="footer__link" href={recipe.strYoutube}>
+                                            Watch the step by step of how to make this recipe!</NavLink>
+                                    </section>
+                                </>
                             </ModalBody>
                             <ModalFooter>
                                 <button onClick={() => { handleCloseVidModal() }}>
@@ -107,29 +151,28 @@ const RandomRecipe = ({ recipe }) => {
                                 className="videoButton">
                                 Watch Video
                             </button>
+                            {
+                                !isSavedRecipe
+                                    ?
+                                    <button onClick={() => {
+                                        handleSaveRecipe(parseInt(recipe.idMeal))
+                                    }}
+                                        className="saveButton">
+                                        Save Recipe
+                                    </button> : <button onClick={() => {
+                                        handleUnsaveRecipe(parseInt(recipe.idMeal))
+                                    }}
+                                        className="editButton">
+                                        Unsave Recipe
+                                    </button>
+                            }
                         </div>
-                    
-                    
                     </div>
                 </section>
             </CardBody>
         </Card>
     );
-}; export default RandomRecipe;
+};
 
-
-
-    //     return (
-        //         <Card id="card">
-        //         <CardBody id="recipe-cardBody">
-        //             <section className="recipeContainer">
-        //                 <div className="recipeNameContainer">
-        //                     <span className="recipeName"><strong>{recipe.strMeal}</strong></span>
-        //         {/* {Rando(recipe)} */}
-        //                 </div>
-        //             </section>
-        //         </CardBody>
-        //     </Card>
-        // );
-    // };
+export default RandomRecipe;
 

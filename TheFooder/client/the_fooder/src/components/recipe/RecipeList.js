@@ -16,11 +16,23 @@ export default function RecipeList() {
   // const [searchTerms, setSearchTerms] = useState(null)
   const [recipes, setRecipes] = useState([]);
   const [userProfile, setProfileDetails] = useState({})
-  const [randomRecipe, setRandom] = useState([])
+  const [randomRecipe, setRandom] = useState({})
+  const [randomRecipe2, setRandom2] = useState({})
+  const [randomRecipe3, setRandom3] = useState({})
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [searchTerms, setSearchTerms] = useState(null)
+  // const [aRecipes, setARecipes] = useState({});
 
-  
+  // useEffect(() => {
+  //   fetch(`www.themealdb.com/api/json/v1/1/search.php?f=a`)
+  //     .then(response => response.json())
+  //     .then(response => {
+  //       const recipe = { ...response }
+  //       const meal = recipe.meals[0]
+  //       setARecipes(meal)
+  //     })
+  // }, []);
+
   useEffect(
     () => {
       if (searchTerms === "")
@@ -28,7 +40,7 @@ export default function RecipeList() {
     },
     [searchTerms]
   )
-  
+
 
   useEffect(() => {
     onLoginStatusChange(setIsLoggedIn);
@@ -44,6 +56,25 @@ export default function RecipeList() {
         setRandom(meal)
       })
   }, []);
+  useEffect(() => {
+    fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
+      .then(response => response.json())
+      .then(response => {
+        const recipe = { ...response }
+        const meal = recipe.meals[0]
+        setRandom2(meal)
+      })
+  }, []);
+  useEffect(() => {
+    fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
+      .then(response => response.json())
+      .then(response => {
+        const recipe = { ...response }
+        const meal = recipe.meals[0]
+        setRandom3(meal)
+      })
+  }, []);
+
 
   //methed to hit endpoint that get all recipes
   const getRecipesFromApi = () => {
@@ -77,7 +108,11 @@ export default function RecipeList() {
       <div className="container">
         <div className="row justify-content-center">
           <h2><strong>Welcome back</strong> {userProfile.name}!</h2>
-            
+
+            <div className="homeSearchBox">
+              <RecipeSearch setterFunction={setSearchTerms} />
+              <SearchList searchTermState={searchTerms} />
+            </div>
           <div className="logoContainer">
             <span className="logoCircle">
               <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
@@ -85,15 +120,13 @@ export default function RecipeList() {
               <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
             </span>
             <div></div>
-            <div>
-          <RecipeSearch setterFunction={setSearchTerms} /> 
-          <SearchList searchTermState={searchTerms} /> 
           </div>
-          </div>
-        
+
           <RandomRecipe recipe={randomRecipe} />
+          <RandomRecipe recipe={randomRecipe2} />
+          <RandomRecipe recipe={randomRecipe3} />
           <h3 className="recipePageHeader">Recipe List</h3>
-          <div className="row justify-content-center">
+          <div id="homeList" className="row justify-content-center">
             &nbsp;
             {
               recipes.map((recipe) => (
