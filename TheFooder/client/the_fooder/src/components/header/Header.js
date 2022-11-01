@@ -10,9 +10,9 @@ import {
   NavLink,
 } from "reactstrap";
 import { logout } from "../../modules/authManager";
-import { RecipeSearch } from "../search/RecipeSearch";
-import { SearchList } from "../search/SearchList";
 import "./Header.css";
+// import { RecipeSearch } from "../search/RecipeSearch";
+// import { SearchList } from "../search/SearchList";
 
 
 
@@ -20,9 +20,7 @@ export default function Header({ isLoggedIn }) {
   // const [searchTerms, setSearchTerms] = useState(null)
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  
-  
-  
+
   // useEffect(
   //   () => {
   //     if (searchTerms === "")
@@ -30,27 +28,26 @@ export default function Header({ isLoggedIn }) {
   //   },
   //   [searchTerms]
   // )
-  
 
   return (
     <div>
       <Navbar className="navbar" expand="md">
         <NavbarBrand tag={RRNavLink} to="/">
-          &nbsp;   
+          &nbsp;
           <img className="headerLogo" src={"https://thumbs.dreamstime.com/z/master-chef-icon-vector-master-chef-icon-vector-isolated-white-background-172664477.jpg"} />
           <img className="headertext" src={"(TF)TheFooder-icon.png"} />
         </NavbarBrand>
-        
-          {/* <RecipeSearch setterFunction={setSearchTerms} /> 
+
+        {/* <RecipeSearch setterFunction={setSearchTerms} /> 
           <SearchList searchTermState={searchTerms} /> 
-         */}
+        */}
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar className="header_options">
           <Nav className="mr-auto" navbar>
             {/* When isLoggedIn === true, we will render the Home link */}
             {isLoggedIn && (
               <div className="header_options" >
-              <NavItem>
+                <NavItem>
                   <NavLink tag={RRNavLink} to="/">HOME</NavLink>
                 </NavItem>
                 <NavItem>

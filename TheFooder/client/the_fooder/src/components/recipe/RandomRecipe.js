@@ -72,21 +72,17 @@ const RandomRecipe = ({ recipe, isSavedRecipe, getRecipesFromApi }) => {
         window.alert("The recipe was removed from your profile list.")
     }
     const showRecipeIngredients = (r) => {
-        
-        return r.strIngredient1
+        let ingList = [];
+        for (let i = 1; i < 21; i++) {
+            ingList[i] = r[`strIngredient${i}`]
+        } return ingList
     }
-    // const embedVid = (recipe) => { 
-    //         {
-    //             var embeddedVideo = recipe.strYoutube.Split("watch?v=")[1].Split("")[0];
-    //             embeddedVideo.strYoutube = `{https://www.youtube.com/embed/${embeddedVideo}}`;
-    //         } return embeddedVideo.strYoutube
-    //     }
-    // console.log(embedVid( recipe))
-    //wat need to give iframe
-    // "https://www.youtube.com/embed/xCh0j3Kisv8"
-
-    //wat api gives
-    // "https:\/\/www.youtube.com\/watch?v=J4D855Q9-jg"
+    const embedVid = (url) => {
+        {
+            var embeddedVideo = url?.split("watch?v=")[1];
+            return `https://www.youtube.com/embed/${embeddedVideo}`;
+        }
+    }
 
     return (
         <Card id="card">
@@ -98,8 +94,6 @@ const RandomRecipe = ({ recipe, isSavedRecipe, getRecipesFromApi }) => {
                         <div className="recipeImg">
                             <img onClick={() => { handleOpenImageModal() }} className="recipeImage" alt="recipe" src={recipe.strMealThumb} height="200px" />
                         </div>
-
-
                         <Modal isOpen={ingRModal} toggle={ingRToggle} {...recipe}>
                             <ModalBody>
                                 <div><b>Recipe Ingredients</b></div>
@@ -112,9 +106,6 @@ const RandomRecipe = ({ recipe, isSavedRecipe, getRecipesFromApi }) => {
                             </ModalFooter>
                         </Modal>
                         <button className="seeIngredients" onClick={() => { ingRToggle() }}>See Ingredients</button>
-
-
-
                         <Modal isOpen={imgRModal} toggle={imgRToggle} {...recipe}>
                             <ModalBody>
                                 <div>{recipe.strInstructions}</div>
@@ -125,16 +116,14 @@ const RandomRecipe = ({ recipe, isSavedRecipe, getRecipesFromApi }) => {
                                 </button>
                             </ModalFooter>
                         </Modal>
-
-
                         <Modal isOpen={vidRModal} toggle={vidRToggle} {...recipe}>
                             <ModalBody >
                                 <>
                                     <section className='quickView'>
                                         <div>{recipe.strMeal}</div>
-                                        {/* <iframe className="recipeVideo" width="400" height="300" src={embedVid(recipe)}
-                      title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen></iframe> */}
+                                        <iframe className="recipeVideo" width="400" height="300" src={embedVid(recipe.strYoutube)}
+                                            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
                                         <NavLink id="footer__link" href={recipe.strYoutube}>
                                             Watch the step by step of how to make this recipe!</NavLink>
                                     </section>

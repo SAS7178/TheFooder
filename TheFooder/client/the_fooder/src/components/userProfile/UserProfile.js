@@ -152,7 +152,7 @@ const UserProfile = () => {
           <div className="yellowSeperation"></div>
           {showMeMyRecipes()}
           <div className="seperation"></div>
-          <h2 className="recipePageHeader"><b>My Favorited Recipes</b></h2>
+          <h2 className="recipePageHeader"><b>My Saved Recipes</b></h2>
           <div className="seperation"></div>
           {showMeMySavedRecipes()}
           {/* {getRecipesFromAPiById()} */}
