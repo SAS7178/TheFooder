@@ -23,6 +23,7 @@ export default function RecipeList() {
   const [randomRecipe4, setRandom4] = useState({})
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [searchTerms, setSearchTerms] = useState(null)
+
   // const [aRecipes, setARecipes] = useState({});
 
   // useEffect(() => {
@@ -35,6 +36,19 @@ export default function RecipeList() {
   //     })
   // }, []);
 
+// get random cocktails from API
+  // const options = {
+  //   method: 'GET',
+  //   headers: {
+  //     'X-RapidAPI-Key': 'df702358e3msh0a60399ba97f41ap1be78cjsn2053bd221176',
+  //     'X-RapidAPI-Host': 'cocktails3.p.rapidapi.com'
+  //   }
+  // };
+  // fetch('https://cocktails3.p.rapidapi.com/random', options)
+  //   .then(response => response.json())
+  //   .then(response => console.log(response))
+  //   .catch(err => console.error(err));
+
   useEffect(
     () => {
       if (searchTerms === "")
@@ -43,11 +57,9 @@ export default function RecipeList() {
     [searchTerms]
   )
 
-
   useEffect(() => {
     onLoginStatusChange(setIsLoggedIn);
   }, []);
-
 
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
@@ -86,7 +98,6 @@ export default function RecipeList() {
       })
   }, []);
 
-
   //methed to hit endpoint that get all recipes
   const getRecipesFromApi = () => {
     getAllRecipes().then(rs => setRecipes(rs));
@@ -120,16 +131,10 @@ export default function RecipeList() {
         <div className="row justify-content-center">
           <div className="underHeader">
             <h2><strong>Welcome back</strong> {userProfile.name}!</h2>
-            <div className="underHeaderIcons">
-              <a href='https://twitter.com/'><img alt="" className="header__logo" src="https://i.pinimg.com/originals/5c/a9/8c/5ca98c73b2bb7a02bf8350933c7ca443.png" width="25" height="20"></img></a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href='https://www.snapchat.com/'><img alt="" className="header__logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnxW5tD8WNeXeScnfk_D6nxjaPuEW-NVfIczYEH3KWmnw0vkkpfBG0rHZRJGzzZBebgCE&usqp=CAU" width="25" height="20"></img></a>&nbsp;&nbsp;
-              <a href='https://www.facebook.com/'><img alt="" className="header__logo" src="https://freepngimg.com/thumb/facebook/62588-and-icons-facebook-computer-black-logo-white.png" width="30" height="25"></img></a>
-              <a href='https://www.instagram.com/'><img alt="" className="header__logo" src="https://i.pinimg.com/originals/63/9b/3d/639b3dafb544d6f061fcddd2d6686ddb.png" width="25" height="18"></img></a>
-            </div>
-          </div>
           <div className="homeSearchBox">
             <RecipeSearch setterFunction={setSearchTerms} />
             <SearchList searchTermState={searchTerms} />
+          </div>
           </div>
           <div className="logoContainer">
             <span className="logoCircle">
@@ -155,25 +160,25 @@ export default function RecipeList() {
 
               {
                 altText: 'Gordon Ramsays Hells kitchen',
-                caption: 'Get into Cooking!',
+                caption: 'Gordon Ramsays Hells kitchen',
                 key: 1,
                 src: 'https://optimise2.assets-servd.host/nostalgic-shrike/production/dining/Hells-Kitchen/Gordon-Ramsay-Hells-Kitchen-CARD-824x440.jpg?w=1200&h=630&q=82&auto=format&fit=crop&dm=1654537358&s=e3739a1f4522f820ac8e87117b55a7bb'
                 //  onClick(href = "https://www.caesars.com/caesars-palace/restaurants/hells-kitchen")
 
               },
               {
-                altText: 'trauma yoga room',
-                caption: 'Trauma Yoga',
+                altText: '',
+                caption: '80+ RECIPES FROM AROUND THE WORLD TO MAKE AT HOME',
                 key: 2,
-                src: 'https://images.squarespace-cdn.com/content/v1/5e629534caa5281c111f060d/1590536808236-QI2MNON9ON8NQQL9RRHD/hero-image?format=1500w'
-                // https://www.thetrymethod.com/
+                src: 'https://fouraroundtheworld.com/wp-content/uploads/2020/04/Traditional-recipes-from-around-the-world-to-make-at-home-1.jpg'
+                // https://fouraroundtheworld.com/traditional-recipes-around-the-world/
               },
               {
-                altText: 'Toughest Race in the World',
-                caption: 'Echo Challenge(World/s Toughest)',
+                altText: '32 Easy Desserts To Make at Home',
+                caption: '32 Easy Desserts To Make at Home',
                 key: 3,
-                src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb2qTHxQK6PT5Oi84IJn4kq1DoqYcRTY0D0A&usqp=CAU'
-                // https://mybigplunge.com/culture/movies-documentaries/new-reality-show-worlds-toughest-race-eco-challenge-fiji-amazon-prime-video-keeps-viewers-engaged/
+                src: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZGVzc2VydHN8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60'
+                //https://insanelygoodrecipes.com/easy-desserts/
               }
             ]}
           />
