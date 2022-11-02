@@ -135,6 +135,8 @@
 }
 
 .carousel-inner {
+    border-radius: 15%15%15%15%;
+    border: 1px solid red;
     align-items: center;
     margin-top: 1em;
     width: 100%;
@@ -156,10 +158,7 @@
     justify-content: space-between;
 }
 
-.underHeaderIcons {
-    margin-top: -2em;
-    margin-right: -1em;
-}
+
 
 .header__logo {
     opacity: 70%;
@@ -221,6 +220,11 @@
     height: 2rem;
     width: 2em;
     border-radius: 100%;
+}
+.homeSearchBox{
+    display: flex;
+    margin-right: -5em;
+    margin-top: -3em;
 }
 
 .saveButton:hover {
@@ -388,7 +392,7 @@ main {
 
 .carouselBackground {
     display: flex;
-    height: 35em;
+    height: 46em;
     width: 100%;
     justify-content: center;
     background-color: black;

@@ -1,4 +1,4 @@
-import { NavLink } from "reactstrap"
+import { Card, CardImg, CardImgOverlay, CardText, CardTitle, NavLink } from "reactstrap"
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Collapse, Nav, NavbarText, NavbarToggler, NavItem } from "reactstrap";
@@ -151,6 +151,25 @@ const UserProfile = () => {
           <h2 className="recipePageHeader"><b>My Contributed Recipes</b></h2>
           <div className="yellowSeperation"></div>
           {showMeMyRecipes()}
+          <section className="card-box">
+          <Card inverse className="welcome__card">
+            <CardImg
+              alt="Card image cap"
+              src="https://picsum.photos/900/270?grayscale"
+              className="card-img"
+            />
+            <CardImgOverlay className="overLay">
+              <CardTitle className="qoute-box" tag="h5">
+                {/* "{`${quote.Quote}`}"
+                -{`${quote.Author}`}- */}
+              </CardTitle>
+              <CardText>
+                <small className="text-quote">Cooking is life
+                </small>
+              </CardText>
+            </CardImgOverlay>
+          </Card>
+        </section>
           <div className="seperation"></div>
           <h2 className="recipePageHeader"><b>My Saved Recipes</b></h2>
           <div className="seperation"></div>
