@@ -6,12 +6,12 @@ import { getUser } from "../../modules/userProfileManager";
 import { WelcomeFooter } from "../footer/Footer";
 import Header from "../header/Header";
 import { onLoginStatusChange } from "../../modules/authManager";
-// import { RecipeSearch } from "../search/RecipeSearch";
-// import UserRecipe from "./UserRecipe";
 import RandomRecipe from "./RandomRecipe";
 import { RecipeSearch } from "../search/RecipeSearch";
 import { SearchList } from "../search/SearchList";
 import { UncontrolledCarousel } from "reactstrap";
+// import { RecipeSearch } from "../search/RecipeSearch";
+// import UserRecipe from "./UserRecipe";
 
 export default function RecipeList() {
   // const [searchTerms, setSearchTerms] = useState(null)
@@ -36,7 +36,7 @@ export default function RecipeList() {
   //     })
   // }, []);
 
-// get random cocktails from API
+  // get random cocktails from API
   // const options = {
   //   method: 'GET',
   //   headers: {
@@ -123,83 +123,87 @@ export default function RecipeList() {
   const bool = false;
 
   return (
-    <div className="recipeListPage">
-      <Header isLoggedIn={isLoggedIn} />
-      {/* <RecipeSearch setterFunction={setSearchTerms} /> */}
-      {/* <UserRecipe searchTermState={searchTerms} />/ */}
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="underHeader">
-            <h2><strong>Welcome back</strong> {userProfile.name}!</h2>
-          <div className="homeSearchBox">
-            <RecipeSearch setterFunction={setSearchTerms} />
-            <SearchList searchTermState={searchTerms} />
-          </div>
-          </div>
-          <div className="logoContainer">
-            <span className="logoCircle">
-              <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
-              <img alt="" className="fooderLogo" src={process.env.PUBLIC_URL + "TheFooderMainTransparent.png"} />
-              <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
-            </span>
-          </div>
-          <div className="homeImages">
-            <img alt="" src="davide-cantelli-jpkfc5_d-DI-unsplash.jpg" width="39%"></img>
-            <img alt="" src="joseph-gonzalez-zcUgjyqEwe8-unsplash.jpg" width="40%"></img>
-            <img alt="" src="anna-tukhfatullina-food-photographer-stylist-Mzy-OjtCI70-unsplash.jpg" width="39%"></img>
-          </div>
-          <div className="randoms">
-            <RandomRecipe recipe={randomRecipe} />
-            <RandomRecipe recipe={randomRecipe2} />
-            <RandomRecipe recipe={randomRecipe3} />
-            <RandomRecipe recipe={randomRecipe4} />
-          </div>
-          <div className="carouselBackground">
-          <UncontrolledCarousel className="carousel"
-            items={[
-
-              {
-                altText: 'Gordon Ramsays Hells kitchen',
-                caption: 'Gordon Ramsays Hells kitchen',
-                key: 1,
-                src: 'https://optimise2.assets-servd.host/nostalgic-shrike/production/dining/Hells-Kitchen/Gordon-Ramsay-Hells-Kitchen-CARD-824x440.jpg?w=1200&h=630&q=82&auto=format&fit=crop&dm=1654537358&s=e3739a1f4522f820ac8e87117b55a7bb'
-                //  onClick(href = "https://www.caesars.com/caesars-palace/restaurants/hells-kitchen")
-
-              },
-              {
-                altText: '',
-                caption: '80+ RECIPES FROM AROUND THE WORLD TO MAKE AT HOME',
-                key: 2,
-                src: 'https://fouraroundtheworld.com/wp-content/uploads/2020/04/Traditional-recipes-from-around-the-world-to-make-at-home-1.jpg'
-                // https://fouraroundtheworld.com/traditional-recipes-around-the-world/
-              },
-              {
-                altText: '32 Easy Desserts To Make at Home',
-                caption: '32 Easy Desserts To Make at Home',
-                key: 3,
-                src: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZGVzc2VydHN8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60'
-                //https://insanelygoodrecipes.com/easy-desserts/
-              }
-            ]}
-          />
-          </div>
-          <h3 className="recipePageHeader">Recipe List</h3>
-          <div id="homeList" className="row justify-content-center">
-            &nbsp;
-            {
-              recipes.map((recipe) => (
-                <Recipe recipe={recipe} key={recipe.id} isSavedRecipe={bool} />
-              ))
-            }
+    <div className="recipeListPage" >
+      <div className="imgBack">
+        <Header isLoggedIn={isLoggedIn} />
+        {/* <RecipeSearch setterFunction={setSearchTerms} /> */}
+        {/* <UserRecipe searchTermState={searchTerms} />/ */}
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="underHeader">
+              <h2><strong>Welcome back</strong> {userProfile.name}!</h2>
+              <div className="homeSearchBox">
+                <RecipeSearch setterFunction={setSearchTerms} />
+                <SearchList searchTermState={searchTerms} />
+              </div>
+            </div>
+            <div className="logoContainer">
+              <span className="logoCircle">
+                <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
+                <img alt="" className="fooderLogo" src={process.env.PUBLIC_URL + "TheFooderMainTransparent.png"} />
+                <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
+              </span>
+            </div>
+            <div className="homeImages">
+              <img alt="" src="davide-cantelli-jpkfc5_d-DI-unsplash.jpg" width="33%"></img>
+              <img alt="" src="joseph-gonzalez-zcUgjyqEwe8-unsplash.jpg" width="33%"></img>
+              <img alt="" src="zahir-namane-YTsEZrHqDq0-unsplash.jpg" width="33%"></img>
+            </div>
+            <div className="randoms">
+              <RandomRecipe recipe={randomRecipe} />
+              <RandomRecipe recipe={randomRecipe2} />
+              <RandomRecipe recipe={randomRecipe3} />
+              <RandomRecipe recipe={randomRecipe4} />
+            </div>
           </div>
           <div className="homeBtmImages">
             <img alt="" src="lidye-1Shk_PkNkNw-unsplash.jpg" width="34%"></img>
             <img alt="" src="wasa-crispbread-7r58W-RcFH8-unsplash.jpg" width="50%"></img>
             <img alt="" src="anna-tukhfatullina-food-photographer-stylist-Mzy-OjtCI70-unsplash.jpg" width="34%"></img>
           </div>
+          <div >
+            <h3 className="recipePageHeader">Recipe List</h3>
+            <div id="homeList" className="row justify-content-center">
+              &nbsp;
+              {
+                recipes.map((recipe) => (
+                  <Recipe recipe={recipe} key={recipe.id} isSavedRecipe={bool} />
+                ))
+              }
+            </div>
+            <div className="carouselBackground">
+              <UncontrolledCarousel className="carousel"
+                items={[
+
+                  {
+                    altText: 'Gordon Ramsays Hells kitchen',
+                    caption: 'Gordon Ramsays Hells kitchen',
+                    key: 1,
+                    src: 'https://optimise2.assets-servd.host/nostalgic-shrike/production/dining/Hells-Kitchen/Gordon-Ramsay-Hells-Kitchen-CARD-824x440.jpg?w=1200&h=630&q=82&auto=format&fit=crop&dm=1654537358&s=e3739a1f4522f820ac8e87117b55a7bb'
+                    //  onClick(href = "https://www.caesars.com/caesars-palace/restaurants/hells-kitchen")
+
+                  },
+                  {
+                    altText: '',
+                    caption: '80+ RECIPES FROM AROUND THE WORLD TO MAKE AT HOME',
+                    key: 2,
+                    src: 'https://fouraroundtheworld.com/wp-content/uploads/2020/04/Traditional-recipes-from-around-the-world-to-make-at-home-1.jpg'
+                    // https://fouraroundtheworld.com/traditional-recipes-around-the-world/
+                  },
+                  {
+                    altText: '32 Easy Desserts To Make at Home',
+                    caption: '32 Easy Desserts To Make at Home',
+                    key: 3,
+                    src: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZGVzc2VydHN8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60'
+                    //https://insanelygoodrecipes.com/easy-desserts/
+                  }
+                ]}
+              />
+            </div>
+          </div>
         </div>
+        <WelcomeFooter />
       </div>
-      <WelcomeFooter />
     </div>
   )
 }

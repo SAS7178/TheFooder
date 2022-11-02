@@ -23,6 +23,7 @@ export const RecipeCreate = () => {
             setProfileDetails(userProfile);
         });
     };
+    
     //get currentuser info on component render and set to state
     useEffect(() => {
         getProfileDetails();

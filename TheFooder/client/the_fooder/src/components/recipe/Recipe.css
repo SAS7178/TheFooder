@@ -3,14 +3,19 @@
     letter-spacing: .2rem;
     margin-bottom: 3em;
 }
-
+.quickView{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 .recipeImg {
     display: flex;
     justify-content: center;
 }
 
 .randoms {
-    display: flex;
+    display: contents;
     flex-direction: row;
 }
 
@@ -31,7 +36,9 @@
     flex-direction: column;
     align-items: end;
 }
-
+.searchMe{
+    border: 2px solid black;
+}
 .search {
     display: flex;
     justify-content: right;
@@ -48,11 +55,21 @@
     margin-right: 0px;
 }
 
-/* .recipeListPage{
-    background-image: url( "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS48L_HvM1VQ_ZcVCvhTBIIchwSPQg20dpb7A&usqp=CAU");
-} */
+.recipeListPage{
+    background-repeat:no-repeat;
+    background: fixed;
+    background-position: bottom right,bottom left, top right, top left;
+    background-size: cover;
+    background-image: url("https://previews.123rf.com/images/nadianb/nadianb1711/nadianb171100036/88969699-various-spices-in-a-bowls-on-white-background-top-view-.jpg");
+}
+.imgBack{
+    background-color: rgba(127, 255, 212, 0.493);
+    /* opacity: 50%; */
+}
+
+/* CreatePage stuff here */
 #createButton {
-    background-color: rgb(73, 192, 73);
+    /* background-color: rgb(73, 192, 73); */
     border-radius: 25% 25% 25% 25%;
     color: black;
     margin-top: .8em;
@@ -62,6 +79,8 @@
     font-weight: 900;
 }
 
+
+/*  */
 .recipeImage:hover {
     opacity: 60%;
 }
@@ -88,13 +107,10 @@
 }
 
 .nav-item {
+    /* color: antiquewhite; */
     margin-right: 1em;
 }
 
-.nav-item:hover {
-    transform: scale(1, 2);
-    scale: (1, 2);
-}
 
 #navbar-toggler {
     height: 3em;
@@ -111,7 +127,7 @@
 #searchButton {
     display: flex;
     align-self: flex-end;
-    background-color: rgb(73, 192, 73);
+    /* background-color: rgb(73, 192, 73); */
     border-radius: 25% 25% 25% 25%;
     color: black;
     margin-top: .7em;
@@ -127,13 +143,14 @@
     align-items: center;
 }
 
+/* Carousel stuff here */
+
 .carousel {
     display: flex;
     justify-content: center;
-    /* width: 60%;
-    height: 100%; */
+     /* width: 85%; */
+    /* height: 100%;  */
 }
-
 .carousel-inner {
     border-radius: 15%15%15%15%;
     border: 1px solid red;
@@ -144,6 +161,17 @@
     opacity: 95%;
 }
 
+.carouselBackground {
+    display: flex;
+    height: 46em;
+    width: 100%;
+    justify-content: center;
+    background-color: black;
+    
+}
+/*  */
+
+
 #menu {
     display: flex;
     justify-content: center;
@@ -151,19 +179,13 @@
 
 .underHeader {
     position: relative;
-
+     /* color: aliceblue; */
     display: flex;
     /* background-color: rgb(192, 185, 185); */
     align-items: center;
     justify-content: space-between;
 }
 
-
-
-.header__logo {
-    opacity: 70%;
-    margin: .3em;
-}
 
 .buttonContainer {
     display: flex;
@@ -173,7 +195,16 @@
     text-align: center;
 }
 
+/* //editPage stuff here */
+.editForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid black;
+    background-color: grey;
+}
 #editButton {
+    display: flex;
     color: black;
     background-color: aliceblue;
     padding: 0.25rem 1rem;
@@ -184,6 +215,33 @@
 .editButtons {
     display: flex;
 }
+
+.editButton {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(252, 252, 169);
+    color: black;
+    font: bolder;
+    padding: 0.25rem 1rem;
+    border-radius: 15% 15% 15% 15%;
+    height: 2.5em;
+    margin: 1em;
+    border: 1px solid black;
+    font-size: small;
+}
+
+.editButton:hover {
+    opacity: 70%;
+}
+
+.editForm {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
+/*  */
+
 
 
 .deleteButton {
@@ -219,6 +277,7 @@
 .searchLogo {
     height: 2rem;
     width: 2em;
+    opacity: 100%;
     border-radius: 100%;
 }
 .homeSearchBox{
@@ -234,31 +293,6 @@
 .CreateFormButtons {
     display: flex;
 
-}
-
-.editButton {
-    display: flex;
-    justify-content: center;
-    background-color: rgb(252, 252, 169);
-    color: black;
-    font: bolder;
-    padding: 0.25rem 1rem;
-    border-radius: 15% 15% 15% 15%;
-    height: 2.5em;
-    margin: 1em;
-    border: 1px solid black;
-    font-size: small;
-}
-
-.editButton:hover {
-    opacity: 70%;
-}
-
-.editForm {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: center;
 }
 
 .createForm {
@@ -314,7 +348,7 @@
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
 }
-
+/* see .seeIngredients */
 .seeIngredients {
     background-color: lightcyan;
     border: 1px solid black;
@@ -324,6 +358,9 @@
 .seeIngredients:hover {
     transform: scale(1, 1.2);
 }
+/*  */
+
+
 
 #recipe-cardBody {
     padding-left: 0px;
@@ -340,7 +377,7 @@
 .logoContainer {
     display: flex;
     justify-content: center;
-    opacity: 90%;
+    opacity: 100%;
 }
 
 .logoCircle {
@@ -350,26 +387,26 @@
     align-items: center;
 }
 
-main {
+/* main {
     position: relative;
     top: 2;
     width: 100%;
-    /* background-image: url("https://img.freepik.com/free-photo/concept-tasty-food-with-taco-white-background_185193-69605.jpg?w=2000"); */
+    background-image: url("https://img.freepik.com/free-photo/concept-tasty-food-with-taco-white-background_185193-69605.jpg?w=2000");
     fill-opacity: initial;
-}
+} */
 
 .modal-body {
     word-wrap: break-word;
 }
 
 #card {
-    border: 2px solid;
-    border-color: rgb(73, 192, 73);
-    border-right: 5px solid red;
+    /* border: 2px solid; */
+    /* border-color: rgb(73, 192, 73); */
+    background-color: rgba(0, 0, 0, 0.692);
     word-wrap: break-word;
+    color: antiquewhite;
     margin: 4em;
     position: relative;
-    ;
     width: 35%;
 }
 
@@ -380,20 +417,17 @@ main {
 
 .homeImages {
     display: flex;
+    justify-content: center;
     flex-direction: row;
-    margin-left: -15em;
+    height: 20em;
+    width: 100%;
 }
 
 .homeBtmImages {
     display: flex;
-    flex-direction: row;
-    margin-left: -15em;
-}
-
-.carouselBackground {
-    display: flex;
-    height: 46em;
-    width: 100%;
     justify-content: center;
-    background-color: black;
+    margin-top: 5em;
+    flex-direction: row;
+    height: 20em;
+    width: 100%;
 }

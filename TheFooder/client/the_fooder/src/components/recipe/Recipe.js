@@ -123,7 +123,7 @@ const Recipe = ({ recipe, isSavedRecipe, getRecipesFromApi }) => {
                 </>
               </ModalBody>
               <ModalFooter>
-                <button onClick={() => { handleCloseModal() }}>
+                <button className="quickView" onClick={() => { handleCloseModal() }}>
                   CLOSE
                 </button>
               </ModalFooter>

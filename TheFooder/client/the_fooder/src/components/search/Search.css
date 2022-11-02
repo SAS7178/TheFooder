@@ -1,3 +1,10 @@
 .searchMe{
     margin-left: 1em;
 }
+.quickSearchView{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}

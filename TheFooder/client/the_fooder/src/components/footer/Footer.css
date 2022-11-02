@@ -3,10 +3,12 @@
     font-size: xx-large;
     font-weight: bolder;
 }
+
 .welcome__header {
     display: flex;
     top: 0;
 }
+
 .card-img {
     opacity: 80%;
     margin-top: -4em;
@@ -14,6 +16,7 @@
     border: 3px solid red;
     border-radius: 0px 30px 0px 30px;
 }
+
 .card-box {
     display: flex;
     justify-content: center;
@@ -34,7 +37,7 @@
     background-color: black;
 }
 
-.seperation{
+.seperation {
     display: flex;
     margin: 1em;
     background-image: radial-gradient(rgb(231, 27, 27), #FFF), radial-gradient(#CCC, #FFF);
@@ -45,7 +48,8 @@
     width: 100%;
 
 }
-.yellowSeperation{
+
+.yellowSeperation {
     display: flex;
     align-items: center;
     margin: 1em;
@@ -55,139 +59,105 @@
     opacity: 25%;
     height: 1em;
     width: 100%;
-
 }
 
-#footer__link{
-      opacity: 100%;
+#footer__link {
+    opacity: 100%;
     color: blue;
     text-decoration: underline;
     margin-left: 2em;
 }
-.snap__logo {
-    border-radius: 30%;
-}
+
 .welcome-btns {
     display: flex;
     flex-wrap: wrap;
-  justify-content: center;
+    justify-content: center;
     margin-left: -9em;
     margin-top: -5em;
 }
 
-.overlay{
-    border-radius: 40px;
-}
 .footer {
-    background-image: url("https://thumbs.dreamstime.com/b/abstract-food-background-top-view-dark-rustic-kitchen-table-wooden-cutting-board-cooking-spoon-frame-banner-137304354.jpg");
-    border-top: 4px double rgb(243, 243, 94);
-    border-radius: 15px 5px 0px 0px;
+    display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(128, 0, 0, 0.493);
+    border-radius: 15px 5px 0px 0px;
     position: relative;
     bottom: -3em;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
+
 .footer-items {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
 }
-.contact-about {
-    display: flex;
 
-}
-.about-link {
-    font-size: smaller;
-    background-color: goldenrod;
-    color: black;
-    width: 8em;
-    height: 1.9em;
-    margin-top: 0.5em;
-}
-
-.contact-link {
-    font-size: smaller;
-    background-color: goldenrod;
-    color: black;
-    width: 8em;
-    height: 1.9em;
-    margin-top: 0.5em;
-}
-.modals
-{
-    display: flex;
-    justify-content: center;
-    
-}
 .footer-features {
     display: flex;
     flex-direction: column;
 }
+
 .footer-resources {
     display: flex;
     flex-direction: column;
 }
+
 .font {
     font-size: large;
     font-weight: 800;
-    color: rgb(73, 192, 73);
+    color: rgba(0, 0, 0, 0.979);
 }
-.myPT {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 3em;
-}
-.footer-logos{
+
+/* footer logo stuff */
+.footer-logos {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
+
+.twit__flogo {
+    /* margin: 1em; */
+    border-radius: 30%;
+}
+.snap__flogo {
+    margin-left: 1em;
+    border-radius: 30%;
+}
+.fb__flogo {
+    margin-left: 1em;
+    border-radius: 30%;
+}
+
+.insta__flogo {
+    margin-left: 1em;
+    border-radius: 30%;
+}
+
+
 .footer-foot {
     display: flex;
     flex-direction: column;
     margin-top: 3em;
 }
+
 .font {
     font-size: x-large;
 }
-.myPT {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 3em;
-}
+
 .copyright {
-    color: rgb(243, 243, 94);
-}
-.background__home {
-    background-color: aliceblue;
-}
-.li {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    color: white;
 }
-.welcomeIframe{
-    border-bottom: 6px solid black;
-    border-radius: 140px 140px 10% 10%;
-    margin-left: 8em;
-    margin-bottom: -2em;
-    padding-top: 6em;
-}
+
 .welcomeTTIframe {
     margin-right: 4em;
     border-bottom: 6px solid black;
     border-radius: 140px 140px 10% 10%;
     padding-top: 6em;
-}
-.vertline{
-    margin-left: 13em;
-    margin-right: -22em;
-}
-.nonVids{
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
 }

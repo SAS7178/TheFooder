@@ -43,8 +43,7 @@ export default function IngredientList({ setIngState }) {
             <div className="ingredientChecks">
                 {ingredientChoices.map(ing => <Card outline color="warning" key={ing.id} style={{ marginBottom: '2px' }}>
                     <CardBody value={ing}>
-                        {ing.id} {ing.name}&nbsp;&nbsp;
-
+                        {ing.name}&nbsp;&nbsp;
                         <input id={ing.id} onChange={(event) => {
                             if (event.target.checked) {
                                 event.target.checked = true
@@ -53,7 +52,6 @@ export default function IngredientList({ setIngState }) {
                                 event.target.checked = true
                                 window.alert("error") }
                         }} type="checkbox" />
-
                     </CardBody>
                 </Card>)}
             </div>
