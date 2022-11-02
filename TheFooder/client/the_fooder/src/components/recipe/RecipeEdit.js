@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import { Form, FormGroup } from "reactstrap"
+import { Card, Form, FormGroup } from "reactstrap"
 import { getAllRecipes, getRecipeById, updateRecipe } from "../../modules/recipeManager"
 import "./Recipe.css";
 
@@ -58,6 +58,7 @@ export const RecipeEdit = () => {
         //this form will take input data from the user and set those values to a object
         //then a edit tag button will put to the database and the tag list will rerender will the edited tag
         <>
+        <Card >
             <Form className="editForm">
                 <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="100em"></img>
                 <FormGroup>
@@ -124,6 +125,7 @@ export const RecipeEdit = () => {
                     </fieldset>
                 </FormGroup>
             </Form>
+            </Card>
         </>
     )
 }

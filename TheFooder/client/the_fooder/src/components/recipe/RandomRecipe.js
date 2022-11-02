@@ -50,27 +50,27 @@ const RandomRecipe = ({ recipe, isSavedRecipe, getRecipesFromApi }) => {
         setImgRModal(false)
     }
 
-    const handleSaveRecipe = (recipeId) => {
-        let userObj = {
-            RecipeId: recipeId,
-            UserProfileId: userProfile.id,
-        }
-        savedUserRecipe(userObj)
-        console.log(userObj)
-        window.alert("The recipe was successfully saved to your profile list!")
-    }
+    // const handleSaveRecipe = (recipeId) => {
+    //     let userObj = {
+    //         RecipeId: recipeId,
+    //         UserProfileId: userProfile.id,
+    //     }
+    //     savedUserRecipe(userObj)
+    //     console.log(userObj)
+    //     window.alert("The recipe was successfully saved to your profile list!")
+    // }
     // send endpoint delete method the savedRecipeObjects Id then confirms removed successfully
-    const handleUnsaveRecipe = (id) => {
-        savedObjRecipes.map((sRObj) => {
-            if (sRObj.recipeId === id) {
-                deleteSavedRecipe(sRObj.id).then(() => {
-                    getRecipesFromApi()
-                })
+    // const handleUnsaveRecipe = (id) => {
+    //     savedObjRecipes.map((sRObj) => {
+    //         if (sRObj.recipeId === id) {
+    //             deleteSavedRecipe(sRObj.id).then(() => {
+    //                 getRecipesFromApi()
+    //             })
 
-            }
-        })
-        window.alert("The recipe was removed from your profile list.")
-    }
+    //         }
+    //     })
+    //     window.alert("The recipe was removed from your profile list.")
+    // }
     const showRecipeIngredients = (r) => {
         let ingList = [];
         for (let i = 1; i < 21; i++) {
@@ -92,11 +92,12 @@ const RandomRecipe = ({ recipe, isSavedRecipe, getRecipesFromApi }) => {
                         <div><b>~Random Recipe~</b></div>
                         <span className="recipeName"><strong>{recipe.strMeal}</strong></span>
                         <div className="recipeImg">
+                        </div><div>click(image)</div>
                             <img onClick={() => { handleOpenImageModal() }} className="recipeImage" alt="recipe" src={recipe.strMealThumb} height="200px" />
-                        </div>
+                        
                         <Modal isOpen={ingRModal} toggle={ingRToggle} {...recipe}>
                             <ModalBody>
-                                <div><b>Recipe Ingredients</b></div>
+                                <div><b>Ingredients:</b></div>
                                 <div>{showRecipeIngredients(recipe)}</div>
                             </ModalBody>
                             <ModalFooter>
@@ -108,6 +109,7 @@ const RandomRecipe = ({ recipe, isSavedRecipe, getRecipesFromApi }) => {
                         <button className="seeIngredients" onClick={() => { ingRToggle() }}>See Ingredients</button>
                         <Modal isOpen={imgRModal} toggle={imgRToggle} {...recipe}>
                             <ModalBody>
+                                <b>Instructions:</b>
                                 <div>{recipe.strInstructions}</div>
                             </ModalBody>
                             <ModalFooter>
@@ -119,18 +121,16 @@ const RandomRecipe = ({ recipe, isSavedRecipe, getRecipesFromApi }) => {
                         <Modal isOpen={vidRModal} toggle={vidRToggle} {...recipe}>
                             <ModalBody >
                                 <>
-                                    <section className='quickView'>
-                                        <div>{recipe.strMeal}</div>
+                                    <section className='quickSearchView'>
+                                        <div><b>{recipe.strMeal}</b></div>
                                         <iframe className="recipeVideo" width="400" height="300" src={embedVid(recipe.strYoutube)}
                                             title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                             allowfullscreen></iframe>
-                                        <NavLink id="footer__link" href={recipe.strYoutube}>
-                                            Watch the step by step of how to make this recipe!</NavLink>
                                     </section>
                                 </>
                             </ModalBody>
                             <ModalFooter>
-                                <button onClick={() => { handleCloseVidModal() }}>
+                                <button className="quickSearchView" onClick={() => { handleCloseVidModal() }}>
                                     CLOSE
                                 </button>
                             </ModalFooter>
@@ -140,7 +140,7 @@ const RandomRecipe = ({ recipe, isSavedRecipe, getRecipesFromApi }) => {
                                 className="videoButton">
                                 Watch Video
                             </button>
-                            {
+                            {/* {
                                 !isSavedRecipe
                                     ?
                                     <button onClick={() => {
@@ -154,7 +154,7 @@ const RandomRecipe = ({ recipe, isSavedRecipe, getRecipesFromApi }) => {
                                         className="editButton">
                                         Unsave Recipe
                                     </button>
-                            }
+                            } */}
                         </div>
                     </div>
                 </section>
