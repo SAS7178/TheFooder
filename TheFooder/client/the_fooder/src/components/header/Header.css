@@ -60,24 +60,12 @@ margin-right: -7em;
     scale: (1, 2);
 }
 
-/* .header_options::after {
-    transform: scale(1, 2);
-    scale: (1, 2);
-} */
 .rightHeader {
 display: flex;
 flex-direction:column;
 align-items: center;
 margin-right: 1em;
 }
-/* .header_options,::after {
-    display: flex;
-    justify-content: flex-end;
-    font-size: smaller;
-    font-weight: 800;
-    margin-top: -3.5em;
-    margin-left: 7em;
-} */
 
 .header__logo {
     opacity: 70%;

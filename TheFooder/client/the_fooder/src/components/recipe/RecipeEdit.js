@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { Card, Form, FormGroup } from "reactstrap"
-import { getAllRecipes, getRecipeById, updateRecipe } from "../../modules/recipeManager"
+import { getAllRecipes, updateRecipe } from "../../modules/recipeManager"
 import "./Recipe.css";
 
 export const RecipeEdit = () => {

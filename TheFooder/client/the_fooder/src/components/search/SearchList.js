@@ -2,9 +2,6 @@ import { useEffect, useState } from "react"
 import { getAllRecipes } from "../../modules/recipeManager"
 import { SearchComponent } from "./SearchComponent"
 
-
-
-
 export const SearchList = ({ searchTermState }) => {
     const [recipes, setRecipes] = useState([])
     const [filteredRecipes, setFiltered] = useState([])

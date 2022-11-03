@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "reactstrap"
 import { Card, CardBody, Modal, ModalBody, ModalFooter } from "reactstrap";
 import { deleteSavedRecipe, getAllSavedRecipes, savedUserRecipe } from "../../modules/savedUserRecipeManager";
 import { getUser } from "../../modules/userProfileManager";
@@ -49,7 +48,7 @@ const RandomRecipe = ({ recipe, isSavedRecipe, getRecipesFromApi }) => {
     const handleCloseImageModal = () => {
         setImgRModal(false)
     }
-
+            //Under Construction.........................
     // const handleSaveRecipe = (recipeId) => {
     //     let userObj = {
     //         RecipeId: recipeId,
@@ -66,7 +65,6 @@ const RandomRecipe = ({ recipe, isSavedRecipe, getRecipesFromApi }) => {
     //             deleteSavedRecipe(sRObj.id).then(() => {
     //                 getRecipesFromApi()
     //             })
-
     //         }
     //     })
     //     window.alert("The recipe was removed from your profile list.")
@@ -140,6 +138,7 @@ const RandomRecipe = ({ recipe, isSavedRecipe, getRecipesFromApi }) => {
                                 className="videoButton">
                                 Watch Video
                             </button>
+                            {/* Under Construction............. */}
                             {/* {
                                 !isSavedRecipe
                                     ?

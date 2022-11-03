@@ -1,7 +1,7 @@
-import { Card, CardImg, CardImgOverlay, CardText, CardTitle, NavLink, Offcanvas } from "reactstrap"
+import { Card, CardImg, CardImgOverlay, CardTitle, NavLink, Offcanvas } from "reactstrap"
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Collapse, Nav, NavbarText, NavbarToggler, NavItem } from "reactstrap";
+import { Nav, NavbarText, NavbarToggler, NavItem } from "reactstrap";
 import { getAllRecipes } from "../../modules/recipeManager";
 import { getAllSavedRecipes } from "../../modules/savedUserRecipeManager";
 import { getUser } from "../../modules/userProfileManager";
@@ -11,8 +11,8 @@ import UserRecipe from "../recipe/UserRecipe";
 import Header from "../header/Header";
 import { onLoginStatusChange } from "../../modules/authManager";
 import RandomRecipe from "../recipe/RandomRecipe";
-import "./UserProfile.css";
 import { getAllQoutes } from "../../modules/qouteManager";
+import "./UserProfile.css";
 
 const UserProfile = () => {
   //set initial states of currentuser, allrecipes, and savedObjrecipes
@@ -31,8 +31,6 @@ const UserProfile = () => {
       })
   }, [] // When this array is empty, you are observing initial component state
   )
-
-
 
   useEffect(() => {
     onLoginStatusChange(setIsLoggedIn);
@@ -144,9 +142,9 @@ const UserProfile = () => {
               <NavbarToggler className='hamburger' id="navbar-toggler" onClick={toggle} />
               <Offcanvas id="offCanvas" isOpen={isOpen} navbar>
                 <h1 className="asideHeader">Menu Options</h1>
-                <NavbarText className='menu__tag'><strong>Try something new!</strong></NavbarText>
+                <NavbarText className='menu__tag'><strong></strong></NavbarText>
                 <Nav id="menu">
-                 
+                <div className="yellowSeperation"></div>      
                   <div id="userMenuRecipeButtons">
                     <NavItem >
                       <button onClick={() => { navigate("/recipe/create") }} id="createButton">Create a Recipe</button>
@@ -173,7 +171,7 @@ const UserProfile = () => {
                   />
                   <CardImgOverlay className="overLay">
                     <CardTitle className="qoute-box" tag="h5">
-                      "{qoute.text}"{qoute.author}
+                      "{qoute.text}"<br></br>{qoute.author}
                     </CardTitle>
                   </CardImgOverlay>
                 </Card>

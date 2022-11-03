@@ -11,8 +11,6 @@ import { RecipeSearch } from "../search/RecipeSearch";
 import { SearchList } from "../search/SearchList";
 import { Card, UncontrolledCarousel } from "reactstrap";
 import { getAllQoutes } from "../../modules/qouteManager";
-// import { RecipeSearch } from "../search/RecipeSearch";
-// import UserRecipe from "./UserRecipe";
 
 export default function RecipeList() {
   // const [searchTerms, setSearchTerms] = useState(null)
@@ -35,7 +33,7 @@ export default function RecipeList() {
       })
   }, [] // When this array is empty, you are observing initial component state
   )
-
+        //Under construction..............
   // useEffect(() => {
   //   fetch(`www.themealdb.com/api/json/v1/1/search.php?f=a`)
   //     .then(response => response.json())
@@ -192,7 +190,6 @@ export default function RecipeList() {
             <div className="carouselBackground">
               <UncontrolledCarousel className="carousel"
                 items={[
-
                   {
                     altText: 'Gordon Ramsays Hells kitchen',
                     caption: 'Gordon Ramsays Hells kitchen',

@@ -14,7 +14,6 @@ export default function Register() {
   const [confirmPassword, setConfirmPassword] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(null);
 
-
   useEffect(() => {
     onLoginStatusChange(setIsLoggedIn);
   }, []);

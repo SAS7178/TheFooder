@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody} from 'reactstrap';
 import "./ContactAbout.css";
 
 export const About = () => {
@@ -11,7 +11,6 @@ export const About = () => {
             <div className=''>
                 <button className='abt-btn' onClick={toggle}>About us</button>
             </div>
-
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Learn About Us</ModalHeader>
                 <ModalBody>
@@ -21,15 +20,10 @@ export const About = () => {
                             <h2>Origin Story...</h2>
                             <div className='contact-address'>
                                 Under Construction...
-
-
                             </div>
                         </div>
                     </>
                 </ModalBody>
-                <ModalFooter>
-
-                </ModalFooter>
             </Modal>
         </div>
     );
