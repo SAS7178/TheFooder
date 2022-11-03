@@ -38,27 +38,26 @@
 }
 
 /* Aside stuff here */
+.asideHeader{
+    color: antiquewhite;
+    margin-left: 1.5em;
+}
 #offCanvas{
     background-color: rgba(0, 0, 0, 0.281);
 }
-#createButton {
-    background-color: rgba(243, 247, 7, 0.486);
+ #createButton {
+    background-color: rgba(85, 252, 19, 0.425);
     border-radius: 25% 25% 25% 25%;
     color: black;
-    margin-top: .8em;
-    border: 2px solid black;
     font-size: medium;
-    margin-left: 3em;
+    margin-bottom: 2em;
     font-weight: 900;
-}
+} 
 #searchButton {
-    display: flex;
-    align-items: center;
-    background-color: rgba(248, 252, 19, 0.445);
+    background-color: rgba(85, 252, 19, 0.425);
     border-radius: 25% 25% 25% 25%;
     color: rgba(0, 0, 0, 0.911);
     margin-top: .7em;
-    border: 2px solid black;
     font-size: medium;
     font-weight: 900;
-}
+} 

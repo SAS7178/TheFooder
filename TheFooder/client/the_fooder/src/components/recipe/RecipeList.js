@@ -175,9 +175,9 @@ export default function RecipeList() {
             <img alt="" src="anna-tukhfatullina-food-photographer-stylist-Mzy-OjtCI70-unsplash.jpg" width="34%"></img>
           </div>
           <div className="iframes">
-            <iframe id="iFrame" width="560" height="315" src="https://www.youtube.com/embed/rQ1g5JuyFYo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe id="iFrame" width="560" height="315" src="https://www.youtube.com/embed/rQ1g5JuyFYo" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ></iframe>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <iframe id="iFrame" width="560" height="315" src="https://www.youtube.com/embed/j58q3WUqBN0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe id="iFrame" width="560" height="315" src="https://www.youtube.com/embed/j58q3WUqBN0" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ></iframe>
           </div>
           <div >
             <div id="homeList" className="row justify-content-center">
@@ -232,8 +232,8 @@ export default function RecipeList() {
               </div>
             </Card>
             <iframe className="welcomeIframe" width="460" height="350" src="https://www.youtube.com/embed/Kpbo9SXbGXE"
-              title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
-          encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; 
+          encrypted-media; gyroscope; picture-in-picture"></iframe>
           </div>
         </div>
         <WelcomeFooter />

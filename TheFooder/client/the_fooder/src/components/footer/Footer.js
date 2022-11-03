@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom"
 import { NavLink } from "reactstrap"
+import { About } from "../contact&about/About"
+import { Contact } from "../contact&about/Contact"
 import "./Footer.css"
 
 export const WelcomeFooter = () => {
@@ -10,8 +12,8 @@ export const WelcomeFooter = () => {
                 <article className="footer-links">
                     <section className="footer-items">
                         <nav className="footer-features">&nbsp;&nbsp;&nbsp;&nbsp; <div className="font"><b>Popular Features</b></div>
-                            <Link id="footer__link" to="/recipe/create">Create a Recipe </Link>
-                            <Link id="footer__link" to="/userProfile">My Profile View</Link>
+                            <Link id="footer___link" to="/">Home Search</Link>
+                            <Link id="footer_link" to="/recipe/create">Create a Recipe </Link>
                             {/* <Link className="footer__link" to="/profile/:customerId">Recipe Search</Link> */}
                         </nav>
                         &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
@@ -20,11 +22,11 @@ export const WelcomeFooter = () => {
 
                         <nav className="footer-features">&nbsp;&nbsp;&nbsp;&nbsp; <div className="font">
                             <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                Contact & Info </b></div>
-                            <div className="modals">
+                                Contact & Info </b></div>&nbsp;&nbsp;
+                            <div className="footerCA">
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                {/* <About/> &nbsp;&nbsp;&nbsp;&nbsp; */}
-                                {/* <Contact/> */}
+                                <About/> &nbsp;&nbsp;&nbsp;&nbsp;
+                                <Contact/>
                             </div>
                         </nav>
                         &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;

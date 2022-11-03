@@ -1,0 +1,38 @@
+
+.contact-address
+{
+display: flex;
+flex-wrap: wrap;
+}
+.contact-gen
+{
+display: flex;
+flex-wrap: wrap;
+}
+.contact-modal
+{
+display: flex;
+flex-wrap: wrap;
+justify-items: center;
+}
+.cont-btn {
+    font-size: smaller;
+    background-color: goldenrod;
+    color: black;
+    width: 8em;
+    height: 1.9em;
+    margin-top: 0.5em;
+}
+.abt-btn {
+    font-size: smaller;
+    background-color: goldenrod;
+    color: black;
+    width: 8em;
+    height: 1.9em;
+    margin-top: 0.5em;
+}
+#contactModal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
