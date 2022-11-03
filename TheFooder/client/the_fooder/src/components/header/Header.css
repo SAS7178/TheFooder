@@ -68,6 +68,7 @@ margin-right: -7em;
 display: flex;
 flex-direction:column;
 align-items: center;
+margin-right: 1em;
 }
 /* .header_options,::after {
     display: flex;

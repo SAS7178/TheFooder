@@ -65,7 +65,10 @@
 #iFrame{
     display: flex;
     border-radius: 10%;
+    border-right: 1em solid rgba(0, 0, 0, 0.301);
+    border-bottom: .3em solid rgba(0, 0, 0, 0.534);
     flex-direction: row;
+    height: 13em;
     justify-content: center;
     margin: 4em;
 }
@@ -77,12 +80,34 @@
     background-image: url("https://previews.123rf.com/images/nadianb/nadianb1711/nadianb171100036/88969699-various-spices-in-a-bowls-on-white-background-top-view-.jpg");
 }
 .imgBack{
-    background-color: rgba(251, 255, 0, 0.219);
+    background-color: rgba(251, 255, 0, 0.274);
 }
 #homeCard{
     width: 75%;
     background-color: rgba(169, 169, 169, 0.253);
     margin-bottom: 2em;
+}
+
+#fitGenCard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 2em; */
+    height: fit-content;
+    background-color: rgba(30, 26, 241, 0.226);
+}
+.fitGen{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row-reverse;
+    /* border: 1px solid black; */
+}
+.welcomeIframe{
+    border-radius: 20%;
+    height: 12em;
+    margin: 2em;
+    height: 16em;
 }
 .homeQoute{
     display: flex;
@@ -92,27 +117,15 @@
     margin-bottom: 0.5rem;
     font-weight: 900;
     word-break: none;
-    /* border: 1px solid black; */
     font-size: x-large;
     margin-bottom: 2em;
     line-height: 1.2;
 }
-/* CreatePage stuff here */
-#createButton {
-    /* background-color: rgb(73, 192, 73); */
-    border-radius: 25% 25% 25% 25%;
-    color: black;
-    margin-top: .8em;
-    border: 2px solid black;
-    font-size: medium;
-    margin-left: 3em;
-    font-weight: 900;
-}
+
 
 .recipeImage:hover {
     opacity: 60%;
 }
-
 
 .homeSearchBox {
     display: flex;
@@ -120,10 +133,6 @@
     flex-direction: column;
 }
 
-.menu__tag {
-    display: flex;
-    justify-content: center;
-}
 
 .nav-item {
     /* color: antiquewhite; */
@@ -138,37 +147,13 @@
 }
 
 #navbar-toggler:hover {
-
-    /* background-position: bottom; */
     transform: scale(1, 1.4);
 }
 
-#searchButton {
-    display: flex;
-    align-self: flex-end;
-    /* background-color: rgb(73, 192, 73); */
-    border-radius: 25% 25% 25% 25%;
-    color: black;
-    margin-top: .7em;
-    margin-left: 5em;
-    border: 2px solid black;
-    font-size: medium;
-    font-weight: 900;
-}
-
-#userMenuRecipeButtons {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
 /* Carousel stuff here */
-
 .carousel {
     display: flex;
     justify-content: center;
-     /* width: 85%; */
-    /* height: 100%;  */
 }
 .carousel-inner {
     border-radius: 15%15%15%15%;
@@ -188,23 +173,19 @@
     background-color: black;
     
 }
-/*  */
-
 
 #menu {
     display: flex;
+    align-items: center;
     justify-content: center;
 }
 
 .underHeader {
     position: relative;
-     /* color: aliceblue; */
     display: flex;
-    /* background-color: rgb(192, 185, 185); */
     align-items: center;
     justify-content: space-between;
 }
-
 
 .buttonContainer {
     display: flex;
@@ -377,9 +358,6 @@
 .seeIngredients:hover {
     transform: scale(1, 1.2);
 }
-/*  */
-
-
 
 #recipe-cardBody {
     padding-left: 0px;
@@ -406,21 +384,11 @@
     align-items: center;
 }
 
-/* main {
-    position: relative;
-    top: 2;
-    width: 100%;
-    background-image: url("https://img.freepik.com/free-photo/concept-tasty-food-with-taco-white-background_185193-69605.jpg?w=2000");
-    fill-opacity: initial;
-} */
-
 .modal-body {
     word-wrap: break-word;
 }
 
 #card {
-    /* border: 2px solid; */
-    /* border-color: rgb(73, 192, 73); */
     background-color: rgba(0, 0, 0, 0.692);
     word-wrap: break-word;
     color: antiquewhite;

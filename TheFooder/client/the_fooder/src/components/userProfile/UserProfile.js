@@ -1,4 +1,4 @@
-import { Card, CardImg, CardImgOverlay, CardText, CardTitle, NavLink } from "reactstrap"
+import { Card, CardImg, CardImgOverlay, CardText, CardTitle, NavLink, Offcanvas } from "reactstrap"
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Collapse, Nav, NavbarText, NavbarToggler, NavItem } from "reactstrap";
@@ -29,7 +29,7 @@ const UserProfile = () => {
       .then(response => {
         setQoute(response[Math.floor(Math.random() * response.length)])
       })
-  },[] // When this array is empty, you are observing initial component state
+  }, [] // When this array is empty, you are observing initial component state
   )
 
 
@@ -127,7 +127,7 @@ const UserProfile = () => {
     })
   }
   return (
-    <>
+    < >
       <div className="userProfilePage">
         <div id="UserProfileBackground">
           <Header isLoggedIn={isLoggedIn} />
@@ -140,27 +140,25 @@ const UserProfile = () => {
                   <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
                 </span>
               </div>
-              <div></div>
-              <div></div>
-              <NavbarToggler className='hamburger' id="navbar-toggler" onClick={toggle} />
-              <div></div>
-              {/* </div> */}
 
-              <Collapse isOpen={isOpen} navbar>
+              <NavbarToggler className='hamburger' id="navbar-toggler" onClick={toggle} />
+              <Offcanvas id="offCanvas" isOpen={isOpen} navbar>
                 <NavbarText className='menu__tag'><strong>Try something new!</strong></NavbarText>
                 <Nav id="menu">
-                  <div className="yellowSeperation"></div>
+                 
                   <div id="userMenuRecipeButtons">
                     <NavItem >
-                      <button onClick={() => { navigate("/recipe/create") }} id="createButton" >Create a Recipe</button>
+                      <button onClick={() => { navigate("/recipe/create") }} id="createButton">Create a Recipe</button>
                     </NavItem>
                     <NavLink href="https://www.epicurious.com/">
                       <button id="searchButton">Recipe Web Search</button>
                     </NavLink>
                   </div>
                   <div className="yellowSeperation"></div>
+                  <button id="asideCloseButton" onClick={toggle}>close</button>
                 </Nav>
-              </Collapse>
+              </Offcanvas>
+              
               <div className="yellowSeperation"></div>
               <h2 className="recipePageHeader"><b>My Contributed Recipes</b></h2>
               <div className="yellowSeperation"></div>
@@ -174,7 +172,7 @@ const UserProfile = () => {
                   />
                   <CardImgOverlay className="overLay">
                     <CardTitle className="qoute-box" tag="h5">
-                    "{qoute.text}"{qoute.author}
+                      "{qoute.text}"{qoute.author}
                     </CardTitle>
                   </CardImgOverlay>
                 </Card>
@@ -183,7 +181,6 @@ const UserProfile = () => {
               <h2 className="recipePageHeader"><b>My Saved Recipes</b></h2>
               <div className="seperation"></div>
               {showMeMySavedRecipes()}
-              {/* {getRecipesFromAPiById()} */}
             </div>
           </div>
           <WelcomeFooter />

@@ -155,7 +155,7 @@ export default function RecipeList() {
               </span>
             </div>
             <Card id="homeCard">
-              <div className="homeQoute">"{qoute.text}"{qoute.author}</div>
+              <div className="homeQoute">"{qoute.text}"<br></br>{qoute.author}</div>
             </Card>
             <div className="homeImages">
               <img alt="" src="davide-cantelli-jpkfc5_d-DI-unsplash.jpg" width="33%"></img>
@@ -218,6 +218,22 @@ export default function RecipeList() {
                 ]}
               />
             </div>
+          </div>
+          <div className="fitGen">
+            <Card id="fitGenCard">
+              <h4>Partnered with</h4>
+              <h1 className='contact'><b>FitGeneration</b></h1>
+              <h4>Corporate Headquarters</h4>
+              <div>
+                <b>136 Bay Street<br></br>
+                Port St.Joe, Fl 30458<br></br>
+                Phone: 706-562-4634<br></br>
+                Email: contact@fitgeneration.com</b>
+              </div>
+            </Card>
+            <iframe className="welcomeIframe" width="460" height="350" src="https://www.youtube.com/embed/Kpbo9SXbGXE"
+              title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+          encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
         <WelcomeFooter />
