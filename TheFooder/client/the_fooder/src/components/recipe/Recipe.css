@@ -77,9 +77,26 @@
     background-image: url("https://previews.123rf.com/images/nadianb/nadianb1711/nadianb171100036/88969699-various-spices-in-a-bowls-on-white-background-top-view-.jpg");
 }
 .imgBack{
-    background-color: rgba(251, 255, 0, 0.103);
+    background-color: rgba(251, 255, 0, 0.219);
 }
-
+#homeCard{
+    width: 75%;
+    background-color: rgba(169, 169, 169, 0.253);
+    margin-bottom: 2em;
+}
+.homeQoute{
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+    color: black;
+    margin-bottom: 0.5rem;
+    font-weight: 900;
+    word-break: none;
+    /* border: 1px solid black; */
+    font-size: x-large;
+    margin-bottom: 2em;
+    line-height: 1.2;
+}
 /* CreatePage stuff here */
 #createButton {
     /* background-color: rgb(73, 192, 73); */

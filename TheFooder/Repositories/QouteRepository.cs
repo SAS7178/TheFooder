@@ -16,7 +16,36 @@ namespace TheFooder.Repositories
     {
         public QouteRepository(IConfiguration configuration) : base(configuration) { }
 
+        public List<Qoute> GetAll()
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT Id, Text, Author
+                                          FROM Qoute
+                                      ORDER BY Author";
+                    var reader = cmd.ExecuteReader();
 
+                    var qoutes = new List<Qoute>();
+
+                    while (reader.Read())
+                    {
+                        qoutes.Add(new Qoute()
+                        {
+                            Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                            Text = reader.GetString(reader.GetOrdinal("Text")),
+                            Author = reader.GetString(reader.GetOrdinal("Author")),
+                        });
+                    }
+
+                    reader.Close();
+
+                    return qoutes;
+                }
+            }
+        }
         public void Add(Qoute qoute)
         {
             using (var conn = Connection)

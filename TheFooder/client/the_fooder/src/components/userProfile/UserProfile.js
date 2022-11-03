@@ -12,6 +12,7 @@ import Header from "../header/Header";
 import { onLoginStatusChange } from "../../modules/authManager";
 import RandomRecipe from "../recipe/RandomRecipe";
 import "./UserProfile.css";
+import { getAllQoutes } from "../../modules/qouteManager";
 
 const UserProfile = () => {
   //set initial states of currentuser, allrecipes, and savedObjrecipes
@@ -19,7 +20,18 @@ const UserProfile = () => {
   const [recipes, setRecipes] = useState([]);
   const [savedObjRecipes, setSavedRecipes] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(null);
+  const [qoute, setQoute] = useState({})
   // const [isAdmin, setAdminStatus] = useState(false);
+
+  //to get and set qoute on render
+  useEffect(() => {
+    getAllQoutes()
+      .then(response => {
+        setQoute(response[Math.floor(Math.random() * response.length)])
+      })
+  },[] // When this array is empty, you are observing initial component state
+  )
+
 
 
   useEffect(() => {
@@ -116,71 +128,66 @@ const UserProfile = () => {
   }
   return (
     <>
-    <div className="userProfilePage">
-    <div id="UserProfileBackground">
-      <Header isLoggedIn={isLoggedIn} />
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="logoContainer">
-            <span className="logoCircle">
-              <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
-              <img alt="" className="fooderLogo" src={process.env.PUBLIC_URL + "TheFooderMainTransparent.png"} />
-              <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
-            </span>
-          </div>
-          <div></div>
-          <div></div>
-          <NavbarToggler className='hamburger' id="navbar-toggler" onClick={toggle} />
-          <div></div>
-          {/* </div> */}
-
-          <Collapse isOpen={isOpen} navbar>
-            <NavbarText className='menu__tag'><strong>Try something new!</strong></NavbarText>
-            <Nav id="menu">
-              <div className="yellowSeperation"></div>
-              <div id="userMenuRecipeButtons">
-                <NavItem >
-                  <button onClick={() => { navigate("/recipe/create") }} id="createButton" >Create a Recipe</button>
-                </NavItem>
-                <NavLink href="https://www.epicurious.com/">
-                  <button id="searchButton">Recipe Web Search</button>
-                </NavLink>
+      <div className="userProfilePage">
+        <div id="UserProfileBackground">
+          <Header isLoggedIn={isLoggedIn} />
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className="logoContainer">
+                <span className="logoCircle">
+                  <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
+                  <img alt="" className="fooderLogo" src={process.env.PUBLIC_URL + "TheFooderMainTransparent.png"} />
+                  <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
+                </span>
               </div>
+              <div></div>
+              <div></div>
+              <NavbarToggler className='hamburger' id="navbar-toggler" onClick={toggle} />
+              <div></div>
+              {/* </div> */}
+
+              <Collapse isOpen={isOpen} navbar>
+                <NavbarText className='menu__tag'><strong>Try something new!</strong></NavbarText>
+                <Nav id="menu">
+                  <div className="yellowSeperation"></div>
+                  <div id="userMenuRecipeButtons">
+                    <NavItem >
+                      <button onClick={() => { navigate("/recipe/create") }} id="createButton" >Create a Recipe</button>
+                    </NavItem>
+                    <NavLink href="https://www.epicurious.com/">
+                      <button id="searchButton">Recipe Web Search</button>
+                    </NavLink>
+                  </div>
+                  <div className="yellowSeperation"></div>
+                </Nav>
+              </Collapse>
               <div className="yellowSeperation"></div>
-            </Nav>
-          </Collapse>
-          <div className="yellowSeperation"></div>
-          <h2 className="recipePageHeader"><b>My Contributed Recipes</b></h2>
-          <div className="yellowSeperation"></div>
-          {showMeMyRecipes()}
-          <section className="card-box">
-          <Card inverse className="welcome__card">
-            <CardImg
-              alt="Card image cap"
-              src="https://picsum.photos/900/270?grayscale"
-              className="card-img"
-            />
-            <CardImgOverlay className="overLay">
-              <CardTitle className="qoute-box" tag="h5">
-                {/* "{`${quote.Quote}`}"
-                -{`${quote.Author}`}- */}
-              </CardTitle>
-              <CardText>
-                <small className="text-quote">Cooking is life
-                </small>
-              </CardText>
-            </CardImgOverlay>
-          </Card>
-        </section>
-          <div className="seperation"></div>
-          <h2 className="recipePageHeader"><b>My Saved Recipes</b></h2>
-          <div className="seperation"></div>
-          {showMeMySavedRecipes()}
-          {/* {getRecipesFromAPiById()} */}
+              <h2 className="recipePageHeader"><b>My Contributed Recipes</b></h2>
+              <div className="yellowSeperation"></div>
+              {showMeMyRecipes()}
+              <section className="card-box">
+                <Card inverse className="welcome__card">
+                  <CardImg
+                    alt="Card image cap"
+                    src="https://picsum.photos/900/270?grayscale"
+                    className="card-img"
+                  />
+                  <CardImgOverlay className="overLay">
+                    <CardTitle className="qoute-box" tag="h5">
+                    "{qoute.text}"{qoute.author}
+                    </CardTitle>
+                  </CardImgOverlay>
+                </Card>
+              </section>
+              <div className="seperation"></div>
+              <h2 className="recipePageHeader"><b>My Saved Recipes</b></h2>
+              <div className="seperation"></div>
+              {showMeMySavedRecipes()}
+              {/* {getRecipesFromAPiById()} */}
+            </div>
+          </div>
+          <WelcomeFooter />
         </div>
-      </div>
-      <WelcomeFooter/>
-      </div>
       </div>
     </>
   )
