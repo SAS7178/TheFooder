@@ -9,9 +9,8 @@ import { onLoginStatusChange } from "../../modules/authManager";
 import RandomRecipe from "./RandomRecipe";
 import { RecipeSearch } from "../search/RecipeSearch";
 import { SearchList } from "../search/SearchList";
-import { UncontrolledCarousel } from "reactstrap";
-// import { RecipeSearch } from "../search/RecipeSearch";
-// import UserRecipe from "./UserRecipe";
+import { Card, UncontrolledCarousel } from "reactstrap";
+import { getAllQoutes } from "../../modules/qouteManager";
 
 export default function RecipeList() {
   // const [searchTerms, setSearchTerms] = useState(null)
@@ -23,9 +22,18 @@ export default function RecipeList() {
   const [randomRecipe4, setRandom4] = useState({})
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [searchTerms, setSearchTerms] = useState(null)
+  const [qoute, setQoute] = useState({})
 
-  // const [aRecipes, setARecipes] = useState({});
 
+  //to get and set qoute on render
+  useEffect(() => {
+    getAllQoutes()
+      .then(response => {
+        setQoute(response[Math.floor(Math.random() * response.length)])
+      })
+  }, [] // When this array is empty, you are observing initial component state
+  )
+        //Under construction..............
   // useEffect(() => {
   //   fetch(`www.themealdb.com/api/json/v1/1/search.php?f=a`)
   //     .then(response => response.json())
@@ -131,7 +139,7 @@ export default function RecipeList() {
         <div className="container">
           <div className="row justify-content-center">
             <div className="underHeader">
-              <h2><strong>Welcome back</strong> {userProfile.name}!</h2>
+              <h2 className="welcomeMsg"><strong>Welcome back</strong> {userProfile.name}!</h2>
               <div className="homeSearchBox">
                 <RecipeSearch setterFunction={setSearchTerms} />
                 <SearchList searchTermState={searchTerms} />
@@ -144,6 +152,9 @@ export default function RecipeList() {
                 <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
               </span>
             </div>
+            <Card id="homeCard">
+              <div className="homeQoute">"{qoute.text}"<br></br>{qoute.author}</div>
+            </Card>
             <div className="homeImages">
               <img alt="" src="davide-cantelli-jpkfc5_d-DI-unsplash.jpg" width="33%"></img>
               <img alt="" src="joseph-gonzalez-zcUgjyqEwe8-unsplash.jpg" width="33%"></img>
@@ -161,10 +172,15 @@ export default function RecipeList() {
             <img alt="" src="wasa-crispbread-7r58W-RcFH8-unsplash.jpg" width="50%"></img>
             <img alt="" src="anna-tukhfatullina-food-photographer-stylist-Mzy-OjtCI70-unsplash.jpg" width="34%"></img>
           </div>
+          <div className="iframes">
+            <iframe id="iFrame" width="560" height="315" src="https://www.youtube.com/embed/rQ1g5JuyFYo" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ></iframe>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <iframe id="iFrame" width="560" height="315" src="https://www.youtube.com/embed/j58q3WUqBN0" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ></iframe>
+          </div>
           <div >
-            <h3 className="recipePageHeader">Recipe List</h3>
             <div id="homeList" className="row justify-content-center">
               &nbsp;
+              <h3 className="recipePageHeader">Recipe List</h3>
               {
                 recipes.map((recipe) => (
                   <Recipe recipe={recipe} key={recipe.id} isSavedRecipe={bool} />
@@ -174,7 +190,6 @@ export default function RecipeList() {
             <div className="carouselBackground">
               <UncontrolledCarousel className="carousel"
                 items={[
-
                   {
                     altText: 'Gordon Ramsays Hells kitchen',
                     caption: 'Gordon Ramsays Hells kitchen',
@@ -200,6 +215,22 @@ export default function RecipeList() {
                 ]}
               />
             </div>
+          </div>
+          <div className="fitGen">
+            <Card id="fitGenCard">
+              <h4>Partnered with</h4>
+              <h1 className='contact'><b>FitGeneration</b></h1>
+              <h4>Corporate Headquarters</h4>
+              <div>
+                <b>136 Bay Street<br></br>
+                Port St.Joe, Fl 30458<br></br>
+                Phone: 706-562-4634<br></br>
+                Email: contact@fitgeneration.com</b>
+              </div>
+            </Card>
+            <iframe className="welcomeIframe" width="460" height="350" src="https://www.youtube.com/embed/Kpbo9SXbGXE"
+              title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; 
+          encrypted-media; gyroscope; picture-in-picture"></iframe>
           </div>
         </div>
         <WelcomeFooter />

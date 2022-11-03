@@ -6,10 +6,10 @@
 }
 
 .headertext {
-    height: 16rem;
-    width: 14em;
+    height: 30rem;
+    width: 24em;
     margin-bottom: -3em;
-    margin-top: -1em;
+    margin-top: 1em;
     margin-left: -1em;
     border-radius: 100%;
 }
@@ -19,10 +19,10 @@
     display: flex;
     border-radius: 0% 0% 0% 12%;
     border-top: 1px solid black;
-    border-bottom: 1.5em solid gray;
+    border-bottom: 1.5em solid black;
     border-right: 3px solid black;
     background-color: red;
-    height: 7em;
+    height: 6em;
 }
 
 .twit__logo{
@@ -40,7 +40,7 @@
 .rightHeaderIcons{
 display: flex;
 align-items: center;
-margin-top: 4.5em;
+margin-top: 3.5em;
 margin-right: -7em;
 }
 .header_options {
@@ -52,29 +52,20 @@ margin-right: -7em;
     margin-top: .8em;
     margin-left: 7em;
 }
-
+#navLink{
+    color: rgb(255, 255, 255);
+}
 .nav-item:hover {
     transform: scale(1, 2);
     scale: (1, 2);
 }
 
-/* .header_options::after {
-    transform: scale(1, 2);
-    scale: (1, 2);
-} */
 .rightHeader {
 display: flex;
 flex-direction:column;
 align-items: center;
+margin-right: 1em;
 }
-/* .header_options,::after {
-    display: flex;
-    justify-content: flex-end;
-    font-size: smaller;
-    font-weight: 800;
-    margin-top: -3.5em;
-    margin-left: 7em;
-} */
 
 .header__logo {
     opacity: 70%;

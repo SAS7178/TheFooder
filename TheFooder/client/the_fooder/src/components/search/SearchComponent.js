@@ -20,7 +20,7 @@ export const SearchComponent = ({ recipeObject, getAllRecipes }) => {
 
             <Modal isOpen={quickModal} toggle={quickToggle} {...recipeObject}>
                 <ModalHeader className='quickView' toggle={quickToggle}>Quick View</ModalHeader>
-                <ModalBody>
+                <ModalBody id='modal-content'>
                     <>
                         <section>{getAllRecipes}</section>
                         <section className='quickSearchView'>

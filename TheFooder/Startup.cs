@@ -51,6 +51,7 @@ namespace TheFooder
             services.AddTransient<IRecipeRepository, RecipeRepository>();
             services.AddTransient<IIngredientRepository, IngredientRepository>();
             services.AddTransient<IUserSavedRecipesRepository, UserSavedRecipesRepository>();
+            services.AddTransient<IQouteRepository, QouteRepository>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

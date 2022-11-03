@@ -11,7 +11,6 @@ export default function Login() {
   const [password, setPassword] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(null);
 
-
   useEffect(() => {
     onLoginStatusChange(setIsLoggedIn);
   }, []);
@@ -55,6 +54,5 @@ export default function Login() {
       </fieldset>
     </Form>
     </article>
-    
   );
 }

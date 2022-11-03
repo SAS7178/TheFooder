@@ -36,7 +36,12 @@
     display: flex;
     background-color: black;
 }
-
+.footerCA{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1em;
+    margin-top: -1em;
+}
 .seperation {
     display: flex;
     margin: 1em;
@@ -63,8 +68,20 @@
 
 #footer__link {
     opacity: 100%;
-    color: blue;
+    color:black;
     text-decoration: underline;
+    margin-left: 2em;
+}
+#footer___link {
+    opacity: 100%;
+    color:black;
+    text-decoration: underline;
+    margin-left: 2em;
+}
+#footer_link {
+    opacity: 100%;
+    color:black;
+    /* text-decoration: underline; */
     margin-left: 2em;
 }
 
@@ -81,7 +98,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(128, 0, 0, 0.493);
+    background-color: rgba(255, 0, 0, 0.486);
     border-radius: 15px 5px 0px 0px;
     position: relative;
     bottom: -3em;

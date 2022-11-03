@@ -8,7 +8,6 @@ const Recipe = ({ recipe, isSavedRecipe, getRecipesFromApi }) => {
   //get initial states of user and savedRecipe Objects
   const [userProfile, setProfileDetails] = useState({})
   const [savedObjRecipes, setSavedRecipes] = useState([]);
-
   //set initial states for img and vid modal and their set callback functions
   const [vidModal, setVidModal] = useState(false);
   const vidToggle = () => setVidModal(!vidModal);
@@ -87,7 +86,6 @@ const Recipe = ({ recipe, isSavedRecipe, getRecipesFromApi }) => {
             <div className="recipeImg">
               <img onClick={() => { handleOpenImageModal() }} className="recipeImage" alt="recipe" src={recipe.imageUrl} height="200px" />
             </div>
-
             <Modal isOpen={ingModal} toggle={ingToggle} {...recipe}>
               <ModalBody>
                 <div><b>Recipe Ingredients</b></div>
@@ -100,7 +98,6 @@ const Recipe = ({ recipe, isSavedRecipe, getRecipesFromApi }) => {
               </ModalFooter>
             </Modal>    
             <button className="seeIngredients" onClick={() => {ingToggle()}}>See Ingredients</button>
-            
             <Modal isOpen={imgModal} toggle={imgToggle} {...recipe}>
               <ModalBody>
                 <div>{recipe.instructions}</div>

@@ -5,19 +5,17 @@ import { Button, Card, CardBody, Modal, ModalBody, ModalFooter, ModalHeader } fr
 import { deleteRecipe } from "../../modules/recipeManager";
 import "./Recipe.css";
 
-
 const UserRecipe = ({ recipe, getRecipesFromApi }) => {
-
-    //set initial delete state and call back to open close
+    //set initial state for delete btn modal and call back to open close
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
-
-    //set initial states for img and vid modal and their set callback functions
+    //set initial states for ing,img and vid modal and their set callback functions
     const [vidModal, setVidModal] = useState(false);
     const vidToggle = () => setVidModal(!modal);
     const [imgModal, setImgModal] = useState(false);
     const imgToggle = () => setImgModal(!modal);
     const navigate = useNavigate()
+    
     const [ingModal, setIngModal] = useState(false);
     const ingToggle = () => setIngModal(!ingModal);
 
@@ -27,7 +25,7 @@ const UserRecipe = ({ recipe, getRecipesFromApi }) => {
                 toggle()
                 getRecipesFromApi()
             })
-        //needs to rerender userprofile recipes on completion
+    //needs to rerender userprofile recipes on completion
     }
     //method to close vid modal 
     const handleCloseModal = () => {

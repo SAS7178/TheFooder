@@ -8,3 +8,6 @@
     align-items: center;
     justify-content: center;
 }
+#modal-content{
+background-color: rgba(100, 148, 237, 0.534);
+}
