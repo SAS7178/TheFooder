@@ -11,7 +11,7 @@ import UserRecipe from "../recipe/UserRecipe";
 import Header from "../header/Header";
 import { onLoginStatusChange } from "../../modules/authManager";
 import RandomRecipe from "../recipe/RandomRecipe";
-
+import "./UserProfile.css";
 
 const UserProfile = () => {
   //set initial states of currentuser, allrecipes, and savedObjrecipes
@@ -116,6 +116,8 @@ const UserProfile = () => {
   }
   return (
     <>
+    <div className="userProfilePage">
+    <div id="UserProfileBackground">
       <Header isLoggedIn={isLoggedIn} />
       <div className="container">
         <div className="row justify-content-center">
@@ -177,7 +179,9 @@ const UserProfile = () => {
           {/* {getRecipesFromAPiById()} */}
         </div>
       </div>
-      <WelcomeFooter />
+      <WelcomeFooter/>
+      </div>
+      </div>
     </>
   )
 };

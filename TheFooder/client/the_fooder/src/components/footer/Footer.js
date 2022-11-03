@@ -48,7 +48,7 @@ export const WelcomeFooter = () => {
                         <a href='https://www.facebook.com/'><img alt="" className="fb__flogo" src="https://i.pinimg.com/originals/79/ff/98/79ff98c829c7f91b891cfc9555ebade2.png" width="50" height="45"></img></a>
                         <a href='https://www.instagram.com/'><img alt="" className="insta__flogo" src="https://i.pinimg.com/originals/63/9b/3d/639b3dafb544d6f061fcddd2d6686ddb.png" width="45" height="35"></img></a>
                         </div>
-                        ©2022 The Fooder, Inc.,All Rights Reserved
+                        ©2022 The Fooder Inc., All Rights Reserved
                     </div>
                 </article>
             </footer>

@@ -1,7 +1,7 @@
 .recipePageHeader {
     text-align: center;
-    letter-spacing: .2rem;
-    margin-bottom: 3em;
+    font-weight: 1000;
+    letter-spacing: .5rem;
 }
 .quickView{
     display: flex;
@@ -13,7 +13,9 @@
     display: flex;
     justify-content: center;
 }
-
+.welcomeMsg{
+    margin-top: 1em;
+}
 .randoms {
     display: contents;
     flex-direction: row;
@@ -54,7 +56,19 @@
     justify-content: space-between;
     margin-right: 0px;
 }
-
+.iframes{
+    margin-top: 4em;
+    margin-bottom: 3em;
+    display: flex;
+    justify-content: center;
+}
+#iFrame{
+    display: flex;
+    border-radius: 10%;
+    flex-direction: row;
+    justify-content: center;
+    margin: 4em;
+}
 .recipeListPage{
     background-repeat:no-repeat;
     background: fixed;
@@ -63,8 +77,7 @@
     background-image: url("https://previews.123rf.com/images/nadianb/nadianb1711/nadianb171100036/88969699-various-spices-in-a-bowls-on-white-background-top-view-.jpg");
 }
 .imgBack{
-    background-color: rgba(127, 255, 212, 0.493);
-    /* opacity: 50%; */
+    background-color: rgba(251, 255, 0, 0.103);
 }
 
 /* CreatePage stuff here */
@@ -79,21 +92,10 @@
     font-weight: 900;
 }
 
-
-/*  */
 .recipeImage:hover {
     opacity: 60%;
 }
 
-#navbar-toggler {
-    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXWchNLkR8ZW_Hi1_oTz73GNIojfc6yLsq5p9I-yyHif70meGN2muFOTByXdns8VmVwIs&usqp=CAU");
-    float: right;
-    width: 20em;
-    height: 50px;
-    border-radius: 30%;
-    background-size: 100%;
-    border: none;
-}
 
 .homeSearchBox {
     display: flex;
@@ -427,6 +429,7 @@
     display: flex;
     justify-content: center;
     margin-top: 5em;
+    margin-bottom: 5em;
     flex-direction: row;
     height: 20em;
     width: 100%;

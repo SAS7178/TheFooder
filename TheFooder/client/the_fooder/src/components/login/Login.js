@@ -55,6 +55,5 @@ export default function Login() {
       </fieldset>
     </Form>
     </article>
-    
   );
 }

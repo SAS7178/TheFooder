@@ -131,7 +131,7 @@ export default function RecipeList() {
         <div className="container">
           <div className="row justify-content-center">
             <div className="underHeader">
-              <h2><strong>Welcome back</strong> {userProfile.name}!</h2>
+              <h2 className="welcomeMsg"><strong>Welcome back</strong> {userProfile.name}!</h2>
               <div className="homeSearchBox">
                 <RecipeSearch setterFunction={setSearchTerms} />
                 <SearchList searchTermState={searchTerms} />
@@ -161,10 +161,15 @@ export default function RecipeList() {
             <img alt="" src="wasa-crispbread-7r58W-RcFH8-unsplash.jpg" width="50%"></img>
             <img alt="" src="anna-tukhfatullina-food-photographer-stylist-Mzy-OjtCI70-unsplash.jpg" width="34%"></img>
           </div>
+                  <div className="iframes">
+                    <iframe id="iFrame" width="560" height="315" src="https://www.youtube.com/embed/rQ1g5JuyFYo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <iframe id="iFrame" width="560" height="315" src="https://www.youtube.com/embed/j58q3WUqBN0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
           <div >
-            <h3 className="recipePageHeader">Recipe List</h3>
             <div id="homeList" className="row justify-content-center">
               &nbsp;
+              <h3 className="recipePageHeader">Recipe List</h3>
               {
                 recipes.map((recipe) => (
                   <Recipe recipe={recipe} key={recipe.id} isSavedRecipe={bool} />
