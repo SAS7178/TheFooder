@@ -83,9 +83,11 @@
     background-color: rgba(251, 255, 0, 0.274);
 }
 #homeCard{
-    width: 75%;
-    background-color: rgba(169, 169, 169, 0.253);
+    width: 70%;
+    height: fit-content;
+    background-color: rgba(169, 169, 169, 0);
     margin-bottom: 2em;
+    border: none;
 }
 
 #fitGenCard{
@@ -133,12 +135,10 @@
     flex-direction: column;
 }
 
-
 .nav-item {
     /* color: antiquewhite; */
     margin-right: 1em;
 }
-
 
 #navbar-toggler {
     height: 3em;
@@ -157,7 +157,7 @@
 }
 .carousel-inner {
     border-radius: 15%15%15%15%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     align-items: center;
     margin-top: 1em;
     width: 100%;
@@ -241,8 +241,6 @@
     justify-content: center;
 }
 /*  */
-
-
 
 .deleteButton {
     display: flex;

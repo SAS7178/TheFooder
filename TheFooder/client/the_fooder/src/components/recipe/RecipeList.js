@@ -11,6 +11,7 @@ import { RecipeSearch } from "../search/RecipeSearch";
 import { SearchList } from "../search/SearchList";
 import { Card, UncontrolledCarousel } from "reactstrap";
 import { getAllQoutes } from "../../modules/qouteManager";
+import { Link } from "react-router-dom";
 
 export default function RecipeList() {
   // const [searchTerms, setSearchTerms] = useState(null)
@@ -196,7 +197,6 @@ export default function RecipeList() {
                     key: 1,
                     src: 'https://optimise2.assets-servd.host/nostalgic-shrike/production/dining/Hells-Kitchen/Gordon-Ramsay-Hells-Kitchen-CARD-824x440.jpg?w=1200&h=630&q=82&auto=format&fit=crop&dm=1654537358&s=e3739a1f4522f820ac8e87117b55a7bb'
                     //  onClick(href = "https://www.caesars.com/caesars-palace/restaurants/hells-kitchen")
-
                   },
                   {
                     altText: '',

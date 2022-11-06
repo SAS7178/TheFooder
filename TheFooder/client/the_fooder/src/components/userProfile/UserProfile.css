@@ -28,6 +28,7 @@
     flex-direction: column;
     align-items: center;
 }
+#cr{transform: scale(1);}
 
 .menu__tag {
     display: flex;
