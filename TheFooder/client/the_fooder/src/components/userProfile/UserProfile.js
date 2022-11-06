@@ -146,7 +146,7 @@ const UserProfile = () => {
                 <Nav id="menu">
                 <div className="yellowSeperation"></div>      
                   <div id="userMenuRecipeButtons">
-                    <NavItem >
+                    <NavItem id="cr">
                       <button onClick={() => { navigate("/recipe/create") }} id="createButton">Create a Recipe</button>
                     </NavItem>
                     <NavLink href="https://www.epicurious.com/">
