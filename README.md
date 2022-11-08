@@ -31,7 +31,7 @@ both UI/Database and styling...I also implemented fetched' remote API data, in a
 
 
 ![](https://github.com/SAS7178/project-gifs/blob/main/public/thefooderGif1.gif?raw=true)
-
+![](https://github.com/SAS7178/project-gifs/blob/main/public/thefooderGif2.gif?raw=true)
 ## Figma- (Wirefreme)
 
 
