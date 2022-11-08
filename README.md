@@ -29,8 +29,8 @@ both UI/Database and styling...I also implemented fetched' remote API data, in a
 <a href="https://www.figma.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/figma-colored.svg" width="36" height="36" alt="Figma" /></a>
 </p>
 
-Application GIF below
-![](https://github.com/SAS7178/project-gifs/blob/main/public/Fit-Gen%20Gif.gif?raw=true)
+
+![](https://github.com/SAS7178/project-gifs/blob/main/public/thefooderGif1.gif?raw=true)
 
 ## Figma- (Wirefreme)
 
