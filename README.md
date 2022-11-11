@@ -36,8 +36,9 @@ both UI/Database and styling...I also implemented fetched' remote API data, in a
 
 
 ## DBDiagrams.io(ERD)
-![](https://github.com/SAS7178/fit-generation/blob/main/images/Lucid%20ERD.png?raw=true)
-![](https://dbdiagram.io/d/634d591947094101957a8229?raw=true)
+<!-- ![](https://dbdiagram.io/d/634d591947094101957a8229?raw=true)
+![]([https://dbdiagram.io/d/634d591947094101957a8229?raw=true) -->
+https://dbdiagram.io/d/634d591947094101957a8229
 
 
 ## Running This Application (Test-It Out!)
@@ -49,14 +50,14 @@ both UI/Database and styling...I also implemented fetched' remote API data, in a
             git clone 
             cd client/the_fooder
   
-2.Access And Run The Database
+2.Access And Run The Database(Swagger endpoint testing enabled)
 
-            Open in root directory in Visual Studio and run
+            Open in root directory in Visual Studio and run (defualt port localhost:5001)
      
 3.Launch the client.
 
             npm install
-            npm start
+            npm start (default port localhost: 3000)
 
 4.User Login
 
