@@ -10,7 +10,7 @@ import Recipe from "../recipe/Recipe";
 import UserRecipe from "../recipe/UserRecipe";
 import Header from "../header/Header";
 import { onLoginStatusChange } from "../../modules/authManager";
-import RandomRecipe from "../recipe/RandomRecipe";
+// import RandomRecipe from "../recipe/RandomRecipe";
 import { getAllQoutes } from "../../modules/qouteManager";
 import "./UserProfile.css";
 
@@ -100,30 +100,30 @@ const UserProfile = () => {
   }
 
   //method to show current created recipes
-  const showMeMyAPISavedRecipes = () => {
-    let saves = [];
-    savedObjRecipes.map((savedRecipe) => {
-      if (userProfile.id === savedRecipe.userProfileId && savedRecipe.recipeId > 1000) {
-        saves.push(savedRecipe)
-      }
-    })
-    return saves
-  }
+  // const showMeMyAPISavedRecipes = () => {
+  //   let saves = [];
+  //   savedObjRecipes.map((savedRecipe) => {
+  //     if (userProfile.id === savedRecipe.userProfileId && savedRecipe.recipeId > 1000) {
+  //       saves.push(savedRecipe)
+  //     }
+  //   })
+  //   return saves
+  // }
   //   return saves.map((s) => {return <Recipe recipe={s} key={s.id} getRecipesFromApi={getSaved}  isSavedRecipe={bool} />})
-  const getRecipesFromAPiById = () => {
-    let ApiSavedRecipes = [];
-    const APIObjs = showMeMyAPISavedRecipes()
-    APIObjs.map((Obj) => {
-      fetch(`www.themealdb.com/api/json/v1/1/lookup.php?i=${parseInt(Obj.recipeId)}`)
-        .then(response => response.json())
-        .then(response => {
-          const recipe = { ...response }
-          const meal = recipe.meals[0]
-          ApiSavedRecipes.push(meal)
-        })
-      return ApiSavedRecipes.map((s) => { <RandomRecipe recipe={s} key={s.id} getRecipesFromApi={getSaved} isSavedRecipe={bool} /> })
-    })
-  }
+  // const getRecipesFromAPiById = () => {
+  //   let ApiSavedRecipes = [];
+  //   const APIObjs = showMeMyAPISavedRecipes()
+  //   APIObjs.map((Obj) => {
+  //     fetch(`www.themealdb.com/api/json/v1/1/lookup.php?i=${parseInt(Obj.recipeId)}`)
+  //       .then(response => response.json())
+  //       .then(response => {
+  //         const recipe = { ...response }
+  //         const meal = recipe.meals[0]
+  //         ApiSavedRecipes.push(meal)
+  //       })
+  //     return ApiSavedRecipes.map((s) => { <RandomRecipe recipe={s} key={s.id} getRecipesFromApi={getSaved} isSavedRecipe={bool} /> })
+  //   })
+  // }
   return (
     < >
       <div className="userProfilePage">

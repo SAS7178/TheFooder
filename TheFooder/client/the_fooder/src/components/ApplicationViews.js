@@ -7,7 +7,6 @@ import UserProfile from "./userProfile/UserProfile";
 import { RecipeCreate } from "./recipe/RecipeCreate";
 import { RecipeEdit } from "./recipe/RecipeEdit";
 
-
 export default function ApplicationViews({ isLoggedIn }) {
   return (
     <main>
@@ -20,7 +19,6 @@ export default function ApplicationViews({ isLoggedIn }) {
           <Route path="recipe/create" element={<RecipeCreate />} />
           <Route path="recipe/edit/:recipeId" element={<RecipeEdit />} />
           <Route path="userProfile" element={<UserProfile />} />
-
           <Route
             path="userProfile/:firebaseUserId"
             element={<UserProfile />}

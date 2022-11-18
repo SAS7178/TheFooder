@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from "react";
-import Recipe from './Recipe';
-import { getAllRecipes } from "../../modules/recipeManager";
-import "./Recipe.css";
-import { getUser } from "../../modules/userProfileManager";
-import { WelcomeFooter } from "../footer/Footer";
 import Header from "../header/Header";
-import { onLoginStatusChange } from "../../modules/authManager";
+import Recipe from './Recipe';
 import RandomRecipe from "./RandomRecipe";
+import { getAllRecipes } from "../../modules/recipeManager";
+import { onLoginStatusChange } from "../../modules/authManager";
+import { getUser } from "../../modules/userProfileManager";
+import { getAllQoutes } from "../../modules/qouteManager";
 import { RecipeSearch } from "../search/RecipeSearch";
 import { SearchList } from "../search/SearchList";
 import { Card, UncontrolledCarousel } from "reactstrap";
-import { getAllQoutes } from "../../modules/qouteManager";
-import { Link } from "react-router-dom";
+import { WelcomeFooter } from "../footer/Footer";
+import "./Recipe.css";
 
 export default function RecipeList() {
-  // const [searchTerms, setSearchTerms] = useState(null)
   const [recipes, setRecipes] = useState([]);
   const [userProfile, setProfileDetails] = useState({})
   const [randomRecipe, setRandom] = useState({})
@@ -25,28 +23,19 @@ export default function RecipeList() {
   const [searchTerms, setSearchTerms] = useState(null)
   const [qoute, setQoute] = useState({})
 
-
-  //to get and set qoute on render
-  useEffect(() => {
-    getAllQoutes()
-      .then(response => {
-        setQoute(response[Math.floor(Math.random() * response.length)])
-      })
-  }, [] // When this array is empty, you are observing initial component state
-  )
-        //Under construction..............
+  //Under construction..............
   // useEffect(() => {
-  //   fetch(`www.themealdb.com/api/json/v1/1/search.php?f=a`)
-  //     .then(response => response.json())
-  //     .then(response => {
-  //       const recipe = { ...response }
-  //       const meal = recipe.meals[0]
-  //       setARecipes(meal)
-  //     })
-  // }, []);
-
-  // get random cocktails from API
-  // const options = {
+    //   fetch(`www.themealdb.com/api/json/v1/1/search.php?f=a`)
+    //     .then(response => response.json())
+    //     .then(response => {
+      //       const recipe = { ...response }
+      //       const meal = recipe.meals[0]
+      //       setARecipes(meal)
+      //     })
+      // }, []);
+      
+      // get random cocktails from API
+      // const options = {
   //   method: 'GET',
   //   headers: {
   //     'X-RapidAPI-Key': 'df702358e3msh0a60399ba97f41ap1be78cjsn2053bd221176',
@@ -70,6 +59,15 @@ export default function RecipeList() {
     onLoginStatusChange(setIsLoggedIn);
   }, []);
 
+  //to get and set qoute on render
+  useEffect(() => {
+    getAllQoutes()
+      .then(response => {
+        setQoute(response[Math.floor(Math.random() * response.length)])
+      })
+  }, [] // When this array is empty, you are observing initial component state
+  )
+
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
       .then(response => response.json())
@@ -79,6 +77,7 @@ export default function RecipeList() {
         setRandom(meal)
       })
   }, []);
+
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
       .then(response => response.json())
@@ -88,6 +87,7 @@ export default function RecipeList() {
         setRandom2(meal)
       })
   }, []);
+
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
       .then(response => response.json())
@@ -97,6 +97,7 @@ export default function RecipeList() {
         setRandom3(meal)
       })
   }, []);
+
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
       .then(response => response.json())
@@ -121,7 +122,6 @@ export default function RecipeList() {
       setProfileDetails(userProfile);
     });
   };
-
   //get current user set to state
   useEffect(() => {
     getProfileDetails();
@@ -135,8 +135,6 @@ export default function RecipeList() {
     <div className="recipeListPage" >
       <div className="imgBack">
         <Header isLoggedIn={isLoggedIn} />
-        {/* <RecipeSearch setterFunction={setSearchTerms} /> */}
-        {/* <UserRecipe searchTermState={searchTerms} />/ */}
         <div className="container">
           <div className="row justify-content-center">
             <div className="underHeader">

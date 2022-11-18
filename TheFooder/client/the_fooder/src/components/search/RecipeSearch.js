@@ -4,7 +4,7 @@ export const RecipeSearch = ({setterFunction}) => {
     return (
 
        <div className="search" >
-          <img className="searchLogo" src={"pngfind.com-magnifying-glass-png-593333.png"}/>
+          <img alt="" className="searchLogo" src={"pngfind.com-magnifying-glass-png-593333.png"}/>
 
            <input className="searchMe" 
            onChange={

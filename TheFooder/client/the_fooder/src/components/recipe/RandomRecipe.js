@@ -5,10 +5,11 @@ import { getUser } from "../../modules/userProfileManager";
 import "./Recipe.css";
 
 const RandomRecipe = ({ recipe, isSavedRecipe, getRecipesFromApi }) => {
-
+   
     //get initial states of user and savedRecipe Objects
     const [userProfile, setProfileDetails] = useState({})
     const [savedObjRecipes, setSavedRecipes] = useState([]);
+    
     //set initial states for img and vid modal and their set callback functions
     const [vidRModal, setVidRModal] = useState(false);
     const vidRToggle = () => setVidRModal(!vidRModal);

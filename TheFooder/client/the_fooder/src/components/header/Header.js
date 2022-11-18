@@ -19,11 +19,10 @@ export default function Header({ isLoggedIn }) {
 
   return (
     <div>
-
       <Navbar className="navbar" expand="md">
         <NavbarBrand tag={RRNavLink} to="/">
           &nbsp;
-          <img className="headertext" src={"(TF)TheFooder-icon.png"} />
+          <img alt="icon" className="headertext" src={"(TF)TheFooder-icon.png"} />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar className="header_options">
@@ -50,7 +49,6 @@ export default function Header({ isLoggedIn }) {
               </div>
               </div>
             )}
-
             {!isLoggedIn && (
               <>
                 <NavItem>

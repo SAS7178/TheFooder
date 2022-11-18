@@ -33,7 +33,7 @@ export const RecipeEdit = () => {
     const currentRecipe = () => {
         return recipes.map((recipe) => {
             if (recID === recipe.id) {
-                setUpdateRecipe(recipe)
+                return setUpdateRecipe(recipe)
             }
         })
     }
@@ -45,10 +45,10 @@ export const RecipeEdit = () => {
     // checks all values to verify not empty strings and then calls endpoint put method with given inputs rerenders component
     const handleEditButtonClick = (recipe) => {
         //event.preventDefault()
-        if (updatedRecipe.name != ""
-            && updatedRecipe.instructions != ""
-            && updatedRecipe.imageUrl != ""
-            && updatedRecipe.videoUrl != "") {
+        if (updatedRecipe.name !== ""
+            && updatedRecipe.instructions !== ""
+            && updatedRecipe.imageUrl !== ""
+            && updatedRecipe.videoUrl !== "") {
             updateRecipe(recipe)
             navigate("/userProfile")
             //needs to rerender userprofile recipes on completion
