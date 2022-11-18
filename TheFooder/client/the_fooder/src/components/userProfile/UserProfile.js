@@ -139,7 +139,7 @@ const UserProfile = () => {
                 </span>
               </div>
 
-              <NavbarToggler className='hamburger' id="navbar-toggler" onClick={toggle} />
+              <NavbarToggler id="navbar-toggler" onClick={toggle} />
               <Offcanvas id="offCanvas" isOpen={isOpen} navbar>
                 <h1 className="asideHeader">Menu Options</h1>
                 <NavbarText className='menu__tag'><strong></strong></NavbarText>
