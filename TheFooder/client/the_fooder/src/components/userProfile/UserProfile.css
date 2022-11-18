@@ -10,18 +10,26 @@
 }
 .recipePageHeader {
     text-align: center;
+    border: 2.5px solid black;
+    border-right: none;
+    border-left: none;
+    max-width: none;
+    border-radius: 15% 15% 15% 15%;
+    background-color: beige;
+    opacity: 80%;
     font-weight: 1000;
     letter-spacing: .5rem;
 }
 #navbar-toggler {
     display: flex;
-    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXWchNLkR8ZW_Hi1_oTz73GNIojfc6yLsq5p9I-yyHif70meGN2muFOTByXdns8VmVwIs&usqp=CAU");
+    background-image: url("https://image.pngaaa.com/920/2275920-middle.png");
     float: right;
     width: 4em;
-    height: 50px;
+    height: 35px;
+    opacity: 60%;
     border-radius: 30%;
     background-size: 100%;
-    border: none;
+    /* border: 2px solid black; */
 }
 #userMenuRecipeButtons {
     display: flex;
