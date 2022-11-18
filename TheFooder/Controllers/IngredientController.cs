@@ -24,7 +24,7 @@ namespace TheFooder.Controllers
             return Ok(_ingredientRepository.GetAll());
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPost]
         public IActionResult Post(Ingredient ingredient)
         {

@@ -42,7 +42,8 @@ const UserRecipe = ({ recipe, getRecipesFromApi }) => {
 
     const showRecipeIngredients = (r) => {
         return r.ingredients.map((i) => {
-            return `${i.name}` + ", "
+            let string = "-"
+            return string += i.name + "-"
         });
     }
 

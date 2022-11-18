@@ -21,7 +21,6 @@ export default function IngredientList({ setIngState }) {
     }, [ingredients]);
 
     const addIngToList = (ingredient) => {
-        {
             let ingObj = { id: 0, name: "" };
             const copy = structuredClone(ingList)
             const ing = parseInt(ingredient)
@@ -31,7 +30,6 @@ export default function IngredientList({ setIngState }) {
             console.log(copy)
             setIngList(copy)
             setIngState(copy)
-        }
     }
 
     return (

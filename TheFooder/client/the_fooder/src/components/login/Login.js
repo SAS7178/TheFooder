@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { useNavigate, Link } from "react-router-dom";
 import { login, onLoginStatusChange } from "../../modules/authManager";
-import "./Login.css";
 import Header from "../header/Header";
-// import Header from "../header/Header";
+import "./Login.css";
+
 export default function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState();

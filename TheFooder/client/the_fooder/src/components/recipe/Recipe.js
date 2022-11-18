@@ -69,11 +69,12 @@ const Recipe = ({ recipe, isSavedRecipe, getRecipesFromApi }) => {
 
       }
     })
-    window.alert("The recipe was removed from your profile list.")
+    return window.alert("The recipe was removed from your profile list.")
   }
   const showRecipeIngredients = (r) => {
     return r.ingredients.map((i) => {
-      return  `${i.name}` + ", "
+      let string = "-"
+       return string += i.name + "-"
     });
   }
 
