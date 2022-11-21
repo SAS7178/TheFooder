@@ -24,7 +24,7 @@ namespace TheFooder.Controllers
         }
 
         //get all recipes with their ingredients
-        [Authorize]
+      //  [Authorize]
         [HttpGet]
         public IActionResult Get()
         {
@@ -32,7 +32,7 @@ namespace TheFooder.Controllers
         }
 
         // gets all recipes created by user
-        [Authorize]
+       // [Authorize]
         [HttpGet("{userId}")]
         public IActionResult Get(int id)
         {
@@ -40,7 +40,7 @@ namespace TheFooder.Controllers
         }
 
         //get single recipe by its id for edit component
-        [Authorize]
+        //[Authorize]
         [HttpGet("/EditRecipe/{recipeId}")]
         public IActionResult GetRecipe(int recipeId)
         {
@@ -48,7 +48,7 @@ namespace TheFooder.Controllers
 
         }
 
-        [Authorize]
+       // [Authorize]
         [HttpPost]
         public IActionResult Post(Recipe recipe)
         {
@@ -56,7 +56,7 @@ namespace TheFooder.Controllers
             return CreatedAtAction("Get", new { id = recipe.Id }, recipe);
         }
 
-        [Authorize]
+     //   [Authorize]
         [HttpPut("{id}")]
         public IActionResult Put(int id, Recipe recipe)
         {
@@ -65,7 +65,7 @@ namespace TheFooder.Controllers
             return NoContent();
         }
 
-        [Authorize]
+      //  [Authorize]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

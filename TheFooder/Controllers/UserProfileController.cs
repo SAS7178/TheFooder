@@ -18,7 +18,7 @@ namespace TheFooder.Controllers
             _userProfileRepository = UserProfileRepository;
         }
 
-        [Authorize]
+       // [Authorize]
         [HttpGet("DoesUserExist/{firebaseUserId}")]
         public IActionResult DoesUserExist(string firebaseUserId)
         {
@@ -39,7 +39,7 @@ namespace TheFooder.Controllers
             }
             return Ok(userProfile);
         }
-        [Authorize]
+       // [Authorize]
         [HttpGet("myProfile")]
         public IActionResult MyProfile()
         {
@@ -51,7 +51,7 @@ namespace TheFooder.Controllers
             }
             return Ok(userProfile);
         }
-        [Authorize]
+       // [Authorize]
         [HttpPost]
         public IActionResult Post(UserProfile userProfile)
         {
@@ -61,7 +61,7 @@ namespace TheFooder.Controllers
                 new { firebaseUserId = userProfile.FirebaseUserId }, userProfile);
         }
 
-        [Authorize]
+       // [Authorize]
         [HttpPut("{id}")]
         public IActionResult Put(int id, UserProfile userProfile)
         {
@@ -71,7 +71,7 @@ namespace TheFooder.Controllers
         }
 
 
-        [Authorize]
+      //  [Authorize]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
