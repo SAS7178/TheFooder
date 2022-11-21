@@ -18,7 +18,7 @@ namespace TheFooder.Controllers
         {
             _qouteRepository = QouteRepository;
         }
-        //[Authorize]
+        [Authorize]
         [HttpGet]
         public IActionResult Get()
         {
@@ -26,14 +26,14 @@ namespace TheFooder.Controllers
         }
 
         //get single recipe by its id for edit component
-        //[Authorize]
+        [Authorize]
         [HttpGet("/{qouteId}")]
         public IActionResult GetQoute(int qouteId)
         {
             return Ok(_qouteRepository.GetQouteById(qouteId));
 
         }
-       // [Authorize]
+        [Authorize]
         [HttpPost]
         public IActionResult Post(Qoute qoute)
         {
