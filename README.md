@@ -8,6 +8,10 @@ ions/ingredients and image/video to view personalized page with created and save
 This project was my first solo sprint full-stack application using Javascript(React) on front-end and C#/SQL Database on back-end, where I created 
 both UI/Database and styling...I also implemented fetched' remote API data, in addition to creating my own local database-API which is included in this repo.
 
+<b>Deployed TheFooder!</b> 
+(Pardon our progress...backend functionality under construction.)
+		
+visit site: https://thefooder.netlify.app/
 
 ## Technologies Used
 
