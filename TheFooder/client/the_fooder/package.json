@@ -1,6 +1,6 @@
 {
   "name": "the_fooder",
-  "proxy": "https://localhost:5001",
+  "proxy": "https://thefooderapi.herokuapp.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
