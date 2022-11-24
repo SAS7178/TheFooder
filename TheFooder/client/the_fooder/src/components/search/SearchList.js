@@ -20,7 +20,9 @@ export const SearchList = ({ searchTermState }) => {
     useEffect(
         () => {
             const searchedRecipes = recipes.filter(recipe => recipe.name.startsWith(searchTermState))
+            if(searchedRecipes){
             setFiltered(searchedRecipes)
+            } else {setFiltered('nothing aavailable')}
         },
         [searchTermState, recipes]
     )
