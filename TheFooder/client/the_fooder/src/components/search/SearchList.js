@@ -34,7 +34,7 @@ export const SearchList = ({ searchTermState }) => {
                         getAllRecipes={getAllRecipes}
                         recipeObject={recipe}
                     />
-            )
+                    )
             }
         </article>
     </>
