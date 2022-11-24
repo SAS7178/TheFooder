@@ -21,7 +21,10 @@ export default function RecipeList() {
   const [randomRecipe4, setRandom4] = useState({})
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [searchTerms, setSearchTerms] = useState(null)
-  const [qoute, setQoute] = useState({})
+  const [qoute, setQoute] = useState({
+    text: "Cooking is a philosophy; it’s not a recipe.",
+    author: "- Marco Pierre White"
+  })
 
   //Under construction..............
   // useEffect(() => {
