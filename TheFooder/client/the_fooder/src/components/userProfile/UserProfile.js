@@ -20,7 +20,10 @@ const UserProfile = () => {
   const [recipes, setRecipes] = useState([]);
   const [savedObjRecipes, setSavedRecipes] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(null);
-  const [qoute, setQoute] = useState({})
+  const [qoute, setQoute] = useState({
+    text:"If you can organize your kitchen, you can organize your life.",
+    author:" Louis Parrish"
+  })
   // const [isAdmin, setAdminStatus] = useState(false);
 
   //to get and set qoute on render
