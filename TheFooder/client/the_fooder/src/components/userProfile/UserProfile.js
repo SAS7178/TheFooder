@@ -141,7 +141,7 @@ const UserProfile = () => {
                   <img alt="" src="https://www.pngall.com/wp-content/uploads/11/Horizontal-Line-PNG-Image.png" width="100%" height="50em"></img>
                 </span>
               </div>
-
+              
               <NavbarToggler id="navbar-toggler" onClick={toggle} />
               <Offcanvas id="offCanvas" isOpen={isOpen} navbar>
                 <h1 className="asideHeader">Menu Options</h1>

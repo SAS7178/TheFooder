@@ -196,6 +196,7 @@ export default function RecipeList() {
                     altText: 'Gordon Ramsays Hells kitchen',
                     caption: 'Gordon Ramsays Hells kitchen',
                     key: 1,
+                    clickEvent: () => { window.open(URL = 'https://optimise2.assets-servd.host/nostalgic-shrike/production/dining/Hells-Kitchen/Gordon-Ramsay-Hells-Kitchen-CARD-824x440.jpg?w=1200&h=630&q=82&auto=format&fit=crop&dm=1654537358&s=e3739a1f4522f820ac8e87117b55a7bb') },
                     src: 'https://optimise2.assets-servd.host/nostalgic-shrike/production/dining/Hells-Kitchen/Gordon-Ramsay-Hells-Kitchen-CARD-824x440.jpg?w=1200&h=630&q=82&auto=format&fit=crop&dm=1654537358&s=e3739a1f4522f820ac8e87117b55a7bb'
                     //  onClick(href = "https://www.caesars.com/caesars-palace/restaurants/hells-kitchen")
                   },
@@ -203,6 +204,7 @@ export default function RecipeList() {
                     altText: '',
                     caption: '80+ RECIPES FROM AROUND THE WORLD TO MAKE AT HOME',
                     key: 2,
+                    clickEvent: () => { window.open(URL = 'https://fouraroundtheworld.com/wp-content/uploads/2020/04/Traditional-recipes-from-around-the-world-to-make-at-home-1.jpg') },
                     src: 'https://fouraroundtheworld.com/wp-content/uploads/2020/04/Traditional-recipes-from-around-the-world-to-make-at-home-1.jpg'
                     // https://fouraroundtheworld.com/traditional-recipes-around-the-world/
                   },
@@ -210,6 +212,7 @@ export default function RecipeList() {
                     altText: '32 Easy Desserts To Make at Home',
                     caption: '32 Easy Desserts To Make at Home',
                     key: 3,
+                    clickEvent: () => { window.open(URL ='https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZGVzc2VydHN8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60') },
                     src: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZGVzc2VydHN8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60'
                     //https://insanelygoodrecipes.com/easy-desserts/
                   }
