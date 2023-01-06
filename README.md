@@ -66,7 +66,7 @@ https://dbdiagram.io/d/634d591947094101957a8229
 
 4.User Login
 
-      Stephen@Smith.com
+      stephen@Smith.com
       Password: smithers
 
 
