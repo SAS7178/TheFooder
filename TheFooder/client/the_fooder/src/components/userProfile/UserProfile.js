@@ -10,13 +10,14 @@ import Recipe from "../recipe/Recipe";
 import UserRecipe from "../recipe/UserRecipe";
 import Header from "../header/Header";
 import { onLoginStatusChange } from "../../modules/authManager";
-// import RandomRecipe from "../recipe/RandomRecipe";
+import RandomRecipe from "../recipe/RandomRecipe";
 import { getAllQoutes } from "../../modules/qouteManager";
 import "./UserProfile.css";
 
 const UserProfile = () => {
   //set initial states of currentuser, allrecipes, and savedObjrecipes
   const [userProfile, setProfileDetails] = useState({})
+  const [ss, sets] = useState([])
   const [recipes, setRecipes] = useState([]);
   const [savedObjRecipes, setSavedRecipes] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(null);
@@ -71,10 +72,17 @@ const UserProfile = () => {
     getProfileDetails();
   }, []);
 
-
   useEffect(() => {
     getRecipesFromApi();
   }, []);
+
+  useEffect(() => {
+    setRecipesFromAPiById();
+  }, []);
+  useEffect(() => {
+    displayAPIRecipes();
+  }, [ss]);
+  
 
   //method to show current created recipes
   const showMeMyRecipes = () => {
@@ -99,36 +107,43 @@ const UserProfile = () => {
         }
       })
     })
-    return saves.map((s) => { return <Recipe recipe={s} key={s.id} getRecipesFromApi={getSaved} isSavedRecipe={bool} /> })
+    return (
+      saves.map((s) => { return <Recipe recipe={s} key={s.id} getRecipesFromApi={getSaved} isSavedRecipe={bool} />
+    })
+  )}
+  //method to show current created recipes
+  const showMeMyAPISavedRecipes = () => {
+    let apiSaves = [];
+    savedObjRecipes?.map((savedRecipe) => {
+      if (userProfile.id === savedRecipe.userProfileId && savedRecipe.recipeId > 10000) {
+        apiSaves.push(savedRecipe)
+      }
+    })
+    return apiSaves
+  }
+  
+  const setRecipesFromAPiById = () => {
+    let ApiSavedRecipes = [];
+    let APIObjs = showMeMyAPISavedRecipes()
+    APIObjs?.forEach((Obj) => {
+      fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${parseInt(Obj.recipeId)}`)
+      .then(response => response.json())
+      .then(response => {
+        const recipe = { ...response }
+        const meal = recipe?.meals[0]
+        ApiSavedRecipes.push(meal)
+      })
+    })
+    sets(ApiSavedRecipes)
   }
 
-  //method to show current created recipes
-  // const showMeMyAPISavedRecipes = () => {
-  //   let saves = [];
-  //   savedObjRecipes.map((savedRecipe) => {
-  //     if (userProfile.id === savedRecipe.userProfileId && savedRecipe.recipeId > 1000) {
-  //       saves.push(savedRecipe)
-  //     }
-  //   })
-  //   return saves
-  // }
-  //   return saves.map((s) => {return <Recipe recipe={s} key={s.id} getRecipesFromApi={getSaved}  isSavedRecipe={bool} />})
-  // const getRecipesFromAPiById = () => {
-  //   let ApiSavedRecipes = [];
-  //   const APIObjs = showMeMyAPISavedRecipes()
-  //   APIObjs.map((Obj) => {
-  //     fetch(`www.themealdb.com/api/json/v1/1/lookup.php?i=${parseInt(Obj.recipeId)}`)
-  //       .then(response => response.json())
-  //       .then(response => {
-  //         const recipe = { ...response }
-  //         const meal = recipe.meals[0]
-  //         ApiSavedRecipes.push(meal)
-  //       })
-  //     return ApiSavedRecipes.map((s) => { <RandomRecipe recipe={s} key={s.id} getRecipesFromApi={getSaved} isSavedRecipe={bool} /> })
-  //   })
-  // }
+  //displays API saved recipes
+  const displayAPIRecipes = () => {
+    return ss?.map((s) => { return <RandomRecipe recipe={s} key={s.id} isSavedRecipe={bool} /> })
+  }
+
   return (
-    < >
+    <>
       <div className="userProfilePage">
         <div id="UserProfileBackground">
           <Header isLoggedIn={isLoggedIn} />
@@ -142,7 +157,6 @@ const UserProfile = () => {
                 </span>
               </div>
               
-              <NavbarToggler id="navbar-toggler" onClick={toggle} />
               <Offcanvas id="offCanvas" isOpen={isOpen} navbar>
                 <h1 className="asideHeader">Menu Options</h1>
                 <NavbarText className='menu__tag'><strong></strong></NavbarText>
@@ -160,10 +174,10 @@ const UserProfile = () => {
                   <button id="asideCloseButton" onClick={toggle}>close</button>
                 </Nav>
               </Offcanvas>
-              
               <div className="yellowSeperation"></div>
               <h2 className="recipePageHeader"><b>My Contributed Recipes</b></h2>
               <div className="yellowSeperation"></div>
+              <NavbarToggler id="navbar-toggler" onClick={toggle} />
               {showMeMyRecipes()}
               <section className="card-box">
                 <Card inverse className="welcome__card">
@@ -183,6 +197,7 @@ const UserProfile = () => {
               <h2 className="recipePageHeader"><b>My Saved Recipes</b></h2>
               <div className="seperation"></div>
               {showMeMySavedRecipes()}
+              {displayAPIRecipes()}
             </div>
           </div>
           <WelcomeFooter />

@@ -15,21 +15,24 @@
     border-left: none;
     max-width: none;
     border-radius: 15% 15% 15% 15%;
-    background-color: beige;
+    background-color: rgba(245, 245, 220, 0.5);
     opacity: 80%;
+    width: 20em;
     font-weight: 1000;
     letter-spacing: .5rem;
 }
+
 #navbar-toggler {
     display: flex;
-    background-image: url("https://image.pngaaa.com/920/2275920-middle.png");
-    float: right;
-    width: 4em;
-    height: 35px;
-    opacity: 60%;
+    background-image: url("https://cdn-icons-png.flaticon.com/512/5266/5266328.png");
+    border: 3px double rgb(143, 25, 25);
+    width: 3.5em;
+    height: 100px;
+    opacity: 100%;
     border-radius: 30%;
-    background-size: 100%;
-    /* border: 2px solid black; */
+    background-size: 95%;
+    float:inline-start;
+    position: relative;
 }
 #userMenuRecipeButtons {
     display: flex;

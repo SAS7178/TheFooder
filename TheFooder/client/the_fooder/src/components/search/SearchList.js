@@ -29,8 +29,8 @@ export const SearchList = ({ searchTermState }) => {
     )
     useEffect(
         () => {
-            if (searchTermState !== null && filteredRecipes.length === 0) {
-                setNoneFiltered("No matching recipes...")
+            if (searchTermState !== "" && filteredRecipes.length === 0) {
+                setNoneFiltered("")
             } else {setNoneFiltered("")}
         },
         [searchTermState, recipes]
