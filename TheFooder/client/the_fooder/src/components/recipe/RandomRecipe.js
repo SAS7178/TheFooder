@@ -50,26 +50,26 @@ const RandomRecipe = ({ recipe, isSavedRecipe, getRecipesFromApi }) => {
         setImgRModal(false)
     }
             //Under Construction.........................
-    // const handleSaveRecipe = (recipeId) => {
-    //     let userObj = {
-    //         RecipeId: recipeId,
-    //         UserProfileId: userProfile.id,
-    //     }
-    //     savedUserRecipe(userObj)
-    //     console.log(userObj)
-    //     window.alert("The recipe was successfully saved to your profile list!")
-    // }
+    const handleSaveRecipe = (recipeId) => {
+        let userObj = {
+            RecipeId: recipeId,
+            UserProfileId: userProfile.id,
+        }
+        savedUserRecipe(userObj)
+        console.log(userObj)
+        window.alert("The recipe was successfully saved to your profile list!")
+    }
     // send endpoint delete method the savedRecipeObjects Id then confirms removed successfully
-    // const handleUnsaveRecipe = (id) => {
-    //     savedObjRecipes.map((sRObj) => {
-    //         if (sRObj.recipeId === id) {
-    //             deleteSavedRecipe(sRObj.id).then(() => {
-    //                 getRecipesFromApi()
-    //             })
-    //         }
-    //     })
-    //     window.alert("The recipe was removed from your profile list.")
-    // }
+    const handleUnsaveRecipe = (id) => {
+        savedObjRecipes.map((sRObj) => {
+            if (sRObj.recipeId === id) {
+                deleteSavedRecipe(sRObj.id).then(() => {
+                    getRecipesFromApi()
+                })
+            }
+        })
+        window.alert("The recipe was removed from your profile list.")
+    }
     const showRecipeIngredients = (r) => {
         let ingList = [];
         for (let i = 1; i < 21; i++) {
@@ -91,7 +91,8 @@ const RandomRecipe = ({ recipe, isSavedRecipe, getRecipesFromApi }) => {
                         <div><b>~Random Recipe~</b></div>
                         <span className="recipeName"><strong>{recipe.strMeal}</strong></span>
                         <div className="recipeImg">
-                        </div><div>click(image)</div>
+                        {/* </div><div>click(image) */}
+                        </div>
                             <img onClick={() => { handleOpenImageModal() }} className="recipeImage" alt="recipe" src={recipe.strMealThumb} height="200px" />
                         
                         <Modal isOpen={ingRModal} toggle={ingRToggle} {...recipe}>
@@ -140,7 +141,7 @@ const RandomRecipe = ({ recipe, isSavedRecipe, getRecipesFromApi }) => {
                                 Watch Video
                             </button>
                             {/* Under Construction............. */}
-                            {/* {
+                            {
                                 !isSavedRecipe
                                     ?
                                     <button onClick={() => {
@@ -154,7 +155,7 @@ const RandomRecipe = ({ recipe, isSavedRecipe, getRecipesFromApi }) => {
                                         className="editButton">
                                         Unsave Recipe
                                     </button>
-                            } */}
+                            }
                         </div>
                     </div>
                 </section>
