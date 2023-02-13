@@ -50,39 +50,40 @@ const UserProfile = () => {
       setProfileDetails(userProfile);
     });
   };
-
+  
   //method to get all saved recipeObjs
   const getSaved = () => {
     getAllSavedRecipes().then((savedRecipes) => {
       setSavedRecipes(savedRecipes);
     });
   };
-
+  
   //calls above method on render
   useEffect(() => {
     getSaved();
   }, []);
-
+  
   //methos to get all recipes
   const getRecipesFromApi = () => {
     getAllRecipes().then(rs => setRecipes(rs));
   };
-
+  
   useEffect(() => {
     getProfileDetails();
   }, []);
-
+  
   useEffect(() => {
     getRecipesFromApi();
   }, []);
-
+  
   useEffect(() => {
     setRecipesFromAPiById();
   }, []);
+  
   useEffect(() => {
+    //  componentDidMount()
     displayAPIRecipes();
   }, [ss]);
-  
 
   //method to show current created recipes
   const showMeMyRecipes = () => {
@@ -122,10 +123,17 @@ const UserProfile = () => {
     return apiSaves
   }
   
+  function callAPI() {
+    if (this.sets) {
+      this.displayAPIRecipes();
+    } else {
+      console.log('Please run the sets method first.');
+    }
+  }
   const setRecipesFromAPiById = () => {
     let ApiSavedRecipes = [];
     let APIObjs = showMeMyAPISavedRecipes()
-    APIObjs?.forEach((Obj) => {
+     APIObjs?.forEach((Obj) => {
       fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${parseInt(Obj.recipeId)}`)
       .then(response => response.json())
       .then(response => {
@@ -136,12 +144,11 @@ const UserProfile = () => {
     })
     sets(ApiSavedRecipes)
   }
-
   //displays API saved recipes
   const displayAPIRecipes = () => {
     return ss?.map((s) => { return <RandomRecipe recipe={s} key={s.id} isSavedRecipe={bool} /> })
   }
-
+  
   return (
     <>
       <div className="userProfilePage">
