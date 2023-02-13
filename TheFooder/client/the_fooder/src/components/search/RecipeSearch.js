@@ -9,7 +9,7 @@ export const RecipeSearch = ({setterFunction}) => {
            <input className="searchMe" 
            onChange={
                (changeEvent) => {
-                   setterFunction(changeEvent.target.value)
+                   setterFunction(changeEvent.target.value.toUpperCase())
                }
            }
             type="text" placeholder="&nbsp;&nbsp;&nbsp;Search for Recipe..." />
