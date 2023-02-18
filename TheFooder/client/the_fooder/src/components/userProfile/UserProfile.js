@@ -82,8 +82,9 @@ const UserProfile = () => {
   
   useEffect(() => {
     //  componentDidMount()
+    if(ss.length > 0) {
     displayAPIRecipes();
-  }, [ss]);
+}}, [ss]);
 
   //method to show current created recipes
   const showMeMyRecipes = () => {
@@ -123,13 +124,13 @@ const UserProfile = () => {
     return apiSaves
   }
   
-  function callAPI() {
-    if (this.sets) {
-      this.displayAPIRecipes();
-    } else {
-      console.log('Please run the sets method first.');
-    }
-  }
+  // function callAPI() {
+  //   if (this.sets) {
+  //     this.displayAPIRecipes();
+  //   } else {
+  //     console.log('Please run the sets method first.');
+  //   }
+  // }
   const setRecipesFromAPiById = () => {
     let ApiSavedRecipes = [];
     let APIObjs = showMeMyAPISavedRecipes()
@@ -147,7 +148,7 @@ const UserProfile = () => {
   //displays API saved recipes
   const displayAPIRecipes = () => {
     return ss?.map((s) => { return <RandomRecipe recipe={s} key={s.id} isSavedRecipe={bool} /> })
-  }
+}
   
   return (
     <>
@@ -184,7 +185,9 @@ const UserProfile = () => {
               <div className="yellowSeperation"></div>
               <h2 className="recipePageHeader"><b>My Contributed Recipes</b></h2>
               <div className="yellowSeperation"></div>
+              <div className="toggler">
               <NavbarToggler id="navbar-toggler" onClick={toggle} />
+              </div>
               {showMeMyRecipes()}
               <section className="card-box">
                 <Card inverse className="welcome__card">

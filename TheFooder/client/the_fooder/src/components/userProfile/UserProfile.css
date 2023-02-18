@@ -21,18 +21,22 @@
     font-weight: 1000;
     letter-spacing: .5rem;
 }
-
+.toggler{
+    display:flex;
+    justify-content: left;
+}
 #navbar-toggler {
     display: flex;
-    background-image: url("https://cdn-icons-png.flaticon.com/512/5266/5266328.png");
-    border: 3px double rgb(143, 25, 25);
-    width: 3.5em;
-    height: 100px;
-    opacity: 100%;
+    background-image: url("https://png.pngtree.com/png-vector/20190419/ourmid/pngtree-vector-right-arrow-icon-png-image_956430.jpg");
+    border: 4px solid rgb(143, 25, 25);
+    width: 2rem;
+    left: 0;
+    height: 130px;
+    opacity: 50%;
     border-radius: 30%;
-    background-size: 95%;
+    background-size: 100%;
     float:inline-start;
-    position: relative;
+    position: fixed;
 }
 #userMenuRecipeButtons {
     display: flex;
