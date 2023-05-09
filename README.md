@@ -64,7 +64,7 @@ https://dbdiagram.io/d/634d591947094101957a8229
             npm install
             npm start (default port localhost: 3000)
 
-4.User Login
+4.Welcome to use example user login here.( Or register and make your own account!)
 
       stephen@Smith.com
       Password: smithers
